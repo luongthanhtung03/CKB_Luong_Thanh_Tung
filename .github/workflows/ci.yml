@@ -1,0 +1,62 @@
+name: CI
+
+# Keeps the dev log honest: if I claim a typecheck is clean or a Script's tests
+# pass, this runs them on a clean machine and shows whether that is still true.
+#
+# Only the mock contract tests run here. The devnet suite needs a running CKB
+# node, so it stays a local exercise — see exercises/counter-script/README.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  transfer-ckb:
+    name: transfer-ckb — typecheck
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: exercises/transfer-ckb
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: exercises/transfer-ckb/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+
+  counter-script:
+    name: counter-script — build and test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: exercises/counter-script
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: exercises/counter-script/package-lock.json
+      - run: npm ci
+
+      # ckb-testtool shells out to the native ckb-debugger, which is not on the
+      # runner. Fetch the release binary and put it on PATH.
+      - name: Install ckb-debugger
+        run: |
+          version=v1.1.1
+          url="https://github.com/nervosnetwork/ckb-standalone-debugger/releases/download/${version}/ckb-debugger_${version}_x86_64-unknown-linux-gnu.tar.gz"
+          curl -fsSL "$url" -o /tmp/ckb-debugger.tar.gz
+          mkdir -p "$HOME/.ckb-tools"
+          tar -xzf /tmp/ckb-debugger.tar.gz -C "$HOME/.ckb-tools"
+          echo "$HOME/.ckb-tools" >> "$GITHUB_PATH"
+      - name: Verify ckb-debugger
+        run: ckb-debugger --version
+
+      - run: npm run build
+      # mock tests only — the devnet suite needs a live node
+      - run: npx jest tests/counter.mock.test.ts
