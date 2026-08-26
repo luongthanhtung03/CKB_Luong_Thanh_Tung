@@ -1,0 +1,21 @@
+{
+  "devnet": {
+    "counter.bc": {
+      "codeHash": "0x76ee7120f748eaa005f9efb4b8196e0c5b795c9bc64a05d081b6c3ba5b4090b1",
+      "hashType": "type",
+      "cellDeps": [
+        {
+          "cellDep": {
+            "outPoint": {
+              "txHash": "0x3048711a51b92edec5fcfaa319edcbd19ac29fb3e2d7125d60e69f698af667ff",
+              "index": 0
+            },
+            "depType": "code"
+          }
+        }
+      ]
+    }
+  },
+  "testnet": {},
+  "mainnet": {}
+}
