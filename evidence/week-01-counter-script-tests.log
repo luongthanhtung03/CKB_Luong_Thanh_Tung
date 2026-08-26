@@ -1,0 +1,176 @@
+
+> counter-script@0.1.0 test
+> run-s build test:only
+
+
+> counter-script@0.1.0 build
+> node scripts/build-all.js
+
+Building 1 contract(s): counter
+
+📦 Building contract: counter
+Building counter from contracts\counter\src\index.ts...
+  📦 Bundling with esbuild with release settings...
+  🔧 Compiling to bytecode...
+  ✅ Contract 'counter' built successfully!
+     📄 JavaScript: dist\counter.js
+     🔗 Bytecode: dist\counter.bc
+✅ Successfully built: counter with release version
+
+🎉 All contracts built successfully!
+
+> counter-script@0.1.0 test:only
+> jest
+
+(node:14568) ExperimentalWarning: WASI is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/counter.mock.test.ts (8.934 s)
+  ● Console
+
+    console.log
+      
+      ╔════════════════════════════════════════════════════════
+      ║ Script Verification Summary
+      ║ Type: input lock script
+      ║ Index: 0
+      ╠════════════════════════════════════════════════════════
+      ║ STDOUT:
+      ║ Run result: 0
+      ║ All cycles: 539
+      ╠════════════════════════════════════════════════════════
+      ║ STDERR:
+      ║ 
+      ╚════════════════════════════════════════════════════════
+
+      at ScriptVerificationResult.reportSummary (node_modules/ckb-testtool/dist.commonjs/unittest/core.js:106:17)
+
+    console.log
+      
+      ╔════════════════════════════════════════════════════════
+      ║ Script Verification Summary
+      ║ Type: output type script
+      ║ Index: 0
+      ╠════════════════════════════════════════════════════════
+      ║ STDOUT:
+      ║ Script log: [DEBUG] counter: 0 input(s) -> 1 output(s)
+      ║ Script log: [DEBUG] counter created at 0
+      ║ Run result: 0
+      ║ All cycles: 13976371(13.3M)
+      ╠════════════════════════════════════════════════════════
+      ║ STDERR:
+      ║ 
+      ╚════════════════════════════════════════════════════════
+
+      at ScriptVerificationResult.reportSummary (node_modules/ckb-testtool/dist.commonjs/unittest/core.js:106:17)
+
+    console.log
+      
+      ╔════════════════════════════════════════════════════════
+      ║ Script Verification Summary
+      ║ Type: input lock script
+      ║ Index: 0
+      ╠════════════════════════════════════════════════════════
+      ║ STDOUT:
+      ║ Run result: 0
+      ║ All cycles: 539
+      ╠════════════════════════════════════════════════════════
+      ║ STDERR:
+      ║ 
+      ╚════════════════════════════════════════════════════════
+
+      at ScriptVerificationResult.reportSummary (node_modules/ckb-testtool/dist.commonjs/unittest/core.js:106:17)
+
+    console.log
+      
+      ╔════════════════════════════════════════════════════════
+      ║ Script Verification Summary
+      ║ Type: input type script
+      ║ Index: 0
+      ╠════════════════════════════════════════════════════════
+      ║ STDOUT:
+      ║ Script log: [DEBUG] counter: 1 input(s) -> 1 output(s)
+      ║ Script log: [DEBUG] counter incremented 0 -> 1
+      ║ Run result: 0
+      ║ All cycles: 14019656(13.4M)
+      ╠════════════════════════════════════════════════════════
+      ║ STDERR:
+      ║ 
+      ╚════════════════════════════════════════════════════════
+
+      at ScriptVerificationResult.reportSummary (node_modules/ckb-testtool/dist.commonjs/unittest/core.js:106:17)
+
+    console.log
+      
+      ╔════════════════════════════════════════════════════════
+      ║ Script Verification Summary
+      ║ Type: input lock script
+      ║ Index: 0
+      ╠════════════════════════════════════════════════════════
+      ║ STDOUT:
+      ║ Run result: 0
+      ║ All cycles: 539
+      ╠════════════════════════════════════════════════════════
+      ║ STDERR:
+      ║ 
+      ╚════════════════════════════════════════════════════════
+
+      at ScriptVerificationResult.reportSummary (node_modules/ckb-testtool/dist.commonjs/unittest/core.js:106:17)
+
+    console.log
+      
+      ╔════════════════════════════════════════════════════════
+      ║ Script Verification Summary
+      ║ Type: input type script
+      ║ Index: 0
+      ╠════════════════════════════════════════════════════════
+      ║ STDOUT:
+      ║ Script log: [DEBUG] counter: 1 input(s) -> 1 output(s)
+      ║ Script log: [DEBUG] counter incremented 41 -> 42
+      ║ Run result: 0
+      ║ All cycles: 14023682(13.4M)
+      ╠════════════════════════════════════════════════════════
+      ║ STDERR:
+      ║ 
+      ╚════════════════════════════════════════════════════════
+
+      at ScriptVerificationResult.reportSummary (node_modules/ckb-testtool/dist.commonjs/unittest/core.js:106:17)
+
+PASS tests/counter.devnet.test.ts (66.961 s)
+  ● Console
+
+    console.log
+      created counter at 0 — tx 0x788e5151cbb2a62b7cc981208de5c0501ea37611a5977c24de7e1a8f88498dad
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:86:13)
+
+    console.log
+      incremented 0 -> 1 — tx 0xe62adbedfdfaea9084b7c9bb6fd96ea4e4b1465c81a6b510b59ad5c91e961234
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:99:13)
+
+    console.log
+      incremented 1 -> 2 — tx 0xbf85d0d229fe7ac253910f3bf15793137a2188245da0966a77f6d066ebd0fcaf
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:111:13)
+
+    console.log
+      chain rejected 2 -> 4, as it should
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:125:13)
+
+    console.log
+      chain rejected 2 -> 1, as it should
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:135:13)
+
+    console.log
+      incremented 2 -> 3 — tx 0x4c0533af6083d527c02d16bb594734b9f5accf55453569a77ba8ba03faa30eff
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:143:13)
+
+
+Test Suites: 2 passed, 2 total
+Tests:       23 passed, 23 total
+Snapshots:   0 total
+Time:        67.695 s
+Ran all test suites.

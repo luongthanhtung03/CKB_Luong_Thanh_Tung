@@ -16,6 +16,12 @@ target/
 build/
 *.wasm
 
+# compiled ckb script bytecode (rebuilt with `npm run build`)
+dist/
+
+# offckb deployment migration records are machine + run specific
+**/deployment/*/*/migrations/
+
 # offckb local state
 .offckb/
 devnet/

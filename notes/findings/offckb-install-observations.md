@@ -1,10 +1,15 @@
-# Findings from my first day of CKB tooling — 26 Aug 2026
+# Findings from my first days of CKB tooling — 26–27 Aug 2026
 
-Three things I hit on day one. None blocked me, but the first two would confuse a
-beginner and I want to send them to CKB DevRel. The third is not a CKB issue at
-all — I hit it myself, by my own mistake — but it turns out to be the same hazard
-as the first one, and it shows how another ecosystem already solved it. So it
-belongs here as the argument for fixing #1.
+Four things, all on Windows, all on the beginner path.
+
+- **#1** and **#2** are OffCKB install issues. #1 is a name hazard, #2 is cosmetic.
+- **#3** is not a CKB issue at all — I caused it myself — but it is the same
+  hazard as #1, and it shows how another ecosystem already solved it. It belongs
+  here as the argument for fixing #1.
+- **#4** is the one I would fix first. It blocks every contract test on Windows,
+  and the error message points the beginner at exactly the wrong conclusion.
+
+I would like to send all of these to CKB DevRel.
 
 ---
 
@@ -151,6 +156,58 @@ reason it only cost five minutes is that somebody had already thought about it.
 
 ---
 
+## 4. Windows: `ckb-testtool` cannot find the `ckb-debugger` that offckb installed
+
+This one is a real blocker rather than cosmetic, and it stops every contract test
+on Windows.
+
+`offckb create` installs the native debugger and reports success:
+
+```console
+✅ ckb-debugger shim updated: C:\Users\Admin\AppData\Roaming\npm\ckb-debugger.cmd
+✅ ckb-debugger installed successfully at
+   C:\Users\Admin\AppData\Local\offckb-nodejs\Data\tools\ckb-debugger.exe (version 1.1.1).
+```
+
+But every test then fails with:
+
+```console
+ckb-debugger not found. Please install it first:
+https://github.com/nervosnetwork/ckb-standalone-debugger
+    at Function.checkSpawnResult (node_modules/ckb-testtool/.../core.js:663:19)
+```
+
+**Why.** The real executable goes into offckb's own data directory, which is not
+on `PATH`. What goes onto `PATH` is a `ckb-debugger.cmd` shim in the npm global
+directory. `ckb-testtool` spawns `ckb-debugger` via `child_process` without a
+shell, and Windows will not resolve a bare name to a `.cmd` file that way — that
+resolution is a shell feature. So on Windows the shim is invisible to the very
+tool it exists for.
+
+Both halves are individually reasonable. The combination does not work.
+
+**Workaround.** Put the directory holding the real `.exe` on `PATH` for the test
+run. I did this as a jest `globalSetup` so `npm test` just works:
+[`exercises/counter-script/tests/jest.setup.cjs`](../../exercises/counter-script/tests/jest.setup.cjs).
+
+Worth noting that `setupFiles` does *not* work for this, which cost me a while.
+It runs inside jest's per-file sandbox and the `PATH` change never reaches the
+`spawnSync`. `globalSetup` runs in the parent process before the workers fork, so
+they inherit it.
+
+**Suggested fix**, either end:
+
+- *offckb*: install the binary somewhere already on `PATH`, or write a real
+  `.exe` shim rather than a `.cmd` one.
+- *ckb-testtool*: on Windows, look in offckb's tools directory as a fallback, or
+  spawn with `shell: true` so `.cmd` resolves, or honour an env var such as
+  `CKB_DEBUGGER_PATH`.
+
+The second is probably the better place — ckb-testtool already knows it needs
+this binary, and it is the component producing the error message.
+
+---
+
 ## Environment
 
 | | |
@@ -160,6 +217,8 @@ reason it only cost five minutes is that somebody had already thought about it.
 | npm | 10.9.2 |
 | `@offckb/cli` | 0.4.13 |
 | CKB | 0.208.0 (`x86_64-pc-windows-msvc`, portable) |
+| `ckb-debugger` | 1.1.1 |
+| `ckb-testtool` | 1.0.5 |
 
 ## Status
 

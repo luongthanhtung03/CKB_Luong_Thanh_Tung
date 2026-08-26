@@ -18,7 +18,7 @@ contemporaneously, with screenshots and evidence.
 
 | Week | Period | Report |
 |---|---|---|
-| 1 | 26 Aug 2026 | [week-01-report.md](reports/week-01-report.md) |
+| 1 | 26–27 Aug 2026 | [week-01-report.md](reports/week-01-report.md) |
 
 ## Where things are
 
@@ -29,29 +29,43 @@ contemporaneously, with screenshots and evidence.
 | [notes/](notes/) | my own notes on CKB concepts |
 | [notes/findings/](notes/findings/) | issues I have found in CKB tooling |
 | [evidence/](evidence/) | command logs and raw transaction JSON |
-| [exercises/](exercises/) | code from the Handbook tutorials |
+| [exercises/](exercises/) | code — tutorials and my own Scripts |
 | [screenshots/](screenshots/) | screenshot evidence, by week |
 
 ## Highlights so far
 
-- **Week 1** — local devnet running on CKB 0.208.0, first transfer committed on
-  chain (`0x1888f04b…`), and a [TypeScript transaction inspector](exercises/transfer-ckb/)
-  built with CCC to verify the Cell Model against a transaction I made myself.
-  Write-up: [annotated transaction](notes/transaction-anatomy.md).
-- Two issues found on the OffCKB beginner install path, written up with
-  suggested fixes: [findings](notes/findings/offckb-install-observations.md).
+- **A Type Script of my own** — [counter](exercises/counter-script/), in
+  TypeScript. It may only be created at zero and only incremented by one.
+  23 tests pass, of which 18 assert *failure* and the specific error code.
+  Deployed to devnet, and the chain refused both invalid transitions I threw at
+  it.
+- **A transaction inspector** — [transfer-ckb](exercises/transfer-ckb/), built
+  with CCC, used to verify the Cell Model against a transfer I made myself
+  rather than take it from the docs. Write-up:
+  [annotated transaction](notes/transaction-anatomy.md).
+- **Four tooling issues** found on the beginner path and written up with
+  suggested fixes, one of which blocks every contract test on Windows:
+  [findings](notes/findings/offckb-install-observations.md).
+- **CI** runs the typecheck and the contract tests on a clean machine, so the
+  claims in this log are checked rather than asserted:
+  [ci.yml](.github/workflows/ci.yml).
 
 ## Running the code
 
 Everything is TypeScript. Each exercise is self-contained:
 
 ```bash
-offckb node                    # terminal 1
+offckb node                     # terminal 1
 
-cd exercises/transfer-ckb      # terminal 2
-npm install
-npm run typecheck
-npm run inspect
+# terminal 2 — inspect a transaction
+cd exercises/transfer-ckb
+npm install && npm run typecheck && npm run inspect
+
+# terminal 2 — build, test and deploy the counter Script
+cd exercises/counter-script
+npm install && npm run build
+npx jest tests/counter.mock.test.ts   # no node needed
+npm run deploy && npm test            # needs the devnet
 ```
 
 No private keys, `.env` files, or keystores are committed to this repository. The

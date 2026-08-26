@@ -10,3 +10,27 @@ CKB devnet RPC Proxy server running on http://127.0.0.1:28114
 (node:11636) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 send_transaction: 0x1888f04bcdafc6e7f99be773abfcc68f816e92a3367016280aa1cd0268e4fdbc
+CKB miner exited unexpectedly (code=4294967295, signal=none).
+Launching CKB devnet Node...
+CKB devnet is ready at http://127.0.0.1:8114.
+Follow the full node log with: offckb logs -f
+CKB devnet RPC Proxy server running on http://127.0.0.1:28114
+(node:9096) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+send_transaction: 0x3048711a51b92edec5fcfaa319edcbd19ac29fb3e2d7125d60e69f698af667ff
+send_transaction: 0xd785699867f05f04d8cdf971d9a6175e120882d09149fedd533427e9aa977934
+send_transaction: 0xccfe3e2ae80cab69a2debf3c172f47ada0975a5401f9f6ee834efbd3339370f6
+send_transaction: 0xa823f5a3d0997c67f9f43dcdf741eaa7078db7c76451741db72dde5891d3428d
+send_transaction: 0x2df3f2df12f4ec318a7d09aefc0e9ca42144e2de8d001f3397882060365b2cbb
+RPC error: [-302] TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Type, cause: ValidationFailure: see error code 12 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-type-hash/ac4db0d0c028ba0d73dec9ee5e6a3c0c98fcdfca895402a3285d680e964dcb46.html#12 })
+send_transaction: 0x6a0e589c83a30bb96c6323be0f89e74415840a5e4159e23fa53fed4c0f0226a3
+RPC error: [-302] TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Type, cause: ValidationFailure: see error code 12 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-type-hash/ac4db0d0c028ba0d73dec9ee5e6a3c0c98fcdfca895402a3285d680e964dcb46.html#12 })
+send_transaction: 0x1090034e7d85765e0a00f467ab2c738caa3f00aa1a9bb8453d2cd1517bb63b51
+send_transaction: 0x788e5151cbb2a62b7cc981208de5c0501ea37611a5977c24de7e1a8f88498dad
+send_transaction: 0xe62adbedfdfaea9084b7c9bb6fd96ea4e4b1465c81a6b510b59ad5c91e961234
+send_transaction: 0xbf85d0d229fe7ac253910f3bf15793137a2188245da0966a77f6d066ebd0fcaf
+send_transaction: 0x72cf06fa6d576ee256e530a5738bcfa9205860ed52cf90217fa62120e6410194
+RPC error: [-302] TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Type, cause: ValidationFailure: see error code 12 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-type-hash/ac4db0d0c028ba0d73dec9ee5e6a3c0c98fcdfca895402a3285d680e964dcb46.html#12 })
+send_transaction: 0x84154a3557e6bd3e973d45473df0f83f8d51e7e713389041f54f8ac8fc35fa90
+RPC error: [-302] TransactionFailedToVerify: Verification failed Script(TransactionScriptError { source: Inputs[0].Type, cause: ValidationFailure: see error code 12 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-type-hash/ac4db0d0c028ba0d73dec9ee5e6a3c0c98fcdfca895402a3285d680e964dcb46.html#12 })
+send_transaction: 0x4c0533af6083d527c02d16bb594734b9f5accf55453569a77ba8ba03faa30eff
