@@ -1,0 +1,12 @@
+The system cannot find the path specified.
+CKB Binary not found, download and install the new version 0.208.0..
+Failed to detect CPU features, using portable binary {"code":"MODULE_NOT_FOUND","requireStack":["C:\\Users\\Admin\\AppData\\Roaming\\npm\\node_modules\\@offckb\\cli\\build\\index.js"]}
+downloading https://github.com/nervosnetwork/ckb/releases/download/v0.208.0/ckb_v0.208.0_x86_64-pc-windows-msvc.zip ..
+CKB 0.208.0 installed successfully.
+Launching CKB devnet Node...
+CKB devnet is ready at http://127.0.0.1:8114.
+Follow the full node log with: offckb logs -f
+CKB devnet RPC Proxy server running on http://127.0.0.1:28114
+(node:11636) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+send_transaction: 0x1888f04bcdafc6e7f99be773abfcc68f816e92a3367016280aa1cd0268e4fdbc

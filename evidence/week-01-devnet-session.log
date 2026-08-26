@@ -1,0 +1,123 @@
+CKBuilder Week 1 — OffCKB devnet session
+Date: 2026-08-26
+Host: Windows 10 Pro 19045, Node v22.16.0, npm 10.9.2
+Note: private keys redacted. The devnet keys used here are the well-known
+      prefunded OffCKB development keys and hold no real value.
+
+--------------------------------------------------------------------------------
+1. Confirm the real package name before installing anything globally
+--------------------------------------------------------------------------------
+
+$ npm view offckb name version description homepage
+name = 'offckb'
+version = '1.0.0'
+description = 'Placeholder package for offckb - reserved name'
+homepage = 'https://github.com/yourusername/offckb-placeholder#readme'
+
+$ npm view @offckb/cli name version description homepage
+name = '@offckb/cli'
+version = '0.4.13'
+description = 'ckb development network for your first try'
+homepage = 'https://github.com/ckb-devrel/offckb#readme'
+
+--> the docs are right, @offckb/cli is the real one. See
+    notes/findings/offckb-install-observations.md
+
+--------------------------------------------------------------------------------
+2. Install
+--------------------------------------------------------------------------------
+
+$ npm install -g @offckb/cli
+added 133 packages in 19s
+
+$ offckb --version
+0.4.13
+
+--------------------------------------------------------------------------------
+3. Start the devnet
+--------------------------------------------------------------------------------
+
+$ offckb node
+The system cannot find the path specified.
+CKB Binary not found, download and install the new version 0.208.0..
+Failed to detect CPU features, using portable binary {"code":"MODULE_NOT_FOUND","requireStack":["...\\@offckb\\cli\\build\\index.js"]}
+downloading https://github.com/nervosnetwork/ckb/releases/download/v0.208.0/ckb_v0.208.0_x86_64-pc-windows-msvc.zip ..
+CKB 0.208.0 installed successfully.
+Launching CKB devnet Node...
+CKB devnet is ready at http://127.0.0.1:8114.
+Follow the full node log with: offckb logs -f
+CKB devnet RPC Proxy server running on http://127.0.0.1:28114
+
+--------------------------------------------------------------------------------
+4. Confirm the chain is actually producing blocks
+--------------------------------------------------------------------------------
+
+$ curl -s -H 'Content-Type: application/json' \
+    -d '{"id":1,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
+    http://127.0.0.1:8114
+{"jsonrpc":"2.0","result":"0x2","id":1}
+
+--------------------------------------------------------------------------------
+5. Prefunded accounts
+--------------------------------------------------------------------------------
+
+$ offckb accounts
+#### ALL ACCOUNTS ARE FOR TEST AND DEVELOP ONLY  ####
+#### DON'T USE THESE ACCOUNTS ON MAINNET         ####
+
+Print account list, each account is funded with 42_000_000_00000000 capacity in
+the devnet genesis block.
+
+- "#": 0
+address: ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqvwg2cen8extgq8s5puft8vf40px3f599cytcyd8
+lock_arg: 0x8e42b1999f265a0078503c4acec4d5e134534297
+lockScript:
+    codeHash: 0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8
+    hashType: type
+    args: 0x8e42b1999f265a0078503c4acec4d5e134534297
+
+- "#": 1
+address: ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqt435c3epyrupszm7khk6weq5lrlyt52lg48ucew
+lock_arg: 0x758d311c8483e0602dfad7b69d9053e3f917457d
+lockScript:
+    codeHash: 0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8
+    hashType: type
+    args: 0x758d311c8483e0602dfad7b69d9053e3f917457d
+
+$ offckb balance ckt1...cytcyd8    # account 0
+CKB: 42000000
+
+--------------------------------------------------------------------------------
+6. Transfer 1000 CKB, account 0 -> account 1
+--------------------------------------------------------------------------------
+
+$ offckb transfer ckt1...48ucew 1000 --privkey <REDACTED_DEVNET_KEY>
+Successfully transfer, txHash: 0x1888f04bcdafc6e7f99be773abfcc68f816e92a3367016280aa1cd0268e4fdbc
+
+--------------------------------------------------------------------------------
+7. Balances after
+--------------------------------------------------------------------------------
+
+$ offckb balance ckt1...cytcyd8    # account 0, sender
+CKB: 41998999.99999536
+
+$ offckb balance ckt1...48ucew     # account 1, recipient
+CKB: 42001000
+
+--> sender lost 1000.00000464 CKB, recipient gained exactly 1000.
+    the 464 shannon difference is the fee.
+
+--------------------------------------------------------------------------------
+8. Read the transaction back with my own TypeScript tool
+--------------------------------------------------------------------------------
+
+$ cd exercises/transfer-ckb
+$ npx tsc --noEmit          # clean, exit 0
+$ npm run inspect
+
+  see evidence/week-01-inspect-tx.log for the full output, and
+  notes/transaction-anatomy.md for the field-by-field write-up.
+
+--------------------------------------------------------------------------------
+end of session
+--------------------------------------------------------------------------------
