@@ -57,10 +57,31 @@ cycle limits matter: the chain is paying to verify, not to compute.)
 
 ## Questions to answer by running code
 
-- What exactly is in a transaction's `witnesses` field, and how does a Lock
-  Script read it?
-- What is a `cell_dep`, and why must a transaction declare the scripts it uses as
-  dependencies?
+Answered on 26 Aug 2026 by making a real transfer on the devnet and reading it
+back — see [transaction-anatomy.md](transaction-anatomy.md).
+
+- ~~What is a `cell_dep`, and why must a transaction declare the scripts it uses
+  as dependencies?~~ **Answered.** Script code lives in Cells too. A transaction
+  points at the Cell holding the code that verifies it, because there is no
+  implicit contract registry on chain. My transfer had one, a `dep_group` for the
+  default secp256k1 lock.
+- ~~What exactly is in a transaction's `witnesses` field?~~ **Partly answered.**
+  It is where the signature goes, and it sits outside the signed structure
+  because a signature cannot be part of what it signs. Mine was 85 bytes, not the
+  65 I expected, because it is a Molecule-serialized `WitnessArgs` wrapper. I
+  still cannot decode those bytes by hand — that is the remaining half.
+- The 61 CKByte minimum Cell size: still not verified. Do it during Store Data
+  on Cell.
 - What does a Type Script actually get to see — the input Cells as well as the
-  outputs?
-- How is a CKB address derived from a Lock Script?
+  outputs? My transfer had no Type Script at all (`type: null`), so this is still
+  open.
+- How is a CKB address derived from a Lock Script? Still open. I can see that
+  `lock.args` matches the `lock_arg` from `offckb accounts`, but not how the
+  `ckt1…` string is built from args plus code hash plus hash type.
+
+## Things I got wrong
+
+I assumed a transaction states the amount being sent. It does not — inputs are
+pointers to Cells, outputs are new Cells, and the amount is something you infer
+from the difference. That also explains why there is no fee field: the fee is
+just inputs minus outputs.
