@@ -27,7 +27,7 @@ week has somewhere to go.
   outputs, the implicit fee, cell deps, witnesses.
 - Used that output to write a field-by-field
   [annotated transaction](../notes/transaction-anatomy.md).
-- Found and wrote up **two issues on the OffCKB beginner path**, one of which I
+- Found and wrote up **three npm/tooling issues on the beginner path**, one of which I
   think is worth the project's attention
   ([findings](../notes/findings/offckb-install-observations.md)).
 
@@ -66,7 +66,7 @@ CKB: 42001000
 Then my own tool, against that transaction:
 
 ```console
-$ cd exercises/transfer-ckb && npx tsc --noEmit     # clean
+$ cd exercises/transfer-ckb && npm run typecheck    # tsc --noEmit, exit 0
 $ npm run inspect
 
 status    : committed
@@ -106,13 +106,17 @@ OTHER FIELDS
 | Inspector output | Captured | [`evidence/week-01-inspect-tx.log`](../evidence/week-01-inspect-tx.log) |
 | Annotated transaction | Written | [`notes/transaction-anatomy.md`](../notes/transaction-anatomy.md) |
 | Cell Model notes | Written | [`notes/cell-model.md`](../notes/cell-model.md) |
-| OffCKB install findings | 2 issues, write-up ready to send | [`notes/findings/`](../notes/findings/offckb-install-observations.md) |
+| Tooling findings | 3 issues, write-up ready to send | [`notes/findings/`](../notes/findings/offckb-install-observations.md) |
 | Eight-week plan | Written | [`PLAN.md`](../PLAN.md) |
 
-<!-- TODO before publishing: add terminal screenshots to screenshots/week-01/ —
-     01-offckb-node.png (devnet ready), 02-transfer-txhash.png (the transfer
-     succeeding), 03-inspect-tx.png (your inspector output). Then add a row here.
-     The Handbook asks for screenshots specifically, so this is worth 5 minutes. -->
+### Screenshots
+
+| | What it shows |
+|---|---|
+| [`01-devnet-status.png`](../screenshots/week-01/01-devnet-status.png) | `offckb status` — CKB Node Monitor 0.208.0, devnet at block 234, 100% synced, epoch 0, difficulty 256H |
+| [`02-balances.png`](../screenshots/week-01/02-balances.png) | account 0 at `41998999.99999536` and account 1 at `42001000` after the transfer — sender down 1000 CKB plus 464 shannons of fee, recipient up exactly 1000 |
+| [`03-inspect-tx.png`](../screenshots/week-01/03-inspect-tx.png) | my inspector against the real transaction: one input Cell destroyed, two output Cells created, the implicit fee, cell deps and witnesses |
+| [`04-typecheck.png`](../screenshots/week-01/04-typecheck.png) | `npm run typecheck` — `tsc --noEmit`, exit 0 under strict |
 
 Transaction hashes are on a local devnet, so they are not on a public explorer.
 Repeating both tutorials on testnet, with public explorer links, is my week 2
@@ -156,7 +160,41 @@ client is `ClientPublicTestnet`, which takes a `{ url }` config — and it is th
 right one for a devnet, because devnet uses testnet-style `ckt` addresses. Worth
 knowing before week 3, when I will be in CCC properly.
 
-**4. Losing precision on capacity.**
+**4. I walked straight into the same trap I had just written up.**
+
+While taking the screenshots for this report I ran `npx tsc --noEmit` from the
+repository root instead of from `exercises/transfer-ckb/`. There is no local
+TypeScript at the root, so `npx` went to the registry, found a package named
+`tsc`, and installed it:
+
+```console
+$ npx tsc --noEmit
+Need to install the following packages:
+tsc@2.0.4
+Ok to proceed? (y) y
+
+                This is not the tsc command you are looking for
+
+- Use npm install typescript to first add TypeScript to your project before using npx
+- Use yarn to avoid accidentally running code from un-installed packages
+```
+
+This is embarrassing, given that finding #1 above is *exactly this hazard* and I
+had written it up an hour earlier. But it turned out to be the most useful thing
+that happened today, because of what the owner of `tsc` has done with the name.
+They hold it deliberately and it does nothing except redirect you to
+`typescript`. The guessable name is owned by the community and turned into a
+signpost.
+
+That is precisely the fix I was groping towards for `offckb`, and now I can point
+at a working precedent for it instead of just asserting it. The full argument is
+in the [findings note](../notes/findings/offckb-install-observations.md).
+
+The fix on my side was to stop using `npx tsc` and use the `typecheck` script in
+`package.json`, which resolves the local compiler and cannot wander off to the
+registry.
+
+**5. Losing precision on capacity.**
 
 My first pass converted capacities to `number` to format them, and the change
 output came out as a clean `41,999,000` instead of `41,998,999.99999536` — which

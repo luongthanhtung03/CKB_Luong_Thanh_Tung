@@ -1,7 +1,10 @@
-# Findings while installing OffCKB on Windows — 26 Aug 2026
+# Findings from my first day of CKB tooling — 26 Aug 2026
 
-Two things I hit on my first install. Neither blocked me, but both would confuse
-a beginner, so I am writing them up to send to CKB DevRel.
+Three things I hit on day one. None blocked me, but the first two would confuse a
+beginner and I want to send them to CKB DevRel. The third is not a CKB issue at
+all — I hit it myself, by my own mistake — but it turns out to be the same hazard
+as the first one, and it shows how another ecosystem already solved it. So it
+belongs here as the argument for fixing #1.
 
 ---
 
@@ -91,6 +94,60 @@ The bug is that the fallback reports itself like a crash.
 `CPU feature detection unavailable on this platform, using the portable CKB
 binary` at info level, without the require stack. It costs nothing and removes a
 "did I break it?" moment on the most common beginner platform.
+
+---
+
+## 3. The same hazard, already solved: `npx tsc`
+
+I did this to myself, and it is the reason I now think finding #1 is worth
+fixing rather than just noting.
+
+Taking screenshots for this report, I ran `npx tsc --noEmit` from the repository
+root instead of from `exercises/transfer-ckb/`. There is no local TypeScript at
+the root, so `npx` went to the registry, found a package literally named `tsc`,
+and offered to install it:
+
+```console
+$ npx tsc --noEmit
+Need to install the following packages:
+tsc@2.0.4
+Ok to proceed? (y) y
+
+npm warn deprecated tsc@2.0.4: Package no longer supported.
+
+                This is not the tsc command you are looking for
+
+To get access to the TypeScript compiler, tsc, from the command line either:
+
+- Use npm install typescript to first add TypeScript to your project before using npx
+- Use yarn to avoid accidentally running code from un-installed packages
+```
+
+The structure is identical to the OffCKB case. The command you type is `tsc`, but
+the package is `typescript`. So the guessable name is wrong, and people guess it.
+
+What is interesting is what the owner of `tsc` did about it:
+
+```console
+$ npm view tsc description repository
+description = 'A deprecated release of the TypeScript compiler'
+repository = { url: 'git+https://github.com/basarat/tsc.git', type: 'git' }
+```
+
+Rather than leave the guessable name to a stranger, someone in that community
+holds it and has turned it into a **signpost**. It does nothing except tell you
+the correct package name. Note also the last line of its own output — *"Use yarn
+to avoid accidentally running code from un-installed packages"* — which is the
+package warning you about the exact class of risk it exists to neutralise.
+
+**This is the fix I was reaching for in #1.** For CKB the equivalent would be
+ckb-devrel owning `offckb` on npm and having it print "you probably want
+`npm install -g @offckb/cli`". It costs one tiny publish, it removes a beginner
+dead end, and it means the guessable entry point to a globally installed CKB tool
+is owned by the project instead of by whoever registered it first.
+
+For what it is worth, this was my own error and it cost me five minutes. But the
+reason it only cost five minutes is that somebody had already thought about it.
 
 ---
 

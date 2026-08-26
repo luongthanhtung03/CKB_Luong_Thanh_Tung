@@ -30,6 +30,14 @@ reports, not a report itself.
 - Wrote `notes/transaction-anatomy.md`. The Cell Model checks out — the input
   Cell is genuinely destroyed, the change is a new Cell, and there is no fee
   field at all.
+- Took four screenshots for evidence: devnet status TUI, both balances after the
+  transfer, the inspector output, and the typecheck.
+- Then ran `npx tsc --noEmit` from the repo root by mistake and npx installed a
+  registry package called `tsc` — the exact hazard I had written up for `offckb`
+  an hour earlier. Turns out whoever owns `tsc` keeps it purely as a signpost
+  pointing at `typescript`. That is the precedent for the fix I was suggesting
+  for offckb, so my own mistake made the finding stronger. Use
+  `npm run typecheck`, never `npx tsc`.
 - Still no confirmation on my application. Publishing anyway, same day as the
   work, since I was told I could begin the first steps of the guidance.
 - Next: redo both tutorials on testnet with the faucet so I have public explorer
