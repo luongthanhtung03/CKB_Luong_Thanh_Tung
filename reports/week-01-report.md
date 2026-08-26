@@ -2,107 +2,216 @@
 
 **Participant:** Luong Thanh Tung
 **GitHub:** [@luongthanhtung03](https://github.com/luongthanhtung03)
-**Reporting period:** 26 August – 1 September 2026
-**Publication date:** 1 September 2026
+**Reporting period:** 26 August 2026 (first day)
+**Publication date:** 26 August 2026
 **Status:** application submitted, awaiting confirmation of my place in the cohort
 
-## Goal for this week
+## Goal
 
-Set up my dev log the way the Handbook requires, read the Handbook end to end so
-I understand what the programme expects, and get my local CKB development
-environment ready so that Week 2 can be spent on the actual tutorials rather
-than on tooling.
+Get a real CKB development environment running, make one real transaction, and
+verify the Cell Model against that transaction rather than taking it on trust
+from the documentation. Also set up this dev log properly so that every later
+week has somewhere to go.
 
 ## What I did
 
-- Read the CKBuilder Handbook in full, including the reporting standards and the
-  Introduction section links.
-- Created this repository as my personal CKBuilder dev log, following the
-  structure the Handbook asks for: weekly reports, screenshots as evidence, and
-  notes in my own words.
-- Wrote an eight-week study and build plan ([PLAN.md](../PLAN.md)) that maps the
-  Handbook's Introduction → Beginner → application phases onto a 4–5 hour weekly
-  commitment, and fixed Tuesday as my report day.
-- Added a `.gitignore` that excludes `.env`, private keys, and keystore files, so
-  I do not leak secrets as the repository grows.
-- Confirmed my base toolchain: Node.js v22.16.0, npm 10.9.2, git 2.49.0.
-- Started my first concept notes on the Cell Model
-  ([notes/cell-model.md](../notes/cell-model.md)).
+- Read the CKBuilder Handbook in full, including the reporting standards.
+- Set this repository up as my dev log, with a report template, a plan, and a
+  `.gitignore` that excludes `.env`, private keys and keystores.
+- Wrote an eight-week study and build plan ([PLAN.md](../PLAN.md)).
+- Installed `@offckb/cli` 0.4.13 and started a local CKB devnet (CKB 0.208.0).
+- **Transferred 1000 CKB** from devnet account 0 to account 1 and confirmed the
+  transaction committed on chain.
+- **Wrote a TypeScript tool** using CCC that reads a transaction back off the
+  node and prints its full anatomy — inputs resolved to their capacities,
+  outputs, the implicit fee, cell deps, witnesses.
+- Used that output to write a field-by-field
+  [annotated transaction](../notes/transaction-anatomy.md).
+- Found and wrote up **two issues on the OffCKB beginner path**, one of which I
+  think is worth the project's attention
+  ([findings](../notes/findings/offckb-install-observations.md)).
 
-## Commands and output
+## Commands and results
 
-```bash
-$ node -v
-v22.16.0
+```console
+$ npm install -g @offckb/cli
+added 133 packages in 19s
 
-$ npm -v
-10.9.2
+$ offckb --version
+0.4.13
 
-$ git --version
-git version 2.49.0.windows.1
+$ offckb node
+CKB 0.208.0 installed successfully.
+Launching CKB devnet Node...
+CKB devnet is ready at http://127.0.0.1:8114.
+
+$ curl -s -H 'Content-Type: application/json' \
+    -d '{"id":1,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
+    http://127.0.0.1:8114
+{"jsonrpc":"2.0","result":"0x2","id":1}
+
+$ offckb balance ckt1...cytcyd8          # account 0, before
+CKB: 42000000
+
+$ offckb transfer ckt1...48ucew 1000 --privkey <REDACTED_DEVNET_KEY>
+Successfully transfer, txHash: 0x1888f04bcdafc6e7f99be773abfcc68f816e92a3367016280aa1cd0268e4fdbc
+
+$ offckb balance ckt1...cytcyd8          # account 0, after
+CKB: 41998999.99999536
+
+$ offckb balance ckt1...48ucew           # account 1, after
+CKB: 42001000
+```
+
+Then my own tool, against that transaction:
+
+```console
+$ cd exercises/transfer-ckb && npx tsc --noEmit     # clean
+$ npm run inspect
+
+status    : committed
+block     : 16
+
+INPUTS (1) — Cells consumed and now dead
+  [0] 0x1bb87da3…5b1bf7 #22  capacity 42,000,000.00000000 CKB
+
+OUTPUTS (2) — new live Cells
+  [0] capacity 1,000.00000000 CKB
+       lock.args  0x758d311c8483e0602dfad7b69d9053e3f917457d
+       type       null
+       data       0 bytes
+  [1] capacity 41,998,999.99999536 CKB
+       lock.args  0x8e42b1999f265a0078503c4acec4d5e134534297
+       type       null
+       data       0 bytes
+
+CAPACITY ACCOUNTING
+  in        42,000,000.00000000 CKB
+  out       41,999,999.99999536 CKB
+  fee       0.00000464 CKB  (464 shannons)
+
+OTHER FIELDS
+  cellDeps  1 — depGroup 0x4d804f14…e76293 #0
+  witnesses 1 — 85 bytes
 ```
 
 ## Evidence
 
-| Item | Result | Link |
+| Item | Result | Evidence |
 |---|---|---|
-| Dev-log repository created | Done | this repository |
-| Eight-week plan | Done | [PLAN.md](../PLAN.md) |
-| Weekly report template | Done | [week-template.md](week-template.md) |
-| Cell Model notes started | In progress | [notes/cell-model.md](../notes/cell-model.md) |
-| OffCKB devnet running | Not yet — planned for Week 2 | — |
+| `@offckb/cli` installed, devnet running | CKB 0.208.0, tip advancing | [`evidence/week-01-devnet-session.log`](../evidence/week-01-devnet-session.log) |
+| Transfer CKB tutorial (devnet) | Committed, block 16 | tx `0x1888f04bcdafc6e7f99be773abfcc68f816e92a3367016280aa1cd0268e4fdbc` |
+| Raw transaction from the node | Retrieved | [`evidence/tx-transfer-1000ckb.json`](../evidence/tx-transfer-1000ckb.json) |
+| TypeScript tx inspector (CCC) | `tsc --noEmit` clean, runs | [`exercises/transfer-ckb/`](../exercises/transfer-ckb/) |
+| Inspector output | Captured | [`evidence/week-01-inspect-tx.log`](../evidence/week-01-inspect-tx.log) |
+| Annotated transaction | Written | [`notes/transaction-anatomy.md`](../notes/transaction-anatomy.md) |
+| Cell Model notes | Written | [`notes/cell-model.md`](../notes/cell-model.md) |
+| OffCKB install findings | 2 issues, write-up ready to send | [`notes/findings/`](../notes/findings/offckb-install-observations.md) |
+| Eight-week plan | Written | [`PLAN.md`](../PLAN.md) |
 
-<!-- TODO before publishing: take a screenshot of your terminal showing the
-     node / npm / git versions, save it as screenshots/week-01/01-toolchain.png,
-     and add a row for it in the table above. -->
+<!-- TODO before publishing: add terminal screenshots to screenshots/week-01/ —
+     01-offckb-node.png (devnet ready), 02-transfer-txhash.png (the transfer
+     succeeding), 03-inspect-tx.png (your inspector output). Then add a row here.
+     The Handbook asks for screenshots specifically, so this is worth 5 minutes. -->
 
-## What went wrong, and how I fixed it
+Transaction hashes are on a local devnet, so they are not on a public explorer.
+Repeating both tutorials on testnet, with public explorer links, is my week 2
+task.
 
-Nothing broke technically this week, because I deliberately did not start the
-tutorials yet. The real difficulty was working out the right order to learn
-things in. The Handbook lists a lot of material — CCC, the script course, sUDT
-and xUDT, Spore, SSRI, RGB++, Fiber — and my first instinct was to open all of
-it at once. Looking at another cohort member's dev log helped me see that the
-people who make progress pick one thing per week and finish it with evidence,
-rather than reading broadly. So I wrote the plan first and closed the other tabs.
+## Problems and how I fixed them
 
-The second thing I resolved was a process question rather than a technical one.
-The Handbook says reports must be contemporaneous and that reimbursement is
-pro-rata against the log, so the habit matters more than the volume. I set up the
-template and fixed my report day now, in Week 1, rather than improvising later.
+**1. The `offckb` name on npm is not the OffCKB tool.**
+
+Before installing anything globally I checked the package, out of habit. The
+documented command is `npm install -g @offckb/cli`, but the CLI binary is called
+`offckb`, so the obvious guess is `npm install -g offckb`. That name is taken —
+by something else:
+
+```console
+$ npm view offckb description homepage
+description = 'Placeholder package for offckb - reserved name'
+homepage = 'https://github.com/yourusername/offckb-placeholder#readme'
+```
+
+It is inert today, and I am not suggesting anything malicious is happening — it
+looks like ordinary name reservation. But it is a guessable name for a globally
+installed developer tool sitting directly on the newcomer path, and whoever holds
+it can publish to it later. I have written this up with a suggested fix and I
+would like to send it to CKB DevRel.
+
+**2. Windows: the CPU-feature fallback reports itself like a crash.**
+
+`offckb node` opens with `The system cannot find the path specified.` and then
+prints a raw `MODULE_NOT_FOUND` require-stack next to `Failed to detect CPU
+features`. Everything then works correctly — the portable binary is downloaded,
+the node starts and mines. So it is cosmetic, but on the most common beginner
+platform the first thing you see looks like two errors. Suggested fix is in the
+findings note.
+
+**3. `ClientJsonRpc` is abstract in CCC.**
+
+My first version of the inspector did `new ClientJsonRpc(url)` and `tsc` rejected
+it with `TS2511: Cannot create an instance of an abstract class`. The concrete
+client is `ClientPublicTestnet`, which takes a `{ url }` config — and it is the
+right one for a devnet, because devnet uses testnet-style `ckt` addresses. Worth
+knowing before week 3, when I will be in CCC properly.
+
+**4. Losing precision on capacity.**
+
+My first pass converted capacities to `number` to format them, and the change
+output came out as a clean `41,999,000` instead of `41,998,999.99999536` — which
+made the fee look like zero and briefly convinced me CKB had no transaction fee.
+Capacities are shannons and need `bigint` arithmetic all the way through. This
+was my own bug and it is the one that taught me the most today.
 
 ## What I learned
 
-- CKB does not have accounts holding balances. State lives in **Cells**, and a
-  transaction consumes input Cells and creates output Cells rather than mutating
-  anything in place. This is closer to Bitcoin's UTXO model than to Ethereum's
-  account model.
-- A Cell's **capacity** is both its CKByte balance and its storage limit — the
-  Cell cannot hold more bytes than its capacity allows. Storage and money are the
-  same resource, which is a design decision I had not come across before.
-- Every Cell has a **Lock Script** (who is allowed to consume this Cell) and
-  optionally a **Type Script** (what rules any transaction touching this Cell
-  must satisfy). Authorisation and application logic are deliberately separated.
-- Scripts on CKB do not compute new state. They **validate** a transaction that
-  someone else has already assembled off-chain, and either accept or reject it.
-- CKB-VM runs RISC-V, which is why scripts can be written in Rust, C, or even
-  JavaScript rather than in a chain-specific language.
+The thing I actually wanted to settle was whether "Cells, not accounts" is a real
+mechanism or just vocabulary. It is real, and the transaction proves it:
 
-I want to be honest that these are things I have read and can restate, not things
-I have yet proven to myself by running code. Verifying them on a real devnet is
-exactly what Week 2 is for.
+- My 42,000,000 CKB Cell **no longer exists**. To send 1000 CKB, the entire input
+  Cell was destroyed and two new Cells were created — one for the recipient, one
+  of change back to me. The change Cell is not my old Cell with a smaller number
+  in it; it is a different Cell that happens to be locked to the same args.
+- An input is a **pointer**, not an amount. It carries a `previous_output` (tx
+  hash + index) and nothing else. My tool had to go and resolve the previous
+  output to learn what the input was worth. The transaction genuinely does not
+  state how much is being sent — you infer it.
+- **There is no fee field.** The fee is whatever the inputs exceed the outputs
+  by; here, 464 shannons. Once inputs are pointers rather than amounts, an
+  explicit fee field would be redundant, but I did not expect this.
+- `cell_deps` was the field I understood least from reading and most from seeing.
+  A transaction has to declare the on-chain Cells holding the Script code that
+  verifies it. Scripts live in Cells too. There is no implicit contract registry.
+- The witness sits deliberately outside the signed structure, because a signature
+  cannot be part of what it signs. 85 bytes rather than a bare 65-byte signature,
+  because it is a Molecule-serialized wrapper — which is my first concrete reason
+  to care about Molecule later on.
 
-## Next week
+I would rather record what I still cannot do than overstate this. I have not
+written a Script, I have not touched testnet, I do not yet know how a `ckt1…`
+address is derived from a lock script, and I cannot decode those 85 witness bytes
+by hand. Those are on the plan.
 
-Install OffCKB, run a local devnet, and complete the **Transfer CKB** and
-**Store Data on Cell** tutorials — on the devnet first and then on testnet — so
-that the Week 2 report contains real transaction hashes and explorer links.
+## Next step
+
+Repeat **Transfer CKB** and complete **Store Data on Cell** on the public
+testnet, using the faucet, so the week 2 report carries public explorer links
+rather than devnet-only hashes. Then extend the inspector to decode
+`outputs_data`, and send the OffCKB findings to CKB DevRel.
 
 ## Note to the programme director
 
 I submitted my application and have not had a confirmation yet, but I understood
-from a fellow cohort member that I could begin working through the first steps of
-the guidance in the meantime. So I have started, and I am publishing this Week 1
-report on schedule. I would be grateful for confirmation of my place in the
-cohort when you have a moment, so that I know my reports are being counted from
-this week onwards.
+from a fellow cohort member that I could start on the first steps of the guidance
+in the meantime, so I have made a start and I am publishing this on the day I did
+the work, as the reporting standards ask.
+
+I would be grateful for confirmation of my place in the cohort when you have a
+moment, so I know my reports are being counted from this week. In the meantime I
+will keep publishing every Tuesday regardless.
+
+I would also welcome a pointer on the OffCKB npm name issue in
+[`notes/findings/offckb-install-observations.md`](../notes/findings/offckb-install-observations.md)
+— whether that is worth raising with CKB DevRel directly or opening as an issue
+on `ckb-devrel/offckb`.
