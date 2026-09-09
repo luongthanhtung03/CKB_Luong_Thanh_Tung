@@ -206,6 +206,57 @@ they inherit it.
 The second is probably the better place — ckb-testtool already knows it needs
 this binary, and it is the component producing the error message.
 
+### Addendum, 9 Sep 2026 — this reproduces on the untouched template
+
+When I first hit this I assumed I had misconfigured my own project. I had not.
+`offckb create` scaffolds a project whose own test suite fails on Windows, with
+no edits from me at all:
+
+```console
+$ offckb create quickstart-hello-world --language typescript
+...
+🎉 Project created successfully!
+🔧 Checking the ckb-debugger installation...
+✅ ckb-debugger shim updated: C:\Users\Admin\AppData\Roaming\npm\ckb-debugger.cmd
+ckb-debugger 1.1.1 is already installed at ...\tools\ckb-debugger.exe.
+
+$ npm run build
+🎉 All contracts built successfully!
+
+$ npm test
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 failed, 1 passed, 2 total
+```
+
+The devnet test passes. The mock test — the one that needs `ckb-debugger` — fails.
+
+There are two layers to it:
+
+1. **As shipped**, `tests/hello-world.mock.test.ts` calls
+   `verifier.setWasmDebuggerEnabled(true)`, and that path fails with a bare
+   `Transaction verification failed. See details above.` — no indication of what
+   is actually wrong.
+2. The template's own comment on that line says *"if you are using the native
+   ckb-debugger, you can delete the following line."* Deleting it surfaces the
+   real error instead — `checkSpawnResult`, which is finding #4: the native
+   debugger is installed but not reachable by a bare-name spawn.
+
+Applying the `globalSetup` PATH fix from
+[`counter-script`](../../exercises/counter-script/tests/jest.setup.cjs) to the
+generated project takes it to 2 passed / 2 total.
+
+**Why this matters more than I first thought.** Deploying works fine out of the
+box — `npm run build` and `npm run deploy` both succeed, and I have a
+`hello-world` contract live on devnet. So a newcomer following the quick start
+reaches a working deployment and *then* runs the tests the template told them to
+run, and gets a failure with a misleading message. The first thing that breaks
+is the first thing they did not write themselves, which is the worst possible
+place for it.
+
+I no longer think this is only a `ckb-testtool` issue. Whatever the fix, the
+generated project should pass its own tests on a supported platform.
+
+
 ---
 
 ## Environment
