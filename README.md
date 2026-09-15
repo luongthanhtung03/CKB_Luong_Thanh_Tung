@@ -11,23 +11,31 @@ contemporaneously, with screenshots and evidence.
 - **GitHub:** [@luongthanhtung03](https://github.com/luongthanhtung03)
 - **Track:** Builders'
 - **Start date:** 26 August 2026
-- **Report day:** every Tuesday
-- **Status:** application submitted, awaiting confirmation of my place in the cohort
+- **Report day:** every **Saturday** *(moved from Tuesday in Week 1.5, to align with my contract start)*
+- **Status:** in the cohort — contract signed, twelve-week programme running to 5 December 2026
+
+New to CKB? [**notes/orientation.md**](notes/orientation.md) explains what this is,
+from the ground up, assuming nothing.
 
 ## Weekly reports
 
 | Week | Period | Report |
 |---|---|---|
 | 1 | 26–27 Aug 2026 | [week-01-report.md](reports/week-01-report.md) |
+| 1.5 | 15–19 Sep 2026 | [week-01.5-report.md](reports/week-01.5-report.md) |
 
 ## Where things are
 
 | | |
 |---|---|
-| [PLAN.md](PLAN.md) | my eight-week study and build plan |
+| [PLAN.md](PLAN.md) | my twelve-week study and build plan |
+| [plans/](plans/) | day-by-day plans, one file per week |
 | [reports/](reports/) | weekly dev-log reports |
+| [notes/orientation.md](notes/orientation.md) | what CKB is, in plain language |
+| [notes/glossary.md](notes/glossary.md) | every term, one line each |
 | [notes/](notes/) | my own notes on CKB concepts |
 | [notes/findings/](notes/findings/) | issues I have found in CKB tooling |
+| [docs/resources.md](docs/resources.md) | the handbook's links, grouped by level |
 | [evidence/](evidence/) | command logs and raw transaction JSON |
 | [exercises/](exercises/) | code — tutorials and my own Scripts |
 | [screenshots/](screenshots/) | screenshot evidence, by week |
@@ -49,6 +57,15 @@ contemporaneously, with screenshots and evidence.
 - **CI** runs the typecheck and the contract tests on a clean machine, so the
   claims in this log are checked rather than asserted:
   [ci.yml](.github/workflows/ci.yml).
+
+## The standard I hold myself to
+
+Every week produces at least one of: a **public testnet explorer link** to a
+transaction I made, a **green CI run** re-proving a claim on a clean machine, a
+**deployed URL** a stranger can open, or a **filed issue or pull request** in
+someone else's repository.
+
+Never a claim whose only evidence is a file in this repository.
 
 ## Running the code
 
