@@ -1,91 +1,123 @@
-# Week 1.5 — Understand it, then go public
+# Week 1.5 — Get onto testnet, and go public
 
-**Period:** Tue 15 – Sat 19 Sep 2026 · **Report:** Sat 19 Sep · **Budget:** ~12h
-**Phase:** A — Understand it, and go public
-
-> Planning happened on Tue 15 and the plan landed on Wed 16, so the working table
-> below runs Wed–Sat. The reporting period stays Tue–Sat.
+**Period:** Wed 16 – Sat 19 Sep 2026 · **Report:** Sat 19 Sep · **Budget:** 32h (4-day week)
+**Phase:** A — Get onto testnet and go public
 
 | Level | What ships |
 |---|---|
-| **Floor** | `orientation.md` written, and one testnet transfer with a public explorer link |
-| **Target** | The table below, complete |
-| **Stretch** | Store Data on Cell on testnet as well, with its own explorer link |
+| **Floor** | One testnet transaction with a public explorer link, and the four findings filed |
+| **Target** | The table below — plus the counter Script deployed to testnet |
+| **Stretch** | The devnet test suite re-run against the testnet deployment, green |
 
 ## Why this week looks like this
 
-Two things are worth more than any new code right now. First, understanding what
-CKB actually is — Week 1 produced working software, but built by following steps
-rather than from a model of the system. Second, getting off devnet. Everything so
-far lives on a local chain that vanishes and that nobody else can check. Testnet is
-mostly a configuration change and it is the largest single jump in credibility
-available.
+Everything I have built so far runs on a local devnet that disappears when I run
+`offckb clean`. Week 1's own report says it plainly: *"I have not touched testnet at
+all, so none of my transaction hashes are publicly verifiable."* That is still true
+on 16 September.
+
+The entire differentiator of this repository is that every claim is checkable by
+someone else. Right now none of them are. So this week is not about learning
+something new — it is about moving what I already have somewhere it can be seen.
+
+Three things also start this week that pay off much later:
+
+- **Rust, from day one.** An hour a day starting now is 34 hours before Week 4 needs
+  it. Starting in Week 3 as originally planned would leave it cold.
+- **100,000 CKB into the Nervos DAO.** About $80. It is the gate on ever opening a
+  Community Fund DAO vote, and the deposit works on ~30-day cycles, so it has to go
+  in now rather than in November.
+- **A forum account that is not brand new in November.** The 30-like gate on a DAO
+  discussion post is a reputation gate. Reputation takes twelve weeks.
+
+## The four findings
+
+`notes/findings/offckb-install-observations.md` has been sitting in this repository
+since 27 August with four written-up findings and an unticked checkbox at the bottom:
+`[ ] Sent to CKB DevRel`. Finding #4 blocks **every contract test on Windows** for
+every developer who hits it, and I have already proved it reproduces on an untouched
+`offckb create` template.
+
+Filing them is roughly one hour of work that converts four private notes into four
+public contributions with my name on them. It is the highest-value hour in the entire
+twelve weeks and it has been deferred twice. It happens Saturday morning, first.
 
 ## Days
 
-| Day | Date | Study (≈1h) | Build (≈2h) | Done when |
-|---|---|---|---|---|
-| Wed | 16 Sep | [Nervos blockchain intro](https://docs.nervos.org/docs/ckb-fundamentals/nervos-blockchain), [How CKB works](https://docs.nervos.org/docs/getting-started/how-ckb-works), [Intro to Script](https://docs.nervos.org/docs/script/intro-to-script) | Read and correct `notes/orientation.md`; rewrite anything I cannot say in my own words | I can explain the Cell Model out loud, without notes, to someone who knows nothing |
-| Thu | 17 Sep | [CKB Academy](https://academy.ckb.dev/courses) lessons 1–2 | Finish `notes/glossary.md`; skim all five beginner tutorials to see the shape of what is coming | No term in the handbook I cannot define in one line |
-| Fri | 18 Sep 🔥 | Testnet vs devnet; the [faucet](https://faucet.nervos.org/); the explorer | Fund a testnet address, then [Transfer CKB](https://docs.nervos.org/docs/dapp/transfer-ckb) **on testnet** | A public explorer link to a transfer I signed myself |
-| Sat | 19 Sep | — | Point `inspect-tx` at testnet RPC; **file the four findings**; write the report; update README and PLAN; push | Four issue URLs live in the report's evidence table |
+| Day | Date | A — New material (3h) | B — Prove it (3h) | C — Rust (1h) | D — Ship (1h) | Done when |
+|---|---|---|---|---|---|---|
+| Wed | 16 Sep | Testnet vs devnet; the faucet; the explorer; testnet key hygiene | Generate a testnet address, fund it from the faucet, **send my first testnet transaction** | Install `rustup`, add the `riscv64imac-unknown-none-elf` target, install `cargo-generate`, compile a hello-world | Explorer link into `notes/log.md`; **buy and deposit 100,000 CKB into the Nervos DAO** | A public explorer page shows a transaction I signed |
+| Thu | 17 Sep | CCC client configuration for public testnet; how the public RPC differs from devnet | Point `inspect-tx` at testnet; decode a real testnet transaction end to end | Rustlings 1–20 (variables, functions, if, primitive types) | Create the Nervos Talk account; introduce myself; reply to two existing threads | `inspect-tx` prints a transaction I did not create, pulled from public testnet |
+| Fri | 18 Sep 🔥 | Script deployment to testnet; dep cells, `scripts.json`, migrations | Deploy the counter Script to **testnet**; run the devnet suite against the testnet deployment | Rustlings 21–40 (vecs, structs, enums) | Capture evidence files as they happen, not after | `deployment/scripts.json` has a real testnet entry and the tests pass against it |
+| Sat | 19 Sep | — | **File all four findings** as issues on `ckb-devrel/offckb`, first thing | The Rust Book ch. 4 — ownership | **Write the real Week 1.5 report**; update the skills matrix; push | Four issue URLs exist, and the report contains no placeholder |
 
-🔥 **Friday is the hard day.** Not because the transfer is difficult — it is the
-same code as Week 1 — but because everything around it is new: real network
-latency, a faucet with rate limits, a config that has to point somewhere else, and
-no reset button when something goes wrong.
+🔥 Friday is the hard day. Deploying to testnet is not the same as deploying to
+devnet — the capacity has to come from somewhere real, the migration files matter,
+and a mistake costs testnet CKB and a faucet wait rather than an `offckb clean`.
 
-## Saturday's first hour
+## ⚠ Before the first push this week
 
-The four findings in [`notes/findings/offckb-install-observations.md`](../notes/findings/offckb-install-observations.md)
-are already written up with suggested fixes. One of them blocks every contract test
-on Windows. The checkbox `[ ] Sent to CKB DevRel` is still unticked.
-
-One hour turns private notes into public contributions with my name on them. It is
-the highest-value hour in the entire twelve weeks, and it is sitting there for free.
-
-- File #1, #2 and #4 as issues on the OffCKB repository (#4 with the
-  `offckb create` reproduction from 9 Sep attached — it proves the bug is in the
-  untouched template, not in my code).
-- Post a short summary thread on [talk.nervos.org](https://talk.nervos.org) linking
-  the issues.
-- Tick the checkbox. Record the URLs.
-
-## Before the first push
-
-Testnet keys are real keys. `.gitignore` already covers `.env*`, `*.key`, `*.pem`,
-`keystore/` and `wallets/`, but verify rather than assume:
+I now hold real testnet keys. `.gitignore` already covers `.env*`, `*.key`, `*.pem`,
+`keystore/` and `wallets/`, but *covered by .gitignore* and *not in a tracked file*
+are different claims. Before the first push:
 
 ```bash
-git status --porcelain            # nothing unexpected staged
-git ls-files | grep -Ei 'env|key|pem|wallet|keystore'   # must return nothing
+git grep -nEi '(private[_ ]?key|mnemonic|seed phrase|0x[0-9a-f]{64})' -- . ':!*.md' || echo "clean"
+```
+
+A 64-hex match is not automatically a key — transaction hashes look the same. Read
+every hit rather than trusting the count.
+
+## About `reports/week-01.5-report.md`
+
+That file currently exists as an **unfilled template**, dated 19 September, with
+placeholder rows claiming a first testnet transaction (`0x____`) and four findings
+filed. Neither had happened when it was written.
+
+It gets rewritten on Saturday **from evidence captured during the week**. Nothing in
+it is reconstructed, and no placeholder survives. The check is mechanical:
+
+```bash
+grep -n '0x____\|_____' reports/week-01.5-report.md && echo "NOT READY" || echo "clean"
 ```
 
 ## Evidence to capture
 
-Screenshot the moment each command succeeds. Do not reconstruct on Saturday.
-
 | File | What it shows |
 |---|---|
-| `screenshots/week-01.5/01-faucet.png` | Testnet tokens received |
-| `screenshots/week-01.5/02-transfer-sent.png` | The transfer command succeeding |
-| `screenshots/week-01.5/03-explorer.png` | The transaction on the public explorer |
-| `screenshots/week-01.5/04-inspect-testnet.png` | `inspect-tx` reading a real testnet transaction |
-| `screenshots/week-01.5/05-findings-filed.png` | The filed issues |
-| `evidence/week-01.5-testnet-transfer.json` | Raw transaction JSON |
-| `evidence/week-01.5-inspect-tx.log` | Inspector output |
+| `screenshots/week-01.5/01-faucet-funded.png` | Testnet address funded |
+| `screenshots/week-01.5/02-testnet-transfer.png` | The transfer on the public explorer |
+| `screenshots/week-01.5/03-inspect-tx-testnet.png` | My inspector reading public testnet |
+| `screenshots/week-01.5/04-counter-deployed-testnet.png` | The deployed Script on the explorer |
+| `screenshots/week-01.5/05-findings-filed.png` | The four issues on `ckb-devrel/offckb` |
+| `screenshots/week-01.5/06-nervos-dao-deposit.png` | The 100,000 CKB deposit |
+| `evidence/week-01.5-testnet-transfer.json` | The raw transaction |
+| `evidence/week-01.5-inspect-tx.log` | Inspector output against testnet |
+| `evidence/week-01.5-counter-testnet-tests.log` | Test suite against the testnet deployment |
 
 ## Reading
 
-- [Introduction to Nervos CKB](https://docs.nervos.org/docs/ckb-fundamentals/nervos-blockchain)
-- [How CKB works](https://docs.nervos.org/docs/getting-started/how-ckb-works)
-- [Quick start](https://docs.nervos.org/docs/getting-started/quick-start) — the networks and RPC section
-- [Introduction to Script](https://docs.nervos.org/docs/script/intro-to-script)
-- [CKB Academy](https://academy.ckb.dev/courses) lessons 1 and 2
-- [Transfer CKB](https://docs.nervos.org/docs/dapp/transfer-ckb)
+| Day | Study item | Where |
+|---|---|---|
+| Wed | Testnet, faucet, explorer | [Testnet faucet](https://faucet.nervos.org/) · [Testnet explorer](https://testnet.explorer.nervos.org/) · [Devnet vs testnet](https://docs.nervos.org/docs/node/run-devnet-node) |
+| Wed | Nervos DAO deposits | [Nervos DAO explained](https://docs.nervos.org/docs/tech-explanation/nervos-dao) · [RFC 0023](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.md) |
+| Thu | CCC client configuration | [CCC docs](https://docs.nervos.org/docs/sdk-and-devtool/ccc) · `ClientPublicTestnet` in the CCC source |
+| Fri | Script deployment | [Deploy a Script](https://docs.nervos.org/docs/script/deploy-a-script) · [Type ID](https://docs.nervos.org/docs/tech-explanation/type-id) · offckb's own `deployment/README.md` |
+| Sat | — | Rust Book [ch. 4 — Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) |
+
+## Rust
+
+**Starts today, one hour a day, no exceptions.** Target for this week: toolchain
+installed with the RISC-V target, and Rustlings through structs and enums. The goal
+is not competence yet — it is that Week 4 does not open cold.
+
+| Day | Rust |
+|---|---|
+| Wed | `rustup`, `riscv64imac-unknown-none-elf`, `cargo-generate`, hello-world compiles |
+| Thu | Rustlings 1–20 |
+| Fri | Rustlings 21–40 |
+| Sat | The Rust Book ch. 4 — ownership |
 
 ## Next week
 
-Week 2 answers, by hand, the two questions left open in `orientation.md`: how a
-`ckt1…` address is derived from a lock script, and what is inside the 85 bytes of a
-`WitnessArgs`.
+Addresses, witnesses and Molecule decoded by hand, and CCC in depth.
