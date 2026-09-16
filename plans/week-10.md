@@ -1,73 +1,77 @@
-# Week 10 — Capstone v0.1
+# Week 10 — P3's vote, P2 published
 
-**Period:** Mon 16 – Sat 21 Nov 2026 · **Report:** Sat 21 Nov · **Budget:** 18h
-**Phase:** E — Capstone
+**Period:** Mon 16 – Sat 21 Nov 2026 · **Report:** Sat 21 Nov · **Budget:** 48h
+**Phase:** F — Build and fund
+
+| Project | Hours | This week's milestone |
+|---|---|---|
+| **P1** `ckb-fiber-metering` | 18h | Session work folded back in; P1 runs on published P2 |
+| **P2** `ckb-session-kit` | 18h | **v1.0 published** — docs, examples, on npm |
+| **P3** `ckb-cycle-tools` | 2h | — |
+| Campaigning | 10h | **P3 `[VOT]` 16–22 Nov** · **P2 → Spark** + P2's DAO ask |
 
 | Level | What ships |
 |---|---|
-| **Floor** | One paid API call working end to end on testnet |
-| **Target** | A working pay-per-call demo: priced endpoint, invoice, payment, service, spend cap |
-| **Stretch** | A second service paid from the same funded route — the RCS pattern |
+| **Floor** | P2 published and submitted to Spark |
+| **Target** | That, plus P3's vote closed with a result, whatever it is |
+| **Stretch** | P3's vote passes |
 
 ## Why this week looks like this
 
-This is the week the capstone becomes real. The tests were written in Week 9, so
-the job is narrow: make them pass, in order, without inventing new scope.
+**The first vote closes.** P3's `[VOT]` runs 16–22 November on Metaforo: token-weighted,
+needing a quorum of 3× the ask and ≥51% approval. Whatever the outcome, it produces
+the first real data about how many voters actually turn up for someone at my level of
+visibility — which directly informs how big P1's ask should be in December.
 
-The idea: an API that charges per request, paid over a Fiber channel. The client
-opens one channel, then makes hundreds of calls, each settled instantly off-chain
-for a fraction of a CKB. On-chain that is two transactions total. That is a thing
-the chain alone cannot do, and it is what payment channels are for.
+**P2 has to be genuinely publishable, not just extracted.** A library nobody but me
+can use is not a project, it is a subdirectory. The bar is an installable package, a
+worked example that does not reference P1, and documentation written for someone who
+has never seen P1.
 
-## Days
+The test for that: P1 switches to consuming **the published package**, not a local
+path. If that breaks, P2 was not ready.
 
-> From Week 10 the **Study** column becomes **Focus**. By this point the reading is
-> done and the work is building: no new sources, all three hours on the capstone.
-> Anything still needed is looked up as it comes up, from the Reading sections of
-> Weeks 8 and 9.
+## Two campaigns in one week, and they do not overlap
 
-| Day | Date | Focus | Build | Done when |
-|---|---|---|---|---|
-| Mon | 16 Nov | Pricing and challenge | A metered endpoint that returns a price and a payment challenge when unpaid | An unpaid request is refused with a priced challenge |
-| Tue | 17 Nov | Invoice per request | Server issues an invoice; client pays over Fiber | Invoice generated and paid for one call |
-| Wed | 18 Nov 🔥 | Proof of payment | Server verifies payment, then serves — and never the other way round | Invariants 1 and 5 pass: nothing served unpaid, no proof reusable |
-| Thu | 19 Nov | Session state | Track spend per session; enforce the funded cap | Invariant 2 passes: the cap holds under repeated calls |
-| Fri | 20 Nov | End to end | The full happy path on testnet; record a demo | A hundred calls over one channel, two on-chain transactions |
-| Sat | 21 Nov | — | Report; push; skills matrix | Report published with the demo |
+P3 is at `[VOT]` — the discussion is over and the voting is passive. P2 goes to
+**Spark**, which is a committee, not a vote. So nothing is competing for the same
+likes. That is deliberate, and it is why P2's `[DIS]` waits until Week 11.
 
-🔥 Wednesday is the hard day, and the one that decides whether this is a real system
-or a toy. Verify-then-serve must be genuinely ordered, and a payment proof must be
-single-use. Replay is where this class of system usually breaks.
+The rule holds: **never two `[DIS]` phases live at once.**
 
-## The demo to record
+P2's two applications get written in the same sitting, same as P3's:
 
-Not a screenshot — a short screen recording:
+- **Spark (phase 1)** — the library as it exists: session creation, signing, persistence.
+- **DAO (phase 2)** — adoption work: more wallet integrations, a security review,
+  maintenance.
 
-1. A funded channel, open.
-2. A hundred API calls in a loop, each paid, each served, latency visible.
-3. The spend counter climbing and stopping at the cap.
-4. The explorer showing **two** on-chain transactions for all hundred calls.
+If there is no honest phase 2 for P2, it takes the Spark grant and stops.
 
-Point 4 is the whole argument. It is the number that makes the case on its own.
+## Milestones
 
-## Scope discipline
+- ☐ P3 `[VOT]` opened · link recorded · result recorded when it closes
+- ☐ P2 v1.0 published and installable
+- ☐ P1 consumes P2 from the registry, not a local path
+- ☐ A worked example that never mentions P1
+- ☐ P2 Spark application **submitted** · link recorded
+- ☐ P2 phase-1/phase-2 split written into `funding-track.md`
 
-If Wednesday slips, Thursday and Friday absorb it and the Stretch is dropped. What
-does not happen is broadening. New ideas go into `notes/capstone-ideas.md` and stay
-there until Week 12 has shipped.
+## Day shape
+
+| Mon | Tue | Wed | Thu | Fri | Sat |
+|---|---|---|---|---|---|
+| P2 | P2 | P2 | P1 | P1 + applications | Applications + report |
 
 ## Evidence to capture
 
 | File | What it shows |
 |---|---|
-| `screenshots/week-10/01-unpaid-refused.png` | Unpaid request refused with a price |
-| `screenshots/week-10/02-invoice-paid.png` | Invoice paid, request served |
-| `screenshots/week-10/03-replay-refused.png` | A reused payment proof rejected |
-| `screenshots/week-10/04-cap-enforced.png` | Spend cap holding |
-| `screenshots/week-10/05-two-txs.png` | Explorer: 100 calls, 2 transactions |
-| `evidence/week-10-demo.md` | Demo recording link and transcript |
-| `evidence/week-10-invariant-tests.log` | Invariant tests passing |
+| `screenshots/week-10/01-vot-opened.png` | P3's vote live |
+| `screenshots/week-10/02-vot-result.png` | The result, whatever it is |
+| `screenshots/week-10/03-p2-published.png` | P2 on the registry |
+| `screenshots/week-10/04-p1-uses-published-p2.png` | P1 building against the published package |
+| `evidence/week-10-p2-example-run.log` | The standalone example running |
 
 ## Next week
 
-Move the client into the browser: self-custody sessions, no account required.
+P2's `[DIS]` goes live. P1 hardens: recovery paths and device loss.

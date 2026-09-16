@@ -1,74 +1,84 @@
-# Week 11 — Capstone v0.2: browser self-custody sessions
+# Week 11 — P1 v0.2, and P2's vote
 
-**Period:** Mon 23 – Sat 28 Nov 2026 · **Report:** Sat 28 Nov · **Budget:** 18h
-**Phase:** E — Capstone
+**Period:** Mon 23 – Sat 28 Nov 2026 · **Report:** Sat 28 Nov · **Budget:** 48h
+**Phase:** F — Build and fund
+
+| Project | Hours | This week's milestone |
+|---|---|---|
+| **P1** `ckb-fiber-metering` | 26h | v0.2 — recovery paths, device loss, CI green |
+| **P2** `ckb-session-kit` | 10h | Hardened against what real P1 usage exposed |
+| **P3** `ckb-cycle-tools` | 2h | — |
+| Campaigning | 10h | **P2 `[DIS]` 23–29 Nov** · **forum post #3** |
 
 | Level | What ships |
 |---|---|
-| **Floor** | The Week 10 flow driven from a browser page rather than a script |
-| **Target** | A self-custody session: unlock, spend, resume — no account, no server-held key. CI green |
-| **Stretch** | **Post #3** on talk.nervos.org — the Fiber integration writeup |
+| **Floor** | P2's `[DIS]` posted, and P1's CI green on a clean machine |
+| **Target** | That, plus a user who loses their device can recover their channel balance |
+| **Stretch** | P2's `[DIS]` clears 30 likes early |
 
 ## Why this week looks like this
 
-Week 10 proved the mechanism with a script. This week makes it something a person
-could actually use — and it is the half the opportunity map calls *Browser
-Self-Custody Sessions*, listing it among the things to validate next, with the
-recovery question still open.
+**This is the last week P1 gets real build hours.** Week 12 is half writing. Anything
+architectural that is not done by Saturday 28 November does not go into P1 — it goes
+into the "what phase 2 would add" section of the DAO proposal, which is a better place
+for it anyway.
 
-The honest version of this is worth more than a polished one that hides the hard
-part. The recovery story gets documented as it really is, including what does not
-work yet.
+**Device loss is the question that decides whether P1 is fundable.** Self-custody in
+a browser means the keys live somewhere that can be cleared, and "your money is gone
+if you clear your cookies" is not a product. Whatever the answer is — a recovery
+phrase, a co-signing fallback, an on-chain timeout that returns funds — it has to
+exist and it has to be demonstrated.
 
-## Days
+P2 gets ten hours of hardening driven by what using it inside P1 actually exposed.
+Real usage is the only honest source of a library's bug list.
 
-> From Week 10 the **Study** column becomes **Focus**. By this point the reading is
-> done and the work is building: no new sources, all three hours on the capstone.
-> Anything still needed is looked up as it comes up, from the Reading sections of
-> Weeks 8 and 9.
+## Forum post #3
 
-| Day | Date | Focus | Build | Done when |
-|---|---|---|---|---|
-| Mon | 23 Nov | Key derivation in the browser | Derive a session key from a passkey or passphrase; never send it anywhere | The key never leaves the device, and I can show that |
-| Tue | 24 Nov | Session opening | Open and fund a session from the page | A session opened in the browser, funding visible on the explorer |
-| Wed | 25 Nov | Reusable state | Persist session state; resume after a page reload | A reload resumes mid-session without re-funding |
-| Thu | 26 Nov 🔥 | Recovery | What happens on device loss, cleared storage, upgrade mid-session | Each case either recovers, or fails safely and says so plainly |
-| Fri | 27 Nov | Hardening | Full test suite; CI green on a clean machine; failure paths from Week 9 re-checked in the browser | CI green, every invariant covered |
-| Sat | 28 Nov | — | Report; **Post #3**; push | Report published |
+The third and last of the writing thread. The subject writes itself by now: a Fiber
+integration write-up — what it took to drive Fiber from application code, what the
+documentation does not say, and what I would tell someone starting on Monday.
 
-🔥 Thursday is the hard day and there is no clean answer to it — the opportunity map
-says so itself. Document what the system does in each case, honestly. "Funds are
-recoverable by closing the channel from the counterparty side, but the session
-cannot be resumed" is a real engineering answer. Pretending the case does not exist
-is not.
+Same bar as the first two: **write what did not exist when I needed it.** Week 6 was
+spent reading Fiber's source because the documentation stopped. That gap is the post.
 
-## What "self-custody" has to mean here
+It also lands mid-campaign, three days into P2's `[DIS]`, which does no harm at all.
 
-- The session key is derived on the device and never transmitted.
-- The server cannot spend the session's funds, only claim what was paid to it.
-- Closing the channel does not require the server to cooperate.
+## Milestones
 
-If any of these is not true in the implementation, the README says so. An accurate
-limitation reads better than an overstated claim, and it is the kind of thing a
-reviewer checks.
+- ☐ P2 `[DIS]` posted · link and daily like count recorded
+- ☐ Every reply answered within a day
+- ☐ Device loss recovery works, and is demonstrated on video or in a test
+- ☐ A channel left open by a vanished client resolves without manual intervention
+- ☐ P1's CI green on a clean machine, including the failure paths
+- ☐ Forum post #3 published · link recorded
+- ☐ P2 hardened against the issues real usage exposed
 
-## Post #3
+## Day shape
 
-The Fiber integration writeup: what it takes to drive Fiber from TypeScript, what
-the documentation does not yet cover, and what I got wrong on the way. Link the
-findings filed along the way.
+| Mon | Tue | Wed | Thu | Fri | Sat |
+|---|---|---|---|---|---|
+| Campaign + P1 | P1 | P1 | P1 | P2 | Post #3 + report |
+
+Thirty minutes every morning on the `[DIS]` thread before anything else.
+
+## ⚠ The Week 12 scope decision
+
+**On Saturday 28 November, decide what P1 ships with — and write it down.** Week 12
+has 18 build hours for P1 and 22 hours of writing. Anything still open on 30 November
+is already cut; the only question is whether that is acknowledged on the 28th or
+discovered on the 4th.
 
 ## Evidence to capture
 
 | File | What it shows |
 |---|---|
-| `screenshots/week-11/01-session-open.png` | Session opened from the browser |
-| `screenshots/week-11/02-paying.png` | Calls paid from the page |
-| `screenshots/week-11/03-resume.png` | Session resumed after reload |
-| `screenshots/week-11/04-recovery.png` | A recovery case handled |
-| `screenshots/week-11/05-ci-green.png` | CI green on a clean machine |
-| `evidence/week-11-session-lifecycle.json` | Full session, open to close |
+| `screenshots/week-11/01-p2-dis-posted.png` | P2's discussion post live |
+| `screenshots/week-11/02-device-loss-recovery.png` | Recovery after losing the browser |
+| `screenshots/week-11/03-abandoned-channel-resolved.png` | A vanished client, resolved |
+| `screenshots/week-11/04-p1-ci-green.png` | Full CI on a clean machine |
+| `screenshots/week-11/05-post-3.png` | Forum post #3 |
+| `evidence/week-11-recovery-test.log` | The recovery path test suite |
 
 ## Next week
 
-Ship it. Public deploy, a README a stranger can follow, and the retrospective.
+P1 ships. P2's vote opens. P1 goes to Spark, and the twelve-week retrospective.

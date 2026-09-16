@@ -1,87 +1,98 @@
-# Week 12 — Ship
+# Week 12 — Ship P1, and the interview package
 
-**Period:** Mon 30 Nov – Sat 5 Dec 2026 · **Report:** Sat 5 Dec · **Budget:** 18h
-**Phase:** E — Capstone
+**Period:** Mon 30 Nov – Sat 5 Dec 2026 · **Report:** Sat 5 Dec · **Budget:** 48h
+**Phase:** F — Build and fund · final week of the programme
+
+| Project | Hours | This week's milestone |
+|---|---|---|
+| **P1** `ckb-fiber-metering` | 18h | **Shipped** — public deploy, stranger-runnable README |
+| **P2** `ckb-session-kit` | 6h | — |
+| **P3** `ckb-cycle-tools` | 2h | — |
+| Campaigning | **22h** | **P2 `[VOT]`** · **P1 → Spark** · P1's DAO ask · retrospective |
 
 | Level | What ships |
 |---|---|
-| **Floor** | The capstone deployed publicly, with a README a stranger can follow |
-| **Target** | That, plus two cold-start tests survived, a defect report filed, and the twelve-week retrospective |
-| **Stretch** | A **Spark or CKB Community Fund DAO application** drafted and submitted |
+| **Floor** | P1 deployed publicly, and the twelve-week retrospective published |
+| **Target** | That, plus P1 submitted to Spark and its DAO proposal written |
+| **Stretch** | P1's `[DIS]` posted on Sunday 6 December rather than Monday |
 
-## Why this week looks like this
+## This is not a build week
 
-No new features. This week converts twelve weeks of work into something other
-people can evaluate — which is the only form the work counts in, for the programme
-and for the interview.
+**Nearly half of this week is writing.** P2's vote is live, P1's Spark application and
+DAO proposal both get written, and the retrospective — which doubles as the interview
+package — has to be finished.
 
-The handbook asks for one thing not yet done: testing another builder's project and
-sending them a real defect report. Thursday does that.
+The scope decision was made on 28 November. Anything not on that list is already cut.
+The temptation this week is to add one more feature to P1 instead of writing the
+documents that decide whether any of it gets funded. The code is not what is short;
+the writing is.
 
-## Days
+## The retrospective is the interview package
 
-> From Week 10 the **Study** column becomes **Focus**. By this point the reading is
-> done and the work is building: no new sources, all three hours on the capstone.
-> Anything still needed is looked up as it comes up, from the Reading sections of
-> Weeks 8 and 9.
+It is not a summary of the reports. It is the document I would hand to someone
+deciding whether to convert my role, and it answers:
 
-| Day | Date | Focus | Build | Done when |
-|---|---|---|---|---|
-| Mon | 30 Nov | Security pass | Key handling reviewed; no secrets in history; threat notes written | `git log -p` shows no key ever committed; limitations written down |
-| Tue | 1 Dec | Documentation | README a stranger can follow; an architecture diagram; deploy publicly | The live URL works from a device I have never used |
-| Wed | 2 Dec 🔥 | Cold start | Two people run it from the README alone; fix whatever breaks | Both got it working, and I changed the README because of what they hit |
-| Thu | 3 Dec | Community | Test another builder's project; send a real defect report | A filed issue with a reproduction, in someone else's repository |
-| Fri | 4 Dec | Retrospective | The twelve-week writeup; **draft the grant application** | Retrospective written; application drafted |
-| Sat | 5 Dec | — | Final report; **Post #3** if not yet published; push | Twelve reports published |
+- What existed on 26 August, and what exists on 5 December.
+- Three things I can do now that I could not do then, each with a link that proves it.
+- The two checkpoints — did Rust land by 10 October, did Fiber route by 24 October —
+  and what happened when one did not, if one did not.
+- What each of the three projects is, who it is for, and what it cost.
+- The funding results so far: P3's vote, P2's vote in progress, both Spark decisions.
+- What I would do differently, stated once and without self-flagellation.
 
-🔥 Wednesday is the hard day, and the most humbling. Watching someone fail to run
-your own project from your own instructions finds more real defects in an hour than
-a week of self-testing. Do not help them. Write down where they get stuck.
+**The evidence standard applies to this document more than any other.** Every claim
+in it is one someone will click.
 
-## The retrospective — what the interview actually reads
+## P1's campaign runs after the programme closes
 
-`reports/retrospective.md`, written for someone deciding whether to convert my role:
+`[DIS]` 7–13 December, `[VOT]` 14–20 December. A discussion and a vote take fourteen
+days minimum, so nothing posted this week could resolve before 5 December — P1's
+campaign was always going to run late.
 
-| Section | Contents |
-|---|---|
-| What I built | The capstone, in three sentences, with the live link |
-| The numbers | 100 calls / 2 on-chain transactions; cycle counts, TypeScript vs Rust; test counts |
-| Public evidence | Every explorer link, deployment, CI run, in one table |
-| Contributions | The five filed, with their URLs and what happened to each |
-| Writing | The three posts |
-| What I can do now that I could not in August | Specific and checkable, not adjectives |
-| What I would do next | The honest roadmap, including what is unfinished |
+That is the better trade. The proposal gets written against a project that is
+finished, deployed and documented, with a published retrospective behind it and two
+resolved votes on the record. Roughly 10 hours, outside the 560.
 
-Twelve weeks of skills-matrix rows sit behind this. The progression is the argument.
+**Sizing P1's ask:** by now P3's vote has closed and P2's is closing, so I know how
+much turnout I actually command. Quorum is 3× the ask. **Size it against observed
+turnout, not against what the project is worth.** A vote that fails to reach quorum
+funds nothing.
 
-## The grant application
+## Milestones
 
-The handbook is explicit that a good idea can open the door to
-[Spark](https://talk.nervos.org/t/ckb-eco-fund-spark-program-mini-grant-initiative/8752)
-or the [Community Fund DAO](https://talk.nervos.org/t/ckb-community-fund-dao-willing-to-back-every-ckb-buidler-up).
-The capstone targets something the 2026 opportunity map names as a priority, which
-is a reasonable case to make.
+- ☐ P2 `[VOT]` opened · link recorded · result recorded when it closes
+- ☐ P1 deployed at a public URL a stranger can open
+- ☐ P1's README followed successfully by someone who has never seen it
+- ☐ P1 Spark application **submitted** · link recorded
+- ☐ P1 phase-1/phase-2 split written into `funding-track.md`
+- ☐ P1's `[DIS]` drafted, ready to post 7 December
+- ☐ Twelve-week retrospective published
+- ☐ Final skills matrix, all twelve columns filled
 
-Walking into a role-conversion conversation with a funding application in flight is
-a different conversation from walking in with a finished course.
+## Day shape
 
-## Final checks
-
-```bash
-git ls-files | grep -Ei 'env|key|pem|wallet|keystore'   # must return nothing
-```
-
-- Twelve reports, one per week, each published on its Saturday
-- Every claim in every report backed by something outside this repository
-- The live URL works from a device that has never seen the project
-- `notes/orientation.md` open questions: struck through, with dates
+| Mon | Tue | Wed | Thu | Fri | Sat |
+|---|---|---|---|---|---|
+| P1 ship | P1 ship | P1 deploy | Applications | Retrospective | Retrospective + report |
 
 ## Evidence to capture
 
 | File | What it shows |
 |---|---|
-| `screenshots/week-12/01-deployed.png` | The live capstone |
-| `screenshots/week-12/02-cold-start.png` | Someone else running it |
-| `screenshots/week-12/03-defect-report.png` | The filed defect report |
-| `screenshots/week-12/04-grant-draft.png` | The grant application |
-| `evidence/week-12-final-summary.md` | Every link, in one table |
+| `screenshots/week-12/01-p1-deployed.png` | P1 live at a public URL |
+| `screenshots/week-12/02-p1-full-flow.png` | The complete pay-per-call flow, in production |
+| `screenshots/week-12/03-p2-vot.png` | P2's vote live |
+| `screenshots/week-12/04-p1-spark-submitted.png` | P1's Spark application |
+| `screenshots/week-12/05-skills-matrix-final.png` | Twelve columns filled |
+| `evidence/week-12-p1-production-run.log` | A real session against the deployed service |
+
+## After 5 December
+
+| Date | What |
+|---|---|
+| Sun 6 – Sat 13 Dec | P1 `[DIS]` — seven days, 30 likes, every reply answered |
+| Sun 14 – Sat 20 Dec | P1 `[VOT]` — seven days |
+| ~20 Dec | Result |
+
+Three projects, six campaigns, and a repository where every claim has a link behind
+it.
