@@ -1,5 +1,21 @@
 # CKBuilder Weekly Report — Week 1.5
 
+> ## ⚠ DRAFT — NOT YET TRUE
+>
+> This file is a **template filled with placeholders**, not a report. It was written
+> ahead of the work. As of 16 September none of the following has happened: the
+> testnet transaction, the inspector reading testnet, or the four findings being
+> filed. Every `____` below is a claim with nothing behind it.
+>
+> It gets **rewritten on Saturday 19 September from evidence captured during the
+> week**, and nothing in it is reconstructed afterwards. Do not publish, link or
+> quote this file until that has happened.
+>
+> Check before publishing: `grep -n '0x____\|_____' reports/week-01.5-report.md`
+> — it must return nothing.
+
+---
+
 **Participant:** Luong Thanh Tung ([@luongthanhtung03](https://github.com/luongthanhtung03))
 **Track:** Builders'
 **Reporting period:** 2026-09-15 to 2026-09-19
