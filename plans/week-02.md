@@ -31,7 +31,7 @@ costs six weeks later.
 | Wed | 23 Sep 🔥 | Full vs short payload format; `hash_type` encoding | Lock script → `ckt1…` and back, by hand | Rustlings: generics, traits | Commit; evidence captured | My output matches CCC's for three addresses, byte for byte |
 | Thu | 24 Sep 🔥 | [Molecule](https://docs.nervos.org/docs/serialization/serialization-molecule-in-ckb); the `WitnessArgs` schema; secp256k1 signing and what exactly gets signed | Decode a Molecule `table` and `vector` header on paper, then in code; `notes/witness-args.md` with all 85 bytes labelled | Rustlings: lifetimes | Commit; evidence captured | Every byte accounted for, no `?` left; and I can state what the signing message is made of |
 | Fri | 25 Sep | CCC internals: cell collection, capacity arithmetic, fee rate, change outputs, the error paths | Build a transaction with CCC that deliberately runs out of capacity, and one that pays a deliberately wrong fee. Read the source for the path my code takes | The Rust Book ch. 8 — collections | Open a docs issue on anything genuinely unclear | I can explain where the change output comes from, and what CCC does when capacity is short |
-| Sat | 26 Sep | — | **Forum post #1** — the Windows contract-testing setup that blocked me in Week 1; report; push | The Rust Book ch. 9 — errors | Report, matrix, funding tally, push | Post is live with a URL, and the report links it |
+| Sat | 26 Sep | — | **Forum post #1** — the Windows contract-testing setup that blocked me in Week 1; report; push | The Rust Book ch. 9 — errors | Report, matrix, push | Post is live with a URL, and the report links it |
 
 🔥 Two hard days. Wednesday and Thursday both require deriving the answer from a
 specification rather than following instructions. Expect them to overrun — that is
@@ -59,8 +59,8 @@ Nobody has written this up. Windows developers hitting it currently have to deri
 the workaround themselves. That is what makes it worth posting rather than a
 summary of documentation that already exists.
 
-This is also the post that earns the first real likes, which is the beginning of the
-reputation the November campaigns depend on. See [`funding-track.md`](funding-track.md).
+It is also the first of the three posts, and the one most likely to be useful to
+somebody immediately.
 
 ## Evidence to capture
 

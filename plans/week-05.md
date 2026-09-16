@@ -23,7 +23,7 @@ schedule that has no room for padding.
 
 Type ID matters more than it looks. Without it, a deployed script can never be
 upgraded, and every project in Phase 2 deploys scripts. Getting it wrong in October
-is cheap; getting it wrong in P1 in December is not.
+is cheap; getting it wrong in the capstone in December is not.
 
 ## Days
 
@@ -34,7 +34,7 @@ is cheap; getting it wrong in P1 in December is not.
 | Wed | 14 Oct 🔥 | Script security: validation completeness; what a malicious transaction looks like | Write the attacks: unlock without a signature, replay another cell's signature, unbalanced outputs | Rust: exhaustive matching, making invalid states unrepresentable | Commit; evidence captured | Every attack is rejected, each with its own specific error code |
 | Thu | 15 Oct 🔥 | [Type ID](https://docs.nervos.org/docs/tech-explanation/type-id); upgradable deployment; dep cell management | Deploy the lock to **testnet** with Type ID; then **upgrade it in place** and prove the old cell still works | Rust: finishing the lock; cycle-check it | Explorer links for both deployments | I have two explorer links — the deploy and the upgrade — and the same script hash across both |
 | Fri | 16 Oct | CCC in the browser; wallet connectors; what changes when the signer is a wallet | Scaffold the dApp; connect a wallet; read and display a balance | Rust: 1h only — back to drip | Commit | A wallet connects and the page shows a real testnet balance |
-| Sat | 17 Oct | — | Send CKB and move my Week 3 token from the UI; **deploy to a public URL**; report; push | — | Report, matrix, funding tally, push | A stranger can open the URL, connect a wallet and move a token |
+| Sat | 17 Oct | — | Send CKB and move my Week 3 token from the UI; **deploy to a public URL**; report; push | — | Report, matrix, push | A stranger can open the URL, connect a wallet and move a token |
 
 🔥 Wednesday and Thursday. Wednesday is adversarial thinking, which is a different
 skill from writing the happy path and is the one that matters for a lock. Thursday is
@@ -92,4 +92,4 @@ debugger, cycles, deployment, upgrade.
 
 ## Next week
 
-Fiber — and then all three project repositories get scaffolded.
+Fiber — the last week of the learning phase.

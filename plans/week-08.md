@@ -1,64 +1,50 @@
-# Week 8 — P3 ships and goes to Spark
+# Week 8 — The failure paths
 
 **Period:** Mon 2 – Sat 7 Nov 2026 · **Report:** Sat 7 Nov · **Budget:** 48h
-**Phase:** F — Build and fund
-
-| Project | Hours | This week's milestone |
-|---|---|---|
-| **P1** `ckb-fiber-metering` | 26h | Metering and settlement survive the failure paths |
-| **P3** `ckb-cycle-tools` | 10h | **Finished** — v1.0 tagged |
-| Campaigning | **12h** | **P3 → Spark**, and P3's DAO ask written in the same sitting |
+**Phase:** F — Capstone
 
 | Level | What ships |
 |---|---|
-| **Floor** | P3 submitted to Spark |
-| **Target** | That, plus P1 handling a payment that fails mid-call without losing money or double-charging |
-| **Stretch** | P3's `[DIS]` post drafted and reviewed before Monday |
+| **Floor** | A payment that fails mid-call loses no money and double-charges nobody |
+| **Target** | All three failure paths below handled, with tests |
+| **Stretch** | A fuzz run that interrupts payments at random points and always settles correctly |
 
 ## Why this week looks like this
 
-**The first funding application goes out.** P3 is the cheapest of the three projects
-and the first finished, which is exactly why it goes first: it puts a grant on the
-record in early November, and whatever the committee says comes back in about a week
-— in time to inform how P2's and P1's applications are written.
+A metering system that works when everything succeeds is a demo. What makes it a
+project is what happens when things go wrong, and in a payment system "goes wrong"
+means someone's money is in the wrong place.
 
-P1's work this week is the unglamorous half. A metering system that works when
-everything succeeds is a demo. What makes it fundable is what happens when a payment
-fails halfway through a call, when the channel runs out of capacity mid-session, and
-when the client disappears without settling.
+Three failures, in order of how likely they are:
 
-## The two applications, written together
+1. **A payment fails halfway through a call.** Was the call served? Was it charged?
+   Both answers have to be the same answer.
+2. **The channel runs out of capacity mid-session.** The service has to stop cleanly
+   rather than serve calls it cannot charge for.
+3. **The client disappears without settling.** The funds cannot simply be stuck.
 
-This is the week the rule in [`funding-track.md`](funding-track.md) gets its first
-test. Both of P3's applications are written **in the same sitting**:
-
-- **Spark (phase 1)** — the prototype. The profiler and the comparison harness that
-  exist now.
-- **Community Fund DAO (phase 2)** — what comes after. Keeping it working against
-  upstream changes, more platforms, CI integration.
-
-They must describe different work, visibly, to someone reading quickly. If I cannot
-tell them apart in ten seconds, neither can a voter — and three funding asks in six
-weeks only reads as a builder shipping if each one buys something the last did not.
-
-**If I cannot describe a genuine phase 2 for P3, it takes the Spark grant and stops
-there.** That is an acceptable outcome, decided this week rather than fudged in
-November.
-
-## Milestones
-
-- ☐ A payment failing mid-call leaves no money lost and no double charge
-- ☐ Channel capacity exhaustion is handled, not crashed on
-- ☐ A client that disappears without settling is recoverable
-- ☐ P3 v1.0 tagged, CI green, README stranger-runnable, LICENSE present
-- ☐ P3 Spark application **submitted** · link recorded in `funding-track.md`
-- ☐ P3 phase-1/phase-2 split written into `funding-track.md`
+None of these have a tutorial. All three are the difference between something I would
+demonstrate and something I would let a stranger use.
 
 ## Day shape
 
 | Mon | Tue | Wed | Thu | Fri | Sat |
 |---|---|---|---|---|---|
-| P1 | P1 | P1 | P3 | Applications | Applications + report |
+| Mid-call failure | Mid-call failure | Capacity exhaustion | Abandoned client | Tests | Report |
+
+## Milestones
+
+- ☐ A payment failing mid-call leaves no money lost and no double charge
+- ☐ Channel capacity exhaustion stops the service cleanly, with a useful error
+- ☐ A client that vanishes without settling is recoverable
+- ☐ Each failure path has a test that provokes it deliberately
+- ☐ The test suite runs green on a clean machine in CI
+
+## The bar
+
+Each failure path needs a test that **causes** the failure rather than mocking it.
+A test that asserts the error handler works when called directly proves the handler
+compiles, not that the system recovers.
 
 ## Evidence to capture
 
@@ -66,10 +52,10 @@ November.
 |---|---|
 | `screenshots/week-08/01-payment-failure-handled.png` | A mid-call failure, handled |
 | `screenshots/week-08/02-capacity-exhausted.png` | Running out of channel capacity, gracefully |
-| `screenshots/week-08/03-p3-v1-tagged.png` | P3 v1.0 released |
-| `screenshots/week-08/04-spark-submitted.png` | The Spark application, submitted |
-| `evidence/week-08-failure-path-tests.log` | The failure-path test suite |
+| `screenshots/week-08/03-abandoned-client.png` | A vanished client, resolved |
+| `screenshots/week-08/04-ci-green.png` | The failure-path suite green in CI |
+| `evidence/week-08-failure-path-tests.log` | Full test output |
 
 ## Next week
 
-P3's `[DIS]` goes live — seven days, 30 likes needed. P2 gets extracted from P1.
+Browser self-custody sessions — paying without a wallet dialog on every call.

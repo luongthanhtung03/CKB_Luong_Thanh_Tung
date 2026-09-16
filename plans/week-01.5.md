@@ -20,15 +20,12 @@ The entire differentiator of this repository is that every claim is checkable by
 someone else. Right now none of them are. So this week is not about learning
 something new — it is about moving what I already have somewhere it can be seen.
 
-Three things also start this week that pay off much later:
+Two things also start this week that pay off much later:
 
 - **Rust, from day one.** An hour a day starting now is 34 hours before Week 4 needs
   it. Starting in Week 3 as originally planned would leave it cold.
-- **100,000 CKB into the Nervos DAO.** About $80. It is the gate on ever opening a
-  Community Fund DAO vote, and the deposit works on ~30-day cycles, so it has to go
-  in now rather than in November.
-- **A forum account that is not brand new in November.** The 30-like gate on a DAO
-  discussion post is a reputation gate. Reputation takes twelve weeks.
+- **A forum account that is not brand new in December.** Being useful to other people
+  in the ecosystem is not something that can be started in the last fortnight.
 
 ## The four findings
 
@@ -46,7 +43,7 @@ twelve weeks and it has been deferred twice. It happens Saturday morning, first.
 
 | Day | Date | A — New material (3h) | B — Prove it (3h) | C — Rust (1h) | D — Ship (1h) | Done when |
 |---|---|---|---|---|---|---|
-| Wed | 16 Sep | Testnet vs devnet; the faucet; the explorer; testnet key hygiene | Generate a testnet address, fund it from the faucet, **send my first testnet transaction** | Install `rustup`, add the `riscv64imac-unknown-none-elf` target, install `cargo-generate`, compile a hello-world | Explorer link into `notes/log.md`; **buy and deposit 100,000 CKB into the Nervos DAO** | A public explorer page shows a transaction I signed |
+| Wed | 16 Sep | Testnet vs devnet; the faucet; the explorer; testnet key hygiene | Generate a testnet address, fund it from the faucet, **send my first testnet transaction** | Install `rustup`, add the `riscv64imac-unknown-none-elf` target, install `cargo-generate`, compile a hello-world | Explorer link into `notes/log.md` | A public explorer page shows a transaction I signed |
 | Thu | 17 Sep | CCC client configuration for public testnet; how the public RPC differs from devnet | Point `inspect-tx` at testnet; decode a real testnet transaction end to end | Rustlings 1–20 (variables, functions, if, primitive types) | Create the Nervos Talk account; introduce myself; reply to two existing threads | `inspect-tx` prints a transaction I did not create, pulled from public testnet |
 | Fri | 18 Sep 🔥 | Script deployment to testnet; dep cells, `scripts.json`, migrations | Deploy the counter Script to **testnet**; run the devnet suite against the testnet deployment | Rustlings 21–40 (vecs, structs, enums) | Capture evidence files as they happen, not after | `deployment/scripts.json` has a real testnet entry and the tests pass against it |
 | Sat | 19 Sep | — | **File all four findings** as issues on `ckb-devrel/offckb`, first thing | The Rust Book ch. 4 — ownership | **Write the real Week 1.5 report**; update the skills matrix; push | Four issue URLs exist, and the report contains no placeholder |
@@ -90,7 +87,6 @@ grep -n '0x____\|_____' reports/week-01.5-report.md && echo "NOT READY" || echo 
 | `screenshots/week-01.5/03-inspect-tx-testnet.png` | My inspector reading public testnet |
 | `screenshots/week-01.5/04-counter-deployed-testnet.png` | The deployed Script on the explorer |
 | `screenshots/week-01.5/05-findings-filed.png` | The four issues on `ckb-devrel/offckb` |
-| `screenshots/week-01.5/06-nervos-dao-deposit.png` | The 100,000 CKB deposit |
 | `evidence/week-01.5-testnet-transfer.json` | The raw transaction |
 | `evidence/week-01.5-inspect-tx.log` | Inspector output against testnet |
 | `evidence/week-01.5-counter-testnet-tests.log` | Test suite against the testnet deployment |
@@ -100,7 +96,6 @@ grep -n '0x____\|_____' reports/week-01.5-report.md && echo "NOT READY" || echo 
 | Day | Study item | Where |
 |---|---|---|
 | Wed | Testnet, faucet, explorer | [Testnet faucet](https://faucet.nervos.org/) · [Testnet explorer](https://testnet.explorer.nervos.org/) · [Devnet vs testnet](https://docs.nervos.org/docs/node/run-devnet-node) |
-| Wed | Nervos DAO deposits | [Nervos DAO explained](https://docs.nervos.org/docs/tech-explanation/nervos-dao) · [RFC 0023](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.md) |
 | Thu | CCC client configuration | [CCC docs](https://docs.nervos.org/docs/sdk-and-devtool/ccc) · `ClientPublicTestnet` in the CCC source |
 | Fri | Script deployment | [Deploy a Script](https://docs.nervos.org/docs/script/deploy-a-script) · [Type ID](https://docs.nervos.org/docs/tech-explanation/type-id) · offckb's own `deployment/README.md` |
 | Sat | — | Rust Book [ch. 4 — Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) |

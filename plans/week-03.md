@@ -32,7 +32,7 @@ invalid one would look like, before writing any code.
 | Wed | 30 Sep 🔥 | Spore and DOB: cluster, spore, the decoder model; DOB/0 and DOB/1 | Mint a DOB on **testnet**, in a cluster I created | Rust: `Option`/`Result` combinators in anger | Explorer link; screenshot | The DOB renders from its own on-chain data, and I can say which bytes produced which trait |
 | Thu | 1 Oct 🔥 | DOB decoding in detail; where the decoder runs and what it is allowed to assume | Write my own decoder for a trait the cookbook does not cover | Rust: iterators and closures | Commit; evidence captured | My decoder produces the right output for a DOB I minted, and I can explain a case where it would fail |
 | Fri | 2 Oct | A first look at SSRI — what problem it solves and why it exists | Read the xUDT source for the path a transfer takes; file a docs issue on anything genuinely unclear | Rust: modules, crates, `Cargo.toml` layout | Issue filed in someone else's repository | I can explain, unprompted, why SSRI exists |
-| Sat | 3 Oct | — | Fold the token and the DOB into one page in the existing inspector; report; push | The Rust Book ch. 13 | Report, matrix, funding tally, push | Report published with four explorer links |
+| Sat | 3 Oct | — | Fold the token and the DOB into one page in the existing inspector; report; push | The Rust Book ch. 13 | Report, matrix, push | Report published with four explorer links |
 
 🔥 Two hard days. Wednesday's is understanding the Spore data model rather than
 copying the mint command. Thursday's has no tutorial at all by definition — the trait

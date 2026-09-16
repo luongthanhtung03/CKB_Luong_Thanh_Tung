@@ -24,7 +24,7 @@ something fails, it is Rust or the toolchain — never the logic, because the lo
 23 passing assertions in TypeScript to compare against.
 
 That same property is what makes the cycle comparison possible, and the cycle
-comparison is the seed of **P3**.
+comparison is worth publishing on its own.
 
 ## Days
 
@@ -35,7 +35,7 @@ comparison is the seed of **P3**.
 | Wed | 7 Oct 🔥 | Script error codes; how a failure is returned and what the runner sees | Port the *validation* path — the create-at-zero and increment-by-one rules | Rust: pattern matching on `Result`, custom error enums | Commit; evidence captured | All 23 assertions from the TypeScript suite pass against the Rust script |
 | Thu | 8 Oct | `ckb-testtool` in Rust; how it differs from the TypeScript harness | Get the full test suite running in Rust, including the 18 failure assertions | Rust: writing tests, `#[test]`, assertions | Commit | The Rust suite runs green, and the failure cases fail with the *specific* expected error code |
 | Fri | 9 Oct 🔥 | `ckb-debugger`: cycles, what consumes them, how to read a profile | **Measure**: same assertions, ckb-js-vm vs Rust, cycle counts for both | Rust: reading disassembly output without panicking about it | Capture the raw numbers into `evidence/` | I have a table of cycle counts for both implementations, produced by a command I can re-run |
-| Sat | 10 Oct | — | Deploy the Rust script to **testnet**; **forum post #2** | — | Report, matrix, funding tally, push | The Rust script is live on testnet and the comparison is published |
+| Sat | 10 Oct | — | Deploy the Rust script to **testnet**; **forum post #2** | — | Report, matrix, push | The Rust script is live on testnet and the comparison is published |
 
 🔥 Wednesday and Friday. Wednesday is where Rust's ownership rules meet byte
 manipulation and the borrow checker stops being theoretical. Friday is measurement
@@ -51,11 +51,10 @@ depends on this week working.
 **If it has not happened by Saturday, the fallback fires — that day, not the
 following week:**
 
-> P1's on-chain components fall back to **ckb-js-vm**, which already works here with
-> 23 passing tests and green CI. What is lost is the cycle-efficiency story. What is
-> not lost is anything else — the Fiber work, the session work, and P2 are all
-> unaffected. Rust then continues as a one-hour daily drip through Phase 2, and P3
-> absorbs the comparison work.
+> The capstone's on-chain components fall back to **ckb-js-vm**, which already works
+> here with 23 passing tests and green CI. What is lost is the cycle-efficiency
+> story. What is not lost is anything else — the Fiber work and the browser session
+> work are unaffected. Rust then continues as a one-hour daily drip through Phase 2.
 
 Writing this down now is the point. A checkpoint decided in the moment, while tired
 and behind, is not a decision — it is a drift.
@@ -74,8 +73,9 @@ Requirements for it to be worth posting:
 - The numbers include the failure paths, not just the happy path.
 - The write-up says what the measurement does *not* show.
 
-This is the seed of **P3 — `ckb-cycle-tools`**. The harness built this week is most
-of that project, which is why P3 is the cheapest of the three and the first to ship.
+The harness built this week is worth keeping as a tool in its own right — measuring
+cycles is something every CKB script author eventually needs and there is no
+convenient way to do it today.
 
 ## Evidence to capture
 

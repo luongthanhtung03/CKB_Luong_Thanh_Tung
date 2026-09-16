@@ -4,8 +4,7 @@ One file per week. Weeks 1.5–6 are day-level tables with a concrete **Done whe
 every day — a binary check, not a feeling. Weeks 7–12 are week-level, for a reason
 explained below.
 
-The twelve-week overview lives in [`../PLAN.md`](../PLAN.md). The funding campaigns
-live in [`funding-track.md`](funding-track.md).
+The twelve-week overview lives in [`../PLAN.md`](../PLAN.md).
 
 ## Phase 1 — Learn
 
@@ -18,7 +17,7 @@ live in [`funding-track.md`](funding-track.md).
 | 5 | 12 – 17 Oct | [week-05.md](week-05.md) | |
 | 6 | 19 – 24 Oct | [week-06.md](week-06.md) | |
 
-## Phase 2 — Build and fund
+## Phase 2 — Capstone
 
 | Week | Dates | Plan | Report |
 |---|---|---|---|
@@ -33,8 +32,8 @@ live in [`funding-track.md`](funding-track.md).
 
 Writing a day-by-day plan for Week 11 today would be fiction. By then the shape of
 the work depends on things I cannot know in September: whether Fiber does what its
-documentation says, how much of P1 actually survives into P2 when I try to extract
-it, and what the committee says about P3.
+documentation says, and how much of the session layer turns out to be reusable once
+I try to factor it out.
 
 So Weeks 7–12 carry **hour allocations per project and a milestone**, which is enough
 to hold the schedule honest, and they get written out day-level at the **Week 6
@@ -60,10 +59,9 @@ about 34 hours of Rust before Week 4 turns it into the main event. Skipping it d
 a busy week is borrowing against the hardest part of the plan.
 
 **Block D always includes one public action** — a forum reply, an issue, a review, an
-answer to someone else's question. A Community Fund DAO proposal needs 30 likes in
-seven days to reach a vote, and a cold post from an unknown account does not get
-them. This is the work that makes November's campaign land warm. See
-[`funding-track.md`](funding-track.md).
+answer to someone else's question. Being a known name in the ecosystem is not
+something that can be started in November; it is twelve weeks of showing up, a few
+minutes at a time.
 
 ## How to read a daily row
 
@@ -131,7 +129,7 @@ Floor is the non-negotiable minimum — roughly 30 of the 48 hours. Target is wh
 plan for. Stretch only happens if Target came in early, and skipping it is not a
 miss. **Stretch is never attempted before Floor is done.**
 
-**Two consecutive Floor-only weeks mean P1 gets scoped down immediately.** Not
+**Two consecutive Floor-only weeks mean the capstone gets scoped down immediately.** Not
 discussed, not deferred to the next review — scoped down that Saturday. Shipping
 smaller and earlier beats a heroic finish that never lands.
 
@@ -141,12 +139,11 @@ Every Saturday, after the report is written:
 
 1. Update [`skills-matrix.md`](skills-matrix.md) — self-rate 0–3 across the
    competency list, and tick off contributions, posts, likes and Rust hours.
-2. Update [`funding-track.md`](funding-track.md) if a campaign moved a stage.
-3. Re-read next week's plan. If the matrix says I am behind on something the next
+2. Re-read next week's plan. If the matrix says I am behind on something the next
    week depends on, move work into it — visibly, never by quietly deleting. Anything
    rated ≤1 that a later week needs gets a remediation block scheduled before new
    material.
-4. Commit the report, the matrix and the revised plan together.
+3. Commit the report, the matrix and the revised plan together.
 
 The plan is expected to change. What is not expected is for it to change silently —
 `git log` on these files is part of the evidence.
