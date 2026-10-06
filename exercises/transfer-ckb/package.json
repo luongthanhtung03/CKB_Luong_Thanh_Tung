@@ -5,7 +5,9 @@
   "description": "Week 1 exercise: inspect a devnet CKB transfer transaction with CCC",
   "scripts": {
     "inspect": "tsx src/inspect-tx.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "testnet:key": "tsx src/testnet-key.ts",
+    "testnet:transfer": "tsx src/testnet-transfer.ts"
   },
   "dependencies": {
     "@ckb-ccc/core": "^1.19.1"

@@ -1,0 +1,110 @@
+# inspect-tx against public CKB testnet — 2026-10-06 13:51 UTC
+
+$ CKB_RPC_URL=https://testnet.ckb.dev npm run inspect -- 0xb7855e7e43c2c716afef2bbf8e568c239927ac04794bf8e8b7b44470f29f3eea
+RPC       : https://testnet.ckb.dev
+tx hash   : 0xb7855e7e43c2c716afef2bbf8e568c239927ac04794bf8e8b7b44470f29f3eea
+
+status    : committed
+block     : 22653473
+
+INPUTS (1) — Cells consumed and now dead
+  [0] 0x40bcd18d…ca3286 #0  capacity 9,999.99900000 CKB
+
+OUTPUTS (2) — new live Cells
+  [0] capacity 1,000.00000000 CKB
+       lock.args  0xf2ccb0c2b236b983d12b56d3a8ef392f9a7d7f06
+       type       null
+       data       0 bytes
+  [1] capacity 8,999.99884584 CKB  ← back to an input's lock
+       lock.args  0xa6471ebb50c2be6de551a43d72551b4241600eac
+       type       null
+       data       0 bytes
+
+CAPACITY ACCOUNTING
+  in        9,999.99900000 CKB
+  out       9,999.99884584 CKB
+  fee       0.00015416 CKB  (15416 shannons)
+
+OTHER FIELDS
+  cellDeps  1 — the Scripts this tx needs on chain
+            depGroup  0xf8de3bb4…ee5d37 #0
+  witnesses 1 — where the signature lives
+            [0] 85 bytes
+
+WHAT THIS SHOWS
+  1 input Cell(s) were destroyed whole. 1,000.00000000 CKB went to
+  other locks, and 8,999.99884584 CKB came back as new change Cell(s) under the
+  sender's own lock. No balance was edited anywhere.
+
+$ CKB_RPC_URL=https://testnet.ckb.dev npm run inspect -- 0x0fa9ab8bfa29cc5981acd5f96fc88cb357ddcd601f6ccd5c52fc85118cdadd31
+RPC       : https://testnet.ckb.dev
+tx hash   : 0x0fa9ab8bfa29cc5981acd5f96fc88cb357ddcd601f6ccd5c52fc85118cdadd31
+
+status    : committed
+block     : 22653533
+
+INPUTS (3) — Cells consumed and now dead
+  [0] 0xe71465d4…8b7cea #0  capacity 400.00000000 CKB
+  [1] 0xff6db3e4…9046a2 #1  capacity 400.00000000 CKB
+  [2] 0x86859dda…6c2f9c #2  capacity 9,984.04360000 CKB
+
+OUTPUTS (3) — new live Cells
+  [0] capacity 400.00000000 CKB  ← back to an input's lock
+       lock.args  0xb12e3692d401c331f6d1f1efcb24d510296c4a6a
+       type       code 0x554cff96…81c7b8 (type)
+       data       2 bytes
+  [1] capacity 400.00000000 CKB  ← back to an input's lock
+       lock.args  0xb12e3692d401c331f6d1f1efcb24d510296c4a6a
+       type       code 0x96248cde…4a7e9a (type)
+       data       10 bytes
+  [2] capacity 9,984.04330000 CKB  ← back to an input's lock
+       lock.args  0xb12e3692d401c331f6d1f1efcb24d510296c4a6a
+       type       null
+       data       0 bytes
+
+CAPACITY ACCOUNTING
+  in        10,784.04360000 CKB
+  out       10,784.04330000 CKB
+  fee       0.00030000 CKB  (30000 shannons)
+
+OTHER FIELDS
+  cellDeps  3 — the Scripts this tx needs on chain
+            code  0x654f8a27…f3ea64 #0
+            code  0x91556359…053a73 #0
+            depGroup  0xf8de3bb4…ee5d37 #0
+  witnesses 3 — where the signature lives
+            [0] 85 bytes
+            [1] 16 bytes
+            [2] 16 bytes
+
+WHAT THIS SHOWS
+  3 input Cell(s) were destroyed whole. 0.00000000 CKB went to
+  other locks, and 10,784.04330000 CKB came back as new change Cell(s) under the
+  sender's own lock. No balance was edited anywhere.
+
+$ CKB_RPC_URL=https://testnet.ckb.dev npm run inspect -- 0xec5f11f2ff526ded25c254191afdd566798333e2cd57e4cbcae2e0f5704bcb04
+RPC       : https://testnet.ckb.dev
+tx hash   : 0xec5f11f2ff526ded25c254191afdd566798333e2cd57e4cbcae2e0f5704bcb04
+
+status    : committed
+block     : 22653533
+
+INPUTS (1) — Cells consumed and now dead
+  [0] null outpoint — a cellbase consumes nothing
+
+OUTPUTS (1) — new live Cells
+  [0] capacity 569.15772065 CKB
+       lock.args  0xf1cbacc833b5c62f79ac8de6aa7ffbe464cae563
+       type       null
+       data       0 bytes
+
+CAPACITY ACCOUNTING
+  cellbase  569.15772065 CKB minted as the block reward — no inputs, so no fee
+
+OTHER FIELDS
+  cellDeps  0 — the Scripts this tx needs on chain
+  witnesses 1 — where the signature lives
+            [0] 127 bytes
+
+WHAT THIS SHOWS
+  New capacity entering the chain: nothing was destroyed to create it.

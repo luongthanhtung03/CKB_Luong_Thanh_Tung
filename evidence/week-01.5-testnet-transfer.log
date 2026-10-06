@@ -1,0 +1,9 @@
+from    : ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqdxgu0tk5xzhek725dy84e92x6zg9sqatqhlut3d
+to      : ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsq0jejcv9v3khxpaz26k6w5w7wf0nf7h7psx36d8v
+amount  : 1000 CKB
+balance : 9999 CKB (before)
+
+tx hash : 0xb7855e7e43c2c716afef2bbf8e568c239927ac04794bf8e8b7b44470f29f3eea
+explorer: https://testnet.explorer.nervos.org/transaction/0xb7855e7e43c2c716afef2bbf8e568c239927ac04794bf8e8b7b44470f29f3eea
+waiting for commit............
+status  : committed in block 22653473

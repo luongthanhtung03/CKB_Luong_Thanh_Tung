@@ -28,6 +28,25 @@ npm run typecheck               # tsc --noEmit, strict
 
 `CKB_RPC_URL` overrides the endpoint (defaults to `http://127.0.0.1:8114`).
 
+## Public testnet (Week 1.5)
+
+```bash
+npm run testnet:key                                   # once: key into .env (gitignored), prints address
+offckb deposit --network testnet <address> 10000      # faucet claim
+npm run testnet:transfer -- <toAddress> 1000          # signs, sends, waits for commit
+CKB_RPC_URL=https://testnet.ckb.dev npm run inspect -- <txHash>
+```
+
+My first testnet transfer:
+[`0xb7855e7e…9f3eea`](https://testnet.explorer.nervos.org/transaction/0xb7855e7e43c2c716afef2bbf8e568c239927ac04794bf8e8b7b44470f29f3eea),
+1,000 CKB, committed in block 22,653,473. Inspector runs against it, a stranger's
+transaction and a cellbase: [`evidence/week-01.5-inspect-tx.log`](../../evidence/week-01.5-inspect-tx.log).
+
+Real traffic broke two devnet-only assumptions in the inspector: a cellbase has a
+null input, so the "fee" came out as `-569.-15772065 CKB`; and change was found as
+"the output over a million CKB", which only held for devnet's genesis Cells. Change
+is now identified by lock — an output under the same lock script as an input.
+
 Devnet state does not survive `offckb clean`, so the default hash only resolves
 against the devnet instance I created it on. Pass your own hash otherwise.
 
