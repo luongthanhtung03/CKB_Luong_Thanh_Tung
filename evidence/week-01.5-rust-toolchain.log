@@ -1,0 +1,19 @@
+# Rust toolchain check — 2026-10-06 13:53 UTC
+$ rustc --version
+rustc 1.99.0 (b940084d7 2026-09-28)
+$ cargo --version
+cargo 1.99.0 (5f94df478 2026-08-27)
+$ rustup target list --installed
+riscv64imac-unknown-none-elf
+x86_64-pc-windows-gnu
+
+$ cargo build --release   # exercises/rust-smoke
+    Finished `release` profile [optimized] target(s) in 0.03s
+$ file target/riscv64imac-unknown-none-elf/release/rust-smoke
+target/riscv64imac-unknown-none-elf/release/rust-smoke: ELF 64-bit LSB executable, UCB RISC-V, RVC, soft-float ABI, version 1 (SYSV), statically linked, stripped
+
+$ ckb-debugger --bin target/riscv64imac-unknown-none-elf/release/rust-smoke
+Run result: 0
+All cycles: 595
+$ cargo generate --version
+cargo generate-generate 0.25.0

@@ -1,0 +1,13 @@
+[package]
+name = "rust-smoke"
+version = "0.1.0"
+edition = "2024"
+description = "The smallest CKB Script I can write in Rust: exit 0 via the exit syscall"
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+strip = true
+
+[profile.dev]
+panic = "abort"
