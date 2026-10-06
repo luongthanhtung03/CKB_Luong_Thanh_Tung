@@ -12,7 +12,7 @@ contemporaneously, with screenshots and evidence.
 - **Track:** Builders'
 - **Start date:** 26 August 2026
 - **Report day:** every **Saturday** *(moved from Tuesday in Week 1.5, to align with my contract start)*
-- **Status:** in the cohort — contract signed, twelve-week programme running to 5 December 2026
+- **Status:** in the cohort — contract signed, twelve-week programme running to 19 December 2026
 
 New to CKB? [**notes/orientation.md**](notes/orientation.md) explains what this is,
 from the ground up, assuming nothing.
@@ -22,7 +22,7 @@ from the ground up, assuming nothing.
 | Week | Period | Report |
 |---|---|---|
 | 1 | 26–27 Aug 2026 | [week-01-report.md](reports/week-01-report.md) |
-| 1.5 | 15–19 Sep 2026 | [week-01.5-report.md](reports/week-01.5-report.md) |
+| 1.5 | 28 Sep – 3 Oct 2026 | [week-01.5-report.md](reports/week-01.5-report.md) |
 
 ## Where things are
 

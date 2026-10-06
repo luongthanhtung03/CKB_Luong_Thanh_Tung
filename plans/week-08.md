@@ -1,6 +1,6 @@
 # Week 8 — The failure paths
 
-**Period:** Mon 2 – Sat 7 Nov 2026 · **Report:** Sat 7 Nov · **Budget:** 48h
+**Period:** Mon 16 – Sat 21 Nov 2026 · **Report:** Sat 21 Nov · **Budget:** 48h
 **Phase:** F — Capstone
 
 | Level | What ships |

@@ -1,7 +1,7 @@
 # Twelve-week study and build plan
 
 Built from the CKBuilder Handbook. Twelve reports, every **Saturday**, from
-19 September to 5 December 2026.
+3 October to 19 December 2026.
 
 **Pace: 48 hours a week** — 8 hours a day, six days, Sunday off, against the
 handbook's 4–5 hour minimum.
@@ -24,6 +24,12 @@ capstone gets six.**
 The pace went from 18 hours a week to 48 to make that possible. See
 [The pace, honestly](#the-pace-honestly).
 
+**Rescheduled on 28 September.** Work paused from 17 to 27 September, before Week 1.5
+had started in earnest. Rather than compress the missed fortnight into the weeks that
+follow, every week moved two weeks later with its content unchanged: Week 1.5 now
+runs 28 Sep – 3 Oct, and Week 12 ends on 19 December instead of 5 December. Both
+checkpoints moved with it — Rust to Sat 24 Oct, Fiber to Sat 7 Nov.
+
 ## Week numbering
 
 Week 1 was completed before I signed the contract. This week is **Week 1.5**, a
@@ -34,23 +40,23 @@ bridge week, so that twelve full reporting weeks fall inside the contract period
 | Week | Period | Focus | Target — the public artifact |
 |---|---|---|---|
 | 1 | 26 Aug – 1 Sep | ✅ Environment and the Cell Model | *[published](reports/week-01-report.md)* |
-| **1.5** | **16 – 19 Sep** | **Get onto testnet, and go public** | First testnet transaction; four findings filed with DevRel |
-| 2 | 21 – 26 Sep | Addresses, witnesses, Molecule, CCC in depth | Hand-rolled address codec matching CCC byte for byte |
-| 3 | 28 Sep – 3 Oct | xUDT, Spore and DOBs | My own token and my own DOB, both minted on testnet |
-| 4 | 5 – 10 Oct | Rust on-chain, part 1 | Counter Script ported TypeScript → Rust, with a cycle comparison |
-| 5 | 12 – 17 Oct | Rust on-chain part 2, then the front end | Rust lock on testnet; a deployed URL a stranger can open |
-| 6 | 19 – 24 Oct | Fiber | A payment routed across three Fiber nodes, driven from code |
+| **1.5** | **28 Sep – 3 Oct** | **Get onto testnet, and go public** | First testnet transaction; four findings filed with DevRel |
+| 2 | 5 – 10 Oct | Addresses, witnesses, Molecule, CCC in depth | Hand-rolled address codec matching CCC byte for byte |
+| 3 | 12 – 17 Oct | xUDT, Spore and DOBs | My own token and my own DOB, both minted on testnet |
+| 4 | 19 – 24 Oct | Rust on-chain, part 1 | Counter Script ported TypeScript → Rust, with a cycle comparison |
+| 5 | 26 – 31 Oct | Rust on-chain part 2, then the front end | Rust lock on testnet; a deployed URL a stranger can open |
+| 6 | 2 – 7 Nov | Fiber | A payment routed across three Fiber nodes, driven from code |
 
 ### Phase 2 — Build (Weeks 7–12, 288 hours)
 
 | Week | Period | Milestone |
 |---|---|---|
-| 7 | 26 – 31 Oct | v0.1 — a caller pays per API call over a Fiber channel, on testnet |
-| 8 | 2 – 7 Nov | Metering and settlement survive the failure paths |
-| 9 | 9 – 14 Nov | Browser self-custody session — a payment signed with no wallet dialog |
-| 10 | 16 – 21 Nov | The session layer factored into a reusable library with its own tests |
-| 11 | 23 – 28 Nov | v0.2 — device-loss recovery, abandoned channels resolved, CI green |
-| 12 | 30 Nov – 5 Dec | Shipped: public deploy, stranger-runnable README, retrospective |
+| 7 | 9 – 14 Nov | v0.1 — a caller pays per API call over a Fiber channel, on testnet |
+| 8 | 16 – 21 Nov | Metering and settlement survive the failure paths |
+| 9 | 23 – 28 Nov | Browser self-custody session — a payment signed with no wallet dialog |
+| 10 | 30 Nov – 5 Dec | The session layer factored into a reusable library with its own tests |
+| 11 | 7 – 12 Dec | v0.2 — device-loss recovery, abandoned channels resolved, CI green |
+| 12 | 14 – 19 Dec | Shipped: public deploy, stranger-runnable README, retrospective |
 
 ## The capstone
 
@@ -141,12 +147,12 @@ a heroic finish that never lands.
 
 ## Two checkpoints, with the fallback decided in advance
 
-**⚠ Sat 10 Oct — a Rust script must compile, pass its tests, and be deployed.**
+**⚠ Sat 24 Oct — a Rust script must compile, pass its tests, and be deployed.**
 87 hours of Phase 1 assume Rust arrives, and it was rated 0 in Week 1. *Fallback:* the
 capstone's on-chain components fall back to ckb-js-vm, which already works here with
 23 passing tests and green CI. The cycle-efficiency story is lost; nothing else is.
 
-**⚠ Sat 24 Oct — a payment must route across three Fiber nodes under program control.**
+**⚠ Sat 7 Nov — a payment must route across three Fiber nodes under program control.**
 Fiber is a young project with thinner documentation than the rest of CKB, and the
 capstone depends on it entirely. *Fallback:* the capstone pivots to signed usage
 receipts settled periodically on-chain, which keeps the whole pay-per-use story and

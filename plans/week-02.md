@@ -1,6 +1,6 @@
 # Week 2 — Transactions to the bone
 
-**Period:** Mon 21 – Sat 26 Sep 2026 · **Report:** Sat 26 Sep · **Budget:** 48h
+**Period:** Mon 5 – Sat 10 Oct 2026 · **Report:** Sat 10 Oct · **Budget:** 48h
 **Phase:** B — Transactions to the bone
 
 | Level | What ships |
@@ -26,12 +26,12 @@ costs six weeks later.
 
 | Day | Date | A — New material (3h) | B — Prove it (3h) | C — Rust (1h) | D — Ship (1h) | Done when |
 |---|---|---|---|---|---|---|
-| Mon | 21 Sep | [RFC 0021 — address format](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0021-ckb-address-format/0021-ckb-address-format.md) | Scaffold `exercises/addr-tool`; write the failing tests first, from the RFC's own examples | Rustlings 41–60 (strings, modules, options) | Commit; reply to one forum thread | Tests exist and fail for the right reason |
-| Tue | 22 Sep | bech32 and bech32m; why the checksum constant changed | Implement bech32m encode/decode from scratch — no library | Rustlings: error handling, `Result` | Commit; reply to one forum thread | The RFC's worked examples round-trip |
-| Wed | 23 Sep 🔥 | Full vs short payload format; `hash_type` encoding | Lock script → `ckt1…` and back, by hand | Rustlings: generics, traits | Commit; evidence captured | My output matches CCC's for three addresses, byte for byte |
-| Thu | 24 Sep 🔥 | [Molecule](https://docs.nervos.org/docs/serialization/serialization-molecule-in-ckb); the `WitnessArgs` schema; secp256k1 signing and what exactly gets signed | Decode a Molecule `table` and `vector` header on paper, then in code; `notes/witness-args.md` with all 85 bytes labelled | Rustlings: lifetimes | Commit; evidence captured | Every byte accounted for, no `?` left; and I can state what the signing message is made of |
-| Fri | 25 Sep | CCC internals: cell collection, capacity arithmetic, fee rate, change outputs, the error paths | Build a transaction with CCC that deliberately runs out of capacity, and one that pays a deliberately wrong fee. Read the source for the path my code takes | The Rust Book ch. 8 — collections | Open a docs issue on anything genuinely unclear | I can explain where the change output comes from, and what CCC does when capacity is short |
-| Sat | 26 Sep | — | **Forum post #1** — the Windows contract-testing setup that blocked me in Week 1; report; push | The Rust Book ch. 9 — errors | Report, matrix, push | Post is live with a URL, and the report links it |
+| Mon | 5 Oct | [RFC 0021 — address format](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0021-ckb-address-format/0021-ckb-address-format.md) | Scaffold `exercises/addr-tool`; write the failing tests first, from the RFC's own examples | Rustlings 41–60 (strings, modules, options) | Commit; reply to one forum thread | Tests exist and fail for the right reason |
+| Tue | 6 Oct | bech32 and bech32m; why the checksum constant changed | Implement bech32m encode/decode from scratch — no library | Rustlings: error handling, `Result` | Commit; reply to one forum thread | The RFC's worked examples round-trip |
+| Wed | 7 Oct 🔥 | Full vs short payload format; `hash_type` encoding | Lock script → `ckt1…` and back, by hand | Rustlings: generics, traits | Commit; evidence captured | My output matches CCC's for three addresses, byte for byte |
+| Thu | 8 Oct 🔥 | [Molecule](https://docs.nervos.org/docs/serialization/serialization-molecule-in-ckb); the `WitnessArgs` schema; secp256k1 signing and what exactly gets signed | Decode a Molecule `table` and `vector` header on paper, then in code; `notes/witness-args.md` with all 85 bytes labelled | Rustlings: lifetimes | Commit; evidence captured | Every byte accounted for, no `?` left; and I can state what the signing message is made of |
+| Fri | 9 Oct | CCC internals: cell collection, capacity arithmetic, fee rate, change outputs, the error paths | Build a transaction with CCC that deliberately runs out of capacity, and one that pays a deliberately wrong fee. Read the source for the path my code takes | The Rust Book ch. 8 — collections | Open a docs issue on anything genuinely unclear | I can explain where the change output comes from, and what CCC does when capacity is short |
+| Sat | 10 Oct | — | **Forum post #1** — the Windows contract-testing setup that blocked me in Week 1; report; push | The Rust Book ch. 9 — errors | Report, matrix, push | Post is live with a URL, and the report links it |
 
 🔥 Two hard days. Wednesday and Thursday both require deriving the answer from a
 specification rather than following instructions. Expect them to overrun — that is

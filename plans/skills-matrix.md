@@ -86,10 +86,10 @@ Dependencies worth watching:
 |---|---|---|
 | Testnet operation (8) | Everything from Week 1.5 on | — |
 | CCC signers (6) | Week 5's front end, and the browser sessions in Week 9 | — |
-| Rust ownership (13) | Weeks 4–5, and every on-chain component of the capstone | **⚠ Sat 10 Oct** |
-| `no_std` and `ckb-std` (14) | Weeks 4–5 | **⚠ Sat 10 Oct** |
-| Fiber channels (20) | The capstone, entirely | **⚠ Sat 24 Oct** |
-| Fiber programmatic control (22) | The capstone, entirely | **⚠ Sat 24 Oct** |
+| Rust ownership (13) | Weeks 4–5, and every on-chain component of the capstone | **⚠ Sat 24 Oct** |
+| `no_std` and `ckb-std` (14) | Weeks 4–5 | **⚠ Sat 24 Oct** |
+| Fiber channels (20) | The capstone, entirely | **⚠ Sat 7 Nov** |
+| Fiber programmatic control (22) | The capstone, entirely | **⚠ Sat 7 Nov** |
 | Browser self-custody (23) | Weeks 9–11 — the heart of the capstone | — |
 | Technical writing (26) | The three forum posts, and the retrospective | — |
 

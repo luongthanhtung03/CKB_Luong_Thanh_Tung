@@ -10,23 +10,23 @@ The twelve-week overview lives in [`../PLAN.md`](../PLAN.md).
 
 | Week | Dates | Plan | Report |
 |---|---|---|---|
-| 1.5 | 16 – 19 Sep | [week-01.5.md](week-01.5.md) | [week-01.5-report.md](../reports/week-01.5-report.md) |
-| 2 | 21 – 26 Sep | [week-02.md](week-02.md) | |
-| 3 | 28 Sep – 3 Oct | [week-03.md](week-03.md) | |
-| 4 | 5 – 10 Oct | [week-04.md](week-04.md) | |
-| 5 | 12 – 17 Oct | [week-05.md](week-05.md) | |
-| 6 | 19 – 24 Oct | [week-06.md](week-06.md) | |
+| 1.5 | 28 Sep – 3 Oct | [week-01.5.md](week-01.5.md) | [week-01.5-report.md](../reports/week-01.5-report.md) |
+| 2 | 5 – 10 Oct | [week-02.md](week-02.md) | |
+| 3 | 12 – 17 Oct | [week-03.md](week-03.md) | |
+| 4 | 19 – 24 Oct | [week-04.md](week-04.md) | |
+| 5 | 26 – 31 Oct | [week-05.md](week-05.md) | |
+| 6 | 2 – 7 Nov | [week-06.md](week-06.md) | |
 
 ## Phase 2 — Capstone
 
 | Week | Dates | Plan | Report |
 |---|---|---|---|
-| 7 | 26 – 31 Oct | [week-07.md](week-07.md) | |
-| 8 | 2 – 7 Nov | [week-08.md](week-08.md) | |
-| 9 | 9 – 14 Nov | [week-09.md](week-09.md) | |
-| 10 | 16 – 21 Nov | [week-10.md](week-10.md) | |
-| 11 | 23 – 28 Nov | [week-11.md](week-11.md) | |
-| 12 | 30 Nov – 5 Dec | [week-12.md](week-12.md) | |
+| 7 | 9 – 14 Nov | [week-07.md](week-07.md) | |
+| 8 | 16 – 21 Nov | [week-08.md](week-08.md) | |
+| 9 | 23 – 28 Nov | [week-09.md](week-09.md) | |
+| 10 | 30 Nov – 5 Dec | [week-10.md](week-10.md) | |
+| 11 | 7 – 12 Dec | [week-11.md](week-11.md) | |
+| 12 | 14 – 19 Dec | [week-12.md](week-12.md) | |
 
 ## Why Weeks 7–12 are not day-level yet
 
@@ -54,7 +54,7 @@ hours of reading does not work for anyone.
 **Weeks 4 and 5 shift the ratio** — Rust expands to roughly four hours and block A
 shrinks to two, because by then Rust *is* the new material.
 
-**Block C is not optional and not deferrable.** An hour a day from 16 September buys
+**Block C is not optional and not deferrable.** An hour a day from 28 September buys
 about 34 hours of Rust before Week 4 turns it into the main event. Skipping it during
 a busy week is borrowing against the hardest part of the plan.
 
@@ -83,7 +83,7 @@ That is expected — the surrounding days carry the slack.
 
 **⚠ marks a checkpoint.** A named date where something must be true or a written
 fallback fires. There are two, and both are in the learning phase: Rust compiling by
-Sat 10 Oct, and Fiber routing by Sat 24 Oct. Both fallbacks are in `../PLAN.md` and
+Sat 24 Oct, and Fiber routing by Sat 7 Nov. Both fallbacks are in `../PLAN.md` and
 in the week file itself. A checkpoint that slips silently is worse than no checkpoint.
 
 ## Where the study material comes from

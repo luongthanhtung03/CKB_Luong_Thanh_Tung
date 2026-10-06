@@ -1,6 +1,6 @@
 # Week 12 — Ship it, and the retrospective
 
-**Period:** Mon 30 Nov – Sat 5 Dec 2026 · **Report:** Sat 5 Dec · **Budget:** 48h
+**Period:** Mon 14 – Sat 19 Dec 2026 · **Report:** Sat 19 Dec · **Budget:** 48h
 **Phase:** F — Capstone · final week of the programme
 
 | Level | What ships |
@@ -11,7 +11,7 @@
 
 ## This is not a build week
 
-**Roughly half of this week is writing.** The scope decision was made on 28 November;
+**Roughly half of this week is writing.** The scope decision was made on 12 December;
 anything not on that list is already cut.
 
 The temptation this week is to add one more feature instead of writing the documents
@@ -30,10 +30,10 @@ documentation that works.
 Not a summary of the twelve reports. It is the document I would hand to someone
 deciding what I am capable of, and it answers:
 
-- What existed on 26 August, and what exists on 5 December.
+- What existed on 26 August, and what exists on 19 December.
 - **Three things I can do now that I could not do then**, each with a link that
   proves it.
-- The two checkpoints — did Rust land by 10 October, did Fiber route by 24 October —
+- The two checkpoints — did Rust land by 24 October, did Fiber route by 7 November —
   and what happened when one did not, if one did not.
 - What the capstone is, who it is for, and what it cost to build.
 - What I would do differently, stated once, without self-flagellation.

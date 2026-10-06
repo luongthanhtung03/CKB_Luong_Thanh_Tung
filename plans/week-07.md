@@ -1,6 +1,6 @@
 # Week 7 — Capstone v0.1: pay-per-call on testnet
 
-**Period:** Mon 26 – Sat 31 Oct 2026 · **Report:** Sat 31 Oct · **Budget:** 48h
+**Period:** Mon 9 – Sat 14 Nov 2026 · **Report:** Sat 14 Nov · **Budget:** 48h
 **Phase:** F — Capstone · first week of Phase 2
 
 | Level | What ships |

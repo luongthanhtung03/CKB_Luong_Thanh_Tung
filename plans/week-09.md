@@ -1,6 +1,6 @@
 # Week 9 — Browser self-custody sessions
 
-**Period:** Mon 9 – Sat 14 Nov 2026 · **Report:** Sat 14 Nov · **Budget:** 48h
+**Period:** Mon 23 – Sat 28 Nov 2026 · **Report:** Sat 28 Nov · **Budget:** 48h
 **Phase:** F — Capstone
 
 | Level | What ships |

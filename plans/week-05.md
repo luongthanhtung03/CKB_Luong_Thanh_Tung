@@ -1,6 +1,6 @@
 # Week 5 — Rust part 2, then the front end
 
-**Period:** Mon 12 – Sat 17 Oct 2026 · **Report:** Sat 17 Oct · **Budget:** 48h
+**Period:** Mon 26 – Sat 31 Oct 2026 · **Report:** Sat 31 Oct · **Budget:** 48h
 **Phase:** D — Rust on-chain
 
 | Level | What ships |
@@ -29,12 +29,12 @@ is cheap; getting it wrong in the capstone in December is not.
 
 | Day | Date | A — New (2h) | B — Build (1h) | C — Rust (4h) | D — Ship (1h) | Done when |
 |---|---|---|---|---|---|---|
-| Mon | 12 Oct | Lock scripts vs type scripts; what a lock is actually allowed to inspect | Generate the lock project; write the failing tests first | Rust: signature verification, working with fixed-size byte arrays | Commit | Tests exist and fail for the right reason |
-| Tue | 13 Oct | Signature checking inside a script; what the script can and cannot see of the witness | Implement the simple lock | Rust: borrowing across syscall boundaries | Commit; reply to one forum thread | A cell locked by my script unlocks with the right signature |
-| Wed | 14 Oct 🔥 | Script security: validation completeness; what a malicious transaction looks like | Write the attacks: unlock without a signature, replay another cell's signature, unbalanced outputs | Rust: exhaustive matching, making invalid states unrepresentable | Commit; evidence captured | Every attack is rejected, each with its own specific error code |
-| Thu | 15 Oct 🔥 | [Type ID](https://docs.nervos.org/docs/tech-explanation/type-id); upgradable deployment; dep cell management | Deploy the lock to **testnet** with Type ID; then **upgrade it in place** and prove the old cell still works | Rust: finishing the lock; cycle-check it | Explorer links for both deployments | I have two explorer links — the deploy and the upgrade — and the same script hash across both |
-| Fri | 16 Oct | CCC in the browser; wallet connectors; what changes when the signer is a wallet | Scaffold the dApp; connect a wallet; read and display a balance | Rust: 1h only — back to drip | Commit | A wallet connects and the page shows a real testnet balance |
-| Sat | 17 Oct | — | Send CKB and move my Week 3 token from the UI; **deploy to a public URL**; report; push | — | Report, matrix, push | A stranger can open the URL, connect a wallet and move a token |
+| Mon | 26 Oct | Lock scripts vs type scripts; what a lock is actually allowed to inspect | Generate the lock project; write the failing tests first | Rust: signature verification, working with fixed-size byte arrays | Commit | Tests exist and fail for the right reason |
+| Tue | 27 Oct | Signature checking inside a script; what the script can and cannot see of the witness | Implement the simple lock | Rust: borrowing across syscall boundaries | Commit; reply to one forum thread | A cell locked by my script unlocks with the right signature |
+| Wed | 28 Oct 🔥 | Script security: validation completeness; what a malicious transaction looks like | Write the attacks: unlock without a signature, replay another cell's signature, unbalanced outputs | Rust: exhaustive matching, making invalid states unrepresentable | Commit; evidence captured | Every attack is rejected, each with its own specific error code |
+| Thu | 29 Oct 🔥 | [Type ID](https://docs.nervos.org/docs/tech-explanation/type-id); upgradable deployment; dep cell management | Deploy the lock to **testnet** with Type ID; then **upgrade it in place** and prove the old cell still works | Rust: finishing the lock; cycle-check it | Explorer links for both deployments | I have two explorer links — the deploy and the upgrade — and the same script hash across both |
+| Fri | 30 Oct | CCC in the browser; wallet connectors; what changes when the signer is a wallet | Scaffold the dApp; connect a wallet; read and display a balance | Rust: 1h only — back to drip | Commit | A wallet connects and the page shows a real testnet balance |
+| Sat | 31 Oct | — | Send CKB and move my Week 3 token from the UI; **deploy to a public URL**; report; push | — | Report, matrix, push | A stranger can open the URL, connect a wallet and move a token |
 
 🔥 Wednesday and Thursday. Wednesday is adversarial thinking, which is a different
 skill from writing the happy path and is the one that matters for a lock. Thursday is

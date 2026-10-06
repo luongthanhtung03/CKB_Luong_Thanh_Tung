@@ -1,6 +1,6 @@
 # Week 11 — v0.2: recovery, and the last build week
 
-**Period:** Mon 23 – Sat 28 Nov 2026 · **Report:** Sat 28 Nov · **Budget:** 48h
+**Period:** Mon 7 – Sat 12 Dec 2026 · **Report:** Sat 12 Dec · **Budget:** 48h
 **Phase:** F — Capstone
 
 | Level | What ships |
@@ -12,7 +12,7 @@
 ## Why this week looks like this
 
 **This is the last week with real build hours.** Week 12 is half writing. Anything
-architectural that is not done by Saturday 28 November does not go into the capstone
+architectural that is not done by Saturday 12 December does not go into the capstone
 — it goes into the "future work" section, which is a more honest place for it than a
 rushed implementation.
 
@@ -52,9 +52,9 @@ spent reading Fiber's source because the documentation stopped. That gap is the 
 
 ## ⚠ The Week 12 scope decision
 
-**On Saturday 28 November, decide what the capstone ships with — and write it down in
+**On Saturday 12 December, decide what the capstone ships with — and write it down in
 the report.** Week 12 has roughly 18 build hours and the rest is documentation and the
-retrospective. Anything still open on 30 November is already cut; the only question is
+retrospective. Anything still open on 14 December is already cut; the only question is
 whether that is acknowledged on the 28th or discovered on the 4th.
 
 ## Evidence to capture

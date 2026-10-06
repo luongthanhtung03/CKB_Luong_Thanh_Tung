@@ -1,7 +1,12 @@
 # Week 1.5 — Get onto testnet, and go public
 
-**Period:** Wed 16 – Sat 19 Sep 2026 · **Report:** Sat 19 Sep · **Budget:** 32h (4-day week)
+**Period:** Mon 28 Sep – Sat 3 Oct 2026 · **Report:** Sat 3 Oct · **Budget:** 32h planned + 16h buffer
 **Phase:** A — Get onto testnet and go public
+
+> **Rescheduled.** This week was first planned for Wed 16 – Sat 19 Sep. Work paused
+> from 17 to 27 September and resumed on Mon 28 Sep, so this week and every week
+> after it moved two weeks later. The content is unchanged; the four planned days
+> now sit in a six-day week, and the two extra days are buffer for the 🔥 day.
 
 | Level | What ships |
 |---|---|
@@ -14,7 +19,7 @@
 Everything I have built so far runs on a local devnet that disappears when I run
 `offckb clean`. Week 1's own report says it plainly: *"I have not touched testnet at
 all, so none of my transaction hashes are publicly verifiable."* That is still true
-on 16 September.
+on 28 September.
 
 The entire differentiator of this repository is that every claim is checkable by
 someone else. Right now none of them are. So this week is not about learning
@@ -37,18 +42,25 @@ every developer who hits it, and I have already proved it reproduces on an untou
 
 Filing them is roughly one hour of work that converts four private notes into four
 public contributions with my name on them. It is the highest-value hour in the entire
-twelve weeks and it has been deferred twice. It happens Saturday morning, first.
+twelve weeks and it has been deferred three times. It happens on Monday, the first
+day back — not Saturday.
+
+A month has passed since they were written, so each one gets re-checked against the
+current `@offckb/cli` release before it is filed. A finding that no longer reproduces
+is still worth a line in the log; it does not get filed.
 
 ## Days
 
 | Day | Date | A — New material (3h) | B — Prove it (3h) | C — Rust (1h) | D — Ship (1h) | Done when |
 |---|---|---|---|---|---|---|
-| Wed | 16 Sep | Testnet vs devnet; the faucet; the explorer; testnet key hygiene | Generate a testnet address, fund it from the faucet, **send my first testnet transaction** | Install `rustup`, add the `riscv64imac-unknown-none-elf` target, install `cargo-generate`, compile a hello-world | Explorer link into `notes/log.md` | A public explorer page shows a transaction I signed |
-| Thu | 17 Sep | CCC client configuration for public testnet; how the public RPC differs from devnet | Point `inspect-tx` at testnet; decode a real testnet transaction end to end | Rustlings 1–20 (variables, functions, if, primitive types) | Create the Nervos Talk account; introduce myself; reply to two existing threads | `inspect-tx` prints a transaction I did not create, pulled from public testnet |
-| Fri | 18 Sep 🔥 | Script deployment to testnet; dep cells, `scripts.json`, migrations | Deploy the counter Script to **testnet**; run the devnet suite against the testnet deployment | Rustlings 21–40 (vecs, structs, enums) | Capture evidence files as they happen, not after | `deployment/scripts.json` has a real testnet entry and the tests pass against it |
-| Sat | 19 Sep | — | **File all four findings** as issues on `ckb-devrel/offckb`, first thing | The Rust Book ch. 4 — ownership | **Write the real Week 1.5 report**; update the skills matrix; push | Four issue URLs exist, and the report contains no placeholder |
+| Mon | 28 Sep | Testnet vs devnet; the faucet; the explorer; testnet key hygiene | Generate a testnet address, fund it from the faucet, **send my first testnet transaction** | Install `rustup`, add the `riscv64imac-unknown-none-elf` target, install `cargo-generate`, compile a hello-world | **File all four findings** on `ckb-devrel/offckb` — re-check each against the current `@offckb/cli` first; explorer link into `notes/log.md` | A public explorer page shows a transaction I signed, and four issue URLs exist |
+| Tue | 29 Sep | CCC client configuration for public testnet; how the public RPC differs from devnet | Point `inspect-tx` at testnet; decode a real testnet transaction end to end | Rustlings 1–20 (variables, functions, if, primitive types) | Create the Nervos Talk account; introduce myself; reply to two existing threads | `inspect-tx` prints a transaction I did not create, pulled from public testnet |
+| Wed | 30 Sep 🔥 | Script deployment to testnet; dep cells, `scripts.json`, migrations | Deploy the counter Script to **testnet** | Rustlings 21–40 (vecs, structs, enums) | Capture evidence files as they happen, not after | `deployment/scripts.json` has a real testnet entry, and the deploy transaction is on the explorer |
+| Thu | 1 Oct | — | Finish Wednesday's deployment if it overran; then run the devnet suite against the testnet deployment | The Rust Book ch. 4 — ownership | Commit; reply to one forum thread | The tests pass against the testnet deployment |
+| Fri | 2 Oct | — | Buffer. Close anything still open from Mon–Thu; only then the Stretch | The Rust Book ch. 5–6 — structs, enums | Fill in the evidence table below; commit | Every Floor and Target row above is true |
+| Sat | 3 Oct | — | **Write the real Week 1.5 report** from the evidence captured this week | Rustlings review — redo any exercise that needed a hint | Update the skills matrix; push | The report contains no placeholder |
 
-🔥 Friday is the hard day. Deploying to testnet is not the same as deploying to
+🔥 Wednesday is the hard day, and Thursday is there to catch the overrun. Deploying to testnet is not the same as deploying to
 devnet — the capacity has to come from somewhere real, the migration files matter,
 and a mistake costs testnet CKB and a faucet wait rather than an `offckb clean`.
 
@@ -67,7 +79,7 @@ every hit rather than trusting the count.
 
 ## About `reports/week-01.5-report.md`
 
-That file currently exists as an **unfilled template**, dated 19 September, with
+That file currently exists as an **unfilled template**, dated 3 October, with
 placeholder rows claiming a first testnet transaction (`0x____`) and four findings
 filed. Neither had happened when it was written.
 
@@ -95,10 +107,10 @@ grep -n '0x____\|_____' reports/week-01.5-report.md && echo "NOT READY" || echo 
 
 | Day | Study item | Where |
 |---|---|---|
-| Wed | Testnet, faucet, explorer | [Testnet faucet](https://faucet.nervos.org/) · [Testnet explorer](https://testnet.explorer.nervos.org/) · [Devnet vs testnet](https://docs.nervos.org/docs/node/run-devnet-node) |
-| Thu | CCC client configuration | [CCC docs](https://docs.nervos.org/docs/sdk-and-devtool/ccc) · `ClientPublicTestnet` in the CCC source |
-| Fri | Script deployment | [Deploy a Script](https://docs.nervos.org/docs/script/deploy-a-script) · [Type ID](https://docs.nervos.org/docs/tech-explanation/type-id) · offckb's own `deployment/README.md` |
-| Sat | — | Rust Book [ch. 4 — Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) |
+| Mon | Testnet, faucet, explorer | [Testnet faucet](https://faucet.nervos.org/) · [Testnet explorer](https://testnet.explorer.nervos.org/) · [Devnet vs testnet](https://docs.nervos.org/docs/node/run-devnet-node) |
+| Tue | CCC client configuration | [CCC docs](https://docs.nervos.org/docs/sdk-and-devtool/ccc) · `ClientPublicTestnet` in the CCC source |
+| Wed | Script deployment | [Deploy a Script](https://docs.nervos.org/docs/script/deploy-a-script) · [Type ID](https://docs.nervos.org/docs/tech-explanation/type-id) · offckb's own `deployment/README.md` |
+| Thu | — | Rust Book [ch. 4 — Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) |
 
 ## Rust
 
@@ -108,10 +120,12 @@ is not competence yet — it is that Week 4 does not open cold.
 
 | Day | Rust |
 |---|---|
-| Wed | `rustup`, `riscv64imac-unknown-none-elf`, `cargo-generate`, hello-world compiles |
-| Thu | Rustlings 1–20 |
-| Fri | Rustlings 21–40 |
-| Sat | The Rust Book ch. 4 — ownership |
+| Mon | `rustup`, `riscv64imac-unknown-none-elf`, `cargo-generate`, hello-world compiles |
+| Tue | Rustlings 1–20 |
+| Wed | Rustlings 21–40 |
+| Thu | The Rust Book ch. 4 — ownership |
+| Fri | The Rust Book ch. 5–6 — structs, enums |
+| Sat | Rustlings review |
 
 ## Next week
 

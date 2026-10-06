@@ -1,6 +1,6 @@
 # Week 3 — Standards: xUDT, Spore and DOBs
 
-**Period:** Mon 28 Sep – Sat 3 Oct 2026 · **Report:** Sat 3 Oct · **Budget:** 48h
+**Period:** Mon 12 – Sat 17 Oct 2026 · **Report:** Sat 17 Oct · **Budget:** 48h
 **Phase:** C — Standards
 
 | Level | What ships |
@@ -27,12 +27,12 @@ invalid one would look like, before writing any code.
 
 | Day | Date | A — New material (3h) | B — Prove it (3h) | C — Rust (1h) | D — Ship (1h) | Done when |
 |---|---|---|---|---|---|---|
-| Mon | 28 Sep | sUDT vs xUDT; why xUDT exists; amount encoding | Issue my own token on **testnet**; transfer it to a second address | The Rust Book ch. 10 — generics, traits, lifetimes | Explorer links to both transactions | The token and the transfer are both visible on the public explorer |
-| Tue | 29 Sep | The xUDT type script: args, extension scripts, the owner-lock mint rule | Write the failing tests first: a mint I should not be allowed to make, and a transfer that should not balance | The Rust Book ch. 11 — writing tests | Commit; reply to one forum thread | Both tests fail for the reason I predicted, not a different one |
-| Wed | 30 Sep 🔥 | Spore and DOB: cluster, spore, the decoder model; DOB/0 and DOB/1 | Mint a DOB on **testnet**, in a cluster I created | Rust: `Option`/`Result` combinators in anger | Explorer link; screenshot | The DOB renders from its own on-chain data, and I can say which bytes produced which trait |
-| Thu | 1 Oct 🔥 | DOB decoding in detail; where the decoder runs and what it is allowed to assume | Write my own decoder for a trait the cookbook does not cover | Rust: iterators and closures | Commit; evidence captured | My decoder produces the right output for a DOB I minted, and I can explain a case where it would fail |
-| Fri | 2 Oct | A first look at SSRI — what problem it solves and why it exists | Read the xUDT source for the path a transfer takes; file a docs issue on anything genuinely unclear | Rust: modules, crates, `Cargo.toml` layout | Issue filed in someone else's repository | I can explain, unprompted, why SSRI exists |
-| Sat | 3 Oct | — | Fold the token and the DOB into one page in the existing inspector; report; push | The Rust Book ch. 13 | Report, matrix, push | Report published with four explorer links |
+| Mon | 12 Oct | sUDT vs xUDT; why xUDT exists; amount encoding | Issue my own token on **testnet**; transfer it to a second address | The Rust Book ch. 10 — generics, traits, lifetimes | Explorer links to both transactions | The token and the transfer are both visible on the public explorer |
+| Tue | 13 Oct | The xUDT type script: args, extension scripts, the owner-lock mint rule | Write the failing tests first: a mint I should not be allowed to make, and a transfer that should not balance | The Rust Book ch. 11 — writing tests | Commit; reply to one forum thread | Both tests fail for the reason I predicted, not a different one |
+| Wed | 14 Oct 🔥 | Spore and DOB: cluster, spore, the decoder model; DOB/0 and DOB/1 | Mint a DOB on **testnet**, in a cluster I created | Rust: `Option`/`Result` combinators in anger | Explorer link; screenshot | The DOB renders from its own on-chain data, and I can say which bytes produced which trait |
+| Thu | 15 Oct 🔥 | DOB decoding in detail; where the decoder runs and what it is allowed to assume | Write my own decoder for a trait the cookbook does not cover | Rust: iterators and closures | Commit; evidence captured | My decoder produces the right output for a DOB I minted, and I can explain a case where it would fail |
+| Fri | 16 Oct | A first look at SSRI — what problem it solves and why it exists | Read the xUDT source for the path a transfer takes; file a docs issue on anything genuinely unclear | Rust: modules, crates, `Cargo.toml` layout | Issue filed in someone else's repository | I can explain, unprompted, why SSRI exists |
+| Sat | 17 Oct | — | Fold the token and the DOB into one page in the existing inspector; report; push | The Rust Book ch. 13 | Report, matrix, push | Report published with four explorer links |
 
 🔥 Two hard days. Wednesday's is understanding the Spore data model rather than
 copying the mint command. Thursday's has no tutorial at all by definition — the trait
@@ -80,7 +80,7 @@ this is the last week where Rust is a background thread.
 
 ## ⚠ Looking ahead to next week
 
-Week 4 is the checkpoint week. Before Monday 5 October, confirm the toolchain from
+Week 4 is the checkpoint week. Before Monday 19 October, confirm the toolchain from
 Week 1.5 still works:
 
 ```bash

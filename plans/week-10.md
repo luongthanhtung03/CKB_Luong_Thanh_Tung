@@ -1,6 +1,6 @@
 # Week 10 — The session library reaches v1.0
 
-**Period:** Mon 16 – Sat 21 Nov 2026 · **Report:** Sat 21 Nov · **Budget:** 48h
+**Period:** Mon 30 Nov – Sat 5 Dec 2026 · **Report:** Sat 5 Dec · **Budget:** 48h
 **Phase:** F — Capstone
 
 | Level | What ships |

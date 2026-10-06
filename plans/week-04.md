@@ -1,6 +1,6 @@
 # Week 4 — Rust on-chain, part 1
 
-**Period:** Mon 5 – Sat 10 Oct 2026 · **Report:** Sat 10 Oct · **Budget:** 48h
+**Period:** Mon 19 – Sat 24 Oct 2026 · **Report:** Sat 24 Oct · **Budget:** 48h
 **Phase:** D — Rust on-chain
 
 > **⚠ This is the load-bearing week of the plan.** See [Checkpoint](#-checkpoint-sat-10-oct).
@@ -16,7 +16,7 @@
 **The block ratio inverts this week.** Rust stops being an hour a day and becomes the
 main event: roughly **4h Rust, 2h everything else, 1h build, 1h ship**. Three weeks of
 daily drip means this opens warm rather than cold — that was the whole point of
-starting on 16 September.
+starting on 28 September.
 
 The port is deliberate. I am not writing a new script in Rust; I am writing a script
 I already understand, in a language I do not. That isolates the variable. When
@@ -30,18 +30,18 @@ comparison is worth publishing on its own.
 
 | Day | Date | A — New (2h) | B — Build (1h) | C — Rust (4h) | D — Ship (1h) | Done when |
 |---|---|---|---|---|---|---|
-| Mon | 5 Oct | `no_std` — what it removes and why a script needs it; the `ckb-std` entry point | Generate a project with `ckb-script-templates`; get the empty script building | Rust Book ch. 15 — smart pointers, `Box`, and why `alloc` matters here | Commit the scaffold | An empty Rust script builds to a RISC-V binary |
-| Tue | 6 Oct | `ckb-std` syscalls: loading cells, scripts, witnesses | Port the counter's *read* path — load the cell, read the count | Rust: slices, byte handling, `from_le_bytes` | Commit; reply to one forum thread | The script reads a counter value out of cell data |
-| Wed | 7 Oct 🔥 | Script error codes; how a failure is returned and what the runner sees | Port the *validation* path — the create-at-zero and increment-by-one rules | Rust: pattern matching on `Result`, custom error enums | Commit; evidence captured | All 23 assertions from the TypeScript suite pass against the Rust script |
-| Thu | 8 Oct | `ckb-testtool` in Rust; how it differs from the TypeScript harness | Get the full test suite running in Rust, including the 18 failure assertions | Rust: writing tests, `#[test]`, assertions | Commit | The Rust suite runs green, and the failure cases fail with the *specific* expected error code |
-| Fri | 9 Oct 🔥 | `ckb-debugger`: cycles, what consumes them, how to read a profile | **Measure**: same assertions, ckb-js-vm vs Rust, cycle counts for both | Rust: reading disassembly output without panicking about it | Capture the raw numbers into `evidence/` | I have a table of cycle counts for both implementations, produced by a command I can re-run |
-| Sat | 10 Oct | — | Deploy the Rust script to **testnet**; **forum post #2** | — | Report, matrix, push | The Rust script is live on testnet and the comparison is published |
+| Mon | 19 Oct | `no_std` — what it removes and why a script needs it; the `ckb-std` entry point | Generate a project with `ckb-script-templates`; get the empty script building | Rust Book ch. 15 — smart pointers, `Box`, and why `alloc` matters here | Commit the scaffold | An empty Rust script builds to a RISC-V binary |
+| Tue | 20 Oct | `ckb-std` syscalls: loading cells, scripts, witnesses | Port the counter's *read* path — load the cell, read the count | Rust: slices, byte handling, `from_le_bytes` | Commit; reply to one forum thread | The script reads a counter value out of cell data |
+| Wed | 21 Oct 🔥 | Script error codes; how a failure is returned and what the runner sees | Port the *validation* path — the create-at-zero and increment-by-one rules | Rust: pattern matching on `Result`, custom error enums | Commit; evidence captured | All 23 assertions from the TypeScript suite pass against the Rust script |
+| Thu | 22 Oct | `ckb-testtool` in Rust; how it differs from the TypeScript harness | Get the full test suite running in Rust, including the 18 failure assertions | Rust: writing tests, `#[test]`, assertions | Commit | The Rust suite runs green, and the failure cases fail with the *specific* expected error code |
+| Fri | 23 Oct 🔥 | `ckb-debugger`: cycles, what consumes them, how to read a profile | **Measure**: same assertions, ckb-js-vm vs Rust, cycle counts for both | Rust: reading disassembly output without panicking about it | Capture the raw numbers into `evidence/` | I have a table of cycle counts for both implementations, produced by a command I can re-run |
+| Sat | 24 Oct | — | Deploy the Rust script to **testnet**; **forum post #2** | — | Report, matrix, push | The Rust script is live on testnet and the comparison is published |
 
 🔥 Wednesday and Friday. Wednesday is where Rust's ownership rules meet byte
 manipulation and the borrow checker stops being theoretical. Friday is measurement
 work with no tutorial — reading a cycle profile is a skill, not a command.
 
-## ⚠ Checkpoint: Sat 10 Oct
+## ⚠ Checkpoint: Sat 24 Oct
 
 **By the end of this week, a Rust script must compile, pass its tests, and be
 deployed to testnet.** 87 hours of this plan assume Rust arrives. Rust was rated 0 in

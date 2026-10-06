@@ -1,6 +1,6 @@
 # Week 6 — Fiber
 
-**Period:** Mon 19 – Sat 24 Oct 2026 · **Report:** Sat 24 Oct · **Budget:** 48h
+**Period:** Mon 2 – Sat 7 Nov 2026 · **Report:** Sat 7 Nov · **Budget:** 48h
 **Phase:** E — Fiber · last week of the learning phase
 
 > **⚠ Second checkpoint.** See [Checkpoint](#-checkpoint-sat-24-oct).
@@ -31,19 +31,19 @@ structure and a green pipeline rather than with a blank directory.
 
 | Day | Date | A — New (3h) | B — Prove it (3h) | C — Rust (1h) | D — Ship (1h) | Done when |
 |---|---|---|---|---|---|---|
-| Mon | 19 Oct | What a payment channel is; Lightning's model and where Fiber departs from it | Build and run **two** Fiber nodes locally; get them talking | Rust drip — reading Fiber's own source counts | Commit; reply to one forum thread | Two nodes are up and see each other as peers |
-| Tue | 20 Oct | Channel lifecycle: open, fund, update, settle, close; what lands on-chain and when | Open a channel, send a payment, settle it, close it — by hand first | Rust drip | Explorer links for the funding and settlement transactions | A channel has opened and closed, and both on-chain transactions are on the explorer |
-| Wed | 21 Oct 🔥 | HTLCs and invoices; how a payment is routed without trusting the middle | Add a **third** node; route a payment through it | Rust drip | Commit; evidence captured | A payment reaches a node my node has no direct channel with |
-| Thu | 22 Oct 🔥 | The node RPC surface; what can be driven programmatically and what cannot | **Drive all of it from code** — open, pay, settle, close, with no manual steps. Write the failing tests first | Rust drip | Commit; evidence captured | A single script opens a channel, routes a payment and settles it, repeatably |
-| Fri | 23 Oct | — | Scaffold the capstone: package layout, **LICENSE**, CI, and the first failing integration test | Rust drip | Commit; evidence captured | The capstone builds and its first test fails for the right reason |
-| Sat | 24 Oct | — | Write the capstone's architecture note while it is fresh; report; push | — | Report, matrix, push | The architecture note says what the capstone is, and what it deliberately is not |
+| Mon | 2 Nov | What a payment channel is; Lightning's model and where Fiber departs from it | Build and run **two** Fiber nodes locally; get them talking | Rust drip — reading Fiber's own source counts | Commit; reply to one forum thread | Two nodes are up and see each other as peers |
+| Tue | 3 Nov | Channel lifecycle: open, fund, update, settle, close; what lands on-chain and when | Open a channel, send a payment, settle it, close it — by hand first | Rust drip | Explorer links for the funding and settlement transactions | A channel has opened and closed, and both on-chain transactions are on the explorer |
+| Wed | 4 Nov 🔥 | HTLCs and invoices; how a payment is routed without trusting the middle | Add a **third** node; route a payment through it | Rust drip | Commit; evidence captured | A payment reaches a node my node has no direct channel with |
+| Thu | 5 Nov 🔥 | The node RPC surface; what can be driven programmatically and what cannot | **Drive all of it from code** — open, pay, settle, close, with no manual steps. Write the failing tests first | Rust drip | Commit; evidence captured | A single script opens a channel, routes a payment and settles it, repeatably |
+| Fri | 6 Nov | — | Scaffold the capstone: package layout, **LICENSE**, CI, and the first failing integration test | Rust drip | Commit; evidence captured | The capstone builds and its first test fails for the right reason |
+| Sat | 7 Nov | — | Write the capstone's architecture note while it is fresh; report; push | — | Report, matrix, push | The architecture note says what the capstone is, and what it deliberately is not |
 
 🔥 Wednesday and Thursday. Multi-hop routing is where a payment channel network stops
 being "two people with a shared balance" and starts being a network — and it is the
 part most likely to not work first time. Thursday's programmatic control is the thing
 the capstone is actually built on; doing it by hand does not count.
 
-## ⚠ Checkpoint: Sat 24 Oct
+## ⚠ Checkpoint: Sat 7 Nov
 
 **By the end of this week, a payment must route across three nodes under program
 control.** Phase 2 opens on Monday, and the whole capstone is allocated on the
@@ -56,7 +56,7 @@ assumption that Fiber works.
 > entire pay-per-use story and all of the browser self-custody session work. What it
 > drops is the routing layer, which is the part that was not working anyway.
 
-The decision is made on Saturday 24 October, in the report, in writing. Not carried
+The decision is made on Saturday 7 November, in the report, in writing. Not carried
 into Week 7 as an open question.
 
 ## Scaffolding — what "scaffolded" means
