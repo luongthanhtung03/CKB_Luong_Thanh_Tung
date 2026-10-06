@@ -1,0 +1,45 @@
+  console.log
+    created counter at 0 — tx 0x58aef31e49477a95ae0749049964a1107da6ce943ca74febfc9fbbf0ada8a82b
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:120:13)
+
+  console.log
+    incremented 0 -> 1 — tx 0x96685b3b8dc56747f5ce0a2f9b9bcab68c27c4327d6254f9880064d20c2afc4d
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:133:13)
+
+  console.log
+    incremented 1 -> 2 — tx 0xc5740da838df7db9e538aa58dee1a8856bc770a3b516d55f56cbb9f5ae631468
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:145:13)
+
+  console.log
+    chain rejected 2 -> 4, as it should: ValidationFailure: see error code 12 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-type-hash/3e9b6bead927bef62fcb56f0c79f4fbd1b739f32dd222beac10d346f2918bed7.html#12 }
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:159:13)
+
+  console.log
+    chain rejected 2 -> 1, as it should: ValidationFailure: see error code 12 on page https://nervosnetwork.github.io/ckb-script-error-codes/by-type-hash/3e9b6bead927bef62fcb56f0c79f4fbd1b739f32dd222beac10d346f2918bed7.html#12 }
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:169:13)
+
+  console.log
+    incremented 2 -> 3 — tx 0x64f695a23416d9a7b2d34bb7025140c90991b82e9f1dea98e103bc13a72b77ac
+
+      at Object.<anonymous> (tests/counter.devnet.test.ts:177:13)
+
+PASS tests/counter.devnet.test.ts (106.078 s)
+  counter type script on testnet
+    √ creates a counter at 0 (41535 ms)
+    √ increments 0 -> 1 (19333 ms)
+    √ increments 1 -> 2 (25872 ms)
+    √ the chain refuses to skip from 2 to 4 (849 ms)
+    √ the chain refuses to move the counter backwards (1677 ms)
+    √ increments 2 -> 3 after the rejections, proving the Cell is still usable (12337 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        106.196 s, estimated 121 s
+Ran all test suites matching /tests\\counter.devnet.test.ts/i.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
