@@ -43,3 +43,21 @@ reports, not a report itself.
 - Next: redo both tutorials on testnet with the faucet so I have public explorer
   links; extend the inspector to decode `outputs_data`; send the OffCKB findings
   to DevRel.
+
+## 2026-10-06
+
+- Testnet at last. Key generated into a gitignored `.env`; funded from the faucet
+  with `offckb deposit --network testnet`. First transfer:
+  0xb7855e7e43c2c716afef2bbf8e568c239927ac04794bf8e8b7b44470f29f3eea, block 22653473.
+- Inspector against testnet broke twice: a cellbase gave a fee of `-569.-15772065`,
+  and "change = the output over 1M CKB" was a devnet-only accident. Change is now
+  found by lock.
+- Counter Script deployed to testnet with Type ID:
+  0xa21da18ff3f142127cf63d6e705d64c14577fb99a9a0cbf74f47fb70b6ad66cf.
+  The devnet suite runs against it with `CKB_NETWORK=testnet` — 6/6, and the two
+  refusals now have to carry my exit code 12, not just any error.
+- One run failed 5/6: CCC's 60s `waitTransaction` default is shorter than a slow
+  testnet block, and everything after the first timeout built on a stale Cell.
+- Rust 1.99 + `riscv64imac-unknown-none-elf` (GNU host, no VS Build Tools).
+  `exercises/rust-smoke`: 952-byte `no_std` Script, `Run result: 0`, 595 cycles.
+- OffCKB findings re-checked — all four still stand. Drafted as three issues.

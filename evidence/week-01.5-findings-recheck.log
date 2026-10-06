@@ -1,0 +1,19 @@
+# Re-check of notes/findings/offckb-install-observations.md against the current registry
+# 2026-10-06 13:22 UTC
+
+$ npm view offckb name version description homepage
+name = 'offckb'
+version = '1.0.0'
+description = 'Placeholder package for offckb - reserved name'
+homepage = 'https://github.com/yourusername/offckb-placeholder#readme'
+
+$ npm view @offckb/cli name version homepage
+name = '@offckb/cli'
+version = '0.4.13'
+homepage = 'https://github.com/ckb-devrel/offckb#readme'
+
+$ npm view ckb-testtool version
+1.0.5
+
+$ offckb --version
+0.4.13
