@@ -24,10 +24,13 @@ and then the
 | **Session kit** | [`ckb-session-kit`](https://github.com/luongthanhtung03/ckb-session-kit) | Browser-held self-custody sessions: a session key created in the browser, allowed to sign only within a scope and time limit enforced on-chain, so an app can act repeatedly without a wallet dialog every time |
 | **Cycle tools** | [`ckb-cycle-tools`](https://github.com/luongthanhtung03/ckb-cycle-tools) | Cycle measurement for CKB Scripts: a per-script profiler, a ckb-js-vm vs Rust comparison harness, and the Windows toolchain fix from my Week 1 findings |
 
-**Why not the Fiber metering capstone.** Pay-per-use over Fiber with signed access
-receipts already exists as FiberLatch, a CKBuilder project now in its DAO phase.
-Building a second one is not a good use of the weeks. Fiber pay-per-use survives as a
-demo app inside the session kit, which is the part nobody has built.
+**Why not Fiber at all.** Pay-per-use over Fiber with signed access receipts
+already exists as FiberLatch, a CKBuilder project now in its DAO phase. Building a
+second one, even as a demo inside the session kit, would read as a duplicate. The
+session kit's example is **pay-per-read** instead: 1 CKB on-chain payments into a
+creator's anyone-can-pay cell, signed by a session key that can pay nobody else.
+It uses only the session lock and standard CKB scripts, and no funded project
+covers it.
 
 This repository stays the dev log: the weekly reports live here and link to the work
 in the two project repositories.
@@ -44,7 +47,7 @@ in the two project repositories.
 | 5 | 26 – 31 Oct | Delegate → act N times with no wallet dialog → revoke | Comparison harness: same assertions on ckb-js-vm and Rust | Explorer links; green CI |
 | 6 | 2 – 7 Nov | Survives reload; expiry UX; device-loss recovery | **v1.0 on npm**, docs, Windows guide | Cycle tools → **Spark** |
 | 7 | 9 – 14 Nov | Packaged API and examples | Spark deliverables | Forum post: the cycle comparison |
-| 8 | 16 – 21 Nov | Fiber pay-per-use example app | Maintenance | Cycle tools `[DIS]` |
+| 8 | 16 – 21 Nov | Pay-per-read example: server-verified unlocks | Maintenance | Cycle tools `[DIS]` |
 | 9 | 23 – 28 Nov | **v1.0 on npm** | — | Cycle tools `[VOT]`; session kit → **Spark** |
 | 10 | 30 Nov – 5 Dec | Spark deliverables, hardening | Phase 2 if funded | |
 | 11 | 7 – 12 Dec | Phase 2 scope | — | Session kit `[DIS]` |
