@@ -14,6 +14,18 @@ contemporaneously, with screenshots and evidence.
 - **Report day:** every **Saturday** *(moved from Tuesday in Week 1.5, to align with my contract start)*
 - **Status:** in the cohort — contract signed, twelve-week programme running to 19 December 2026
 
+## What I am building
+
+From Week 2 the programme is build-first ([PLAN.md](PLAN.md)), on two open-source
+projects:
+
+- [**ckb-session-kit**](https://github.com/luongthanhtung03/ckb-session-kit) —
+  browser-held self-custody sessions with scope and expiry enforced on-chain.
+- [**ckb-cycle-tools**](https://github.com/luongthanhtung03/ckb-cycle-tools) —
+  cycle profiling and a ckb-js-vm vs Rust comparison harness for CKB Scripts.
+
+This repository is the dev log: the weekly reports here link to the work there.
+
 New to CKB? [**notes/orientation.md**](notes/orientation.md) explains what this is,
 from the ground up, assuming nothing.
 
@@ -28,7 +40,7 @@ from the ground up, assuming nothing.
 
 | | |
 |---|---|
-| [PLAN.md](PLAN.md) | my twelve-week study and build plan |
+| [PLAN.md](PLAN.md) | my twelve-week build plan |
 | [plans/](plans/) | day-by-day plans, one file per week |
 | [reports/](reports/) | weekly dev-log reports |
 | [notes/orientation.md](notes/orientation.md) | what CKB is, in plain language |
