@@ -21,7 +21,7 @@ and then the
 
 | Project | Repository | What it is |
 |---|---|---|
-| **Session kit** | [`ckb-session-kit`](https://github.com/luongthanhtung03/ckb-session-kit) | Browser-held self-custody sessions: a session key created in the browser, allowed to sign only within a scope and time limit enforced on-chain, so an app can act repeatedly without a wallet dialog every time |
+| **Session kit** | [`ckb-session-kit`](https://github.com/luongthanhtung03/ckb-session-kit) | Browser-held self-custody sessions: a session key created in the browser, allowed to spend only within a scope enforced on-chain (and a time limit enforced in the browser), so an app can act repeatedly without a wallet dialog every time |
 | **Cycle tools** | [`ckb-cycle-tools`](https://github.com/luongthanhtung03/ckb-cycle-tools) | Cycle measurement for CKB Scripts: a per-script profiler, a ckb-js-vm vs Rust comparison harness, and the Windows toolchain fix from my Week 1 findings |
 
 **Why not Fiber at all.** Pay-per-use over Fiber with signed access receipts
@@ -35,23 +35,51 @@ covers it.
 This repository stays the dev log: the weekly reports live here and link to the work
 in the two project repositories.
 
+## What changed on 13 October: the first plan is built
+
+By the end of Week 3, everything the first plan scheduled up to Week 8 was built
+and on testnet: the session lock (Rust), sessions with no wallet dialog,
+device-loss recovery, pay-per-read with server-verified unlocks, the cycle
+profiler with failure-path profiling, the ckb-js-vm vs Rust harness, examples and
+an API reference. Reviews from the community and an adversarial review found real
+holes; each was fixed with a regression test, and the lock was redeployed.
+
+So the remaining weeks build further on the same two ideas, aiming at things
+people can see and use:
+
+- **CKB Place** (session kit): a shared pixel board on testnet. Every pixel is a
+  tiny payment signed by a session key, with no wallet popup; the board is
+  rebuilt from the chain, with no server.
+- **Pay-per-minute** (session kit): a player that pays its creator every minute
+  while it plays, and stops when it stops.
+- **Token sessions** (session kit): sessions that spend an xUDT token, not only
+  CKB. A change to the lock, so it gets its own threat model and review first.
+- **Cycles in the browser** (cycle tools): the web inspector shows each script
+  group's cycles, by running ckb-debugger compiled to WebAssembly in the page.
+- **Cycle reports on pull requests** (cycle tools): a GitHub Action that comments
+  how each script's cycles changed, as gas reports do for Solidity.
+
 ## The weeks
 
 | Week | Period | Session kit | Cycle tools | Public evidence |
 |---|---|---|---|---|
 | 1 | 26 Aug – 1 Sep | ✅ | | *[report](reports/week-01-report.md)* |
 | 1.5 | 28 Sep – 3 Oct | ✅ | | *[report](reports/week-01.5-report.md)* |
-| **2** | **5 – 10 Oct** | Scaffold: TypeScript, CCC, tests, CI | Scaffold; Windows `ckb-debugger` shim fix ported | Both repos public; project filed in CKBuilder-projects |
-| 3 | 12 – 17 Oct | Session key generated and held in the browser, signs a testnet transfer | CLI: per-script cycle table for a transaction | **Live demo on Vercel**; testnet explorer link; upstream issue/PR for the shim |
-| 4 | 19 – 24 Oct | Session **lock script** — scope and expiry enforced on-chain (Rust) | Failure-path profiling; CI on Linux and Windows | ⚠ Checkpoint: session lock on testnet |
-| 5 | 26 – 31 Oct | Delegate → act N times with no wallet dialog → revoke | Comparison harness: same assertions on ckb-js-vm and Rust | Explorer links; green CI |
-| 6 | 2 – 7 Nov | Survives reload; expiry UX; device-loss recovery | **v1.0 on npm**, docs, Windows guide | Cycle tools → **Spark** |
-| 7 | 9 – 14 Nov | Packaged API and examples | Spark deliverables | Forum post: the cycle comparison |
-| 8 | 16 – 21 Nov | Pay-per-read example: server-verified unlocks | Maintenance | Cycle tools `[DIS]` |
-| 9 | 23 – 28 Nov | **v1.0 on npm** | — | Cycle tools `[VOT]`; session kit → **Spark** |
-| 10 | 30 Nov – 5 Dec | Spark deliverables, hardening | Phase 2 if funded | |
-| 11 | 7 – 12 Dec | Phase 2 scope | — | Session kit `[DIS]` |
+| 2 | 5 – 10 Oct | ✅ Scaffold, CI; session lock on testnet; pay-per-read | ✅ Scaffold, per-group CLI, failure-path profiling, harness | *[report](reports/week-02-report.md)* |
+| **3** | **12 – 17 Oct** | Review fixes (errors 16–18), lock redeployed; examples, API reference | Review fixes: VM version by epoch, spoof-proof parsing, Type ID | Redeploy + smoke on testnet; green CI |
+| 4 | 19 – 24 Oct | **CKB Place**: pixels as memo payments, board from the chain | **Cycles in the browser**: ckb-debugger in WebAssembly | Forum post: the cycle comparison |
+| 5 | 26 – 31 Oct | CKB Place live on Vercel | Browser cycles live; **v1.0 on npm** | Cycle tools → **Spark** |
+| 6 | 2 – 7 Nov | **Pay-per-minute** player | **Cycle reports on pull requests** (GitHub Action) | Explorer links; the Action on a public repo |
+| 7 | 9 – 14 Nov | **v1.0 on npm** | Spark deliverables | Session kit → **Spark** |
+| 8 | 16 – 21 Nov | **Token sessions**: threat model and design, reviewed before code | Maintenance | Cycle tools `[DIS]` |
+| 9 | 23 – 28 Nov | Token sessions in the lock, CKB-VM tests | — | Cycle tools `[VOT]` |
+| 10 | 30 Nov – 5 Dec | Token sessions on testnet; adversarial review; Spark deliverables | Phase 2 if funded | |
+| 11 | 7 – 12 Dec | Hardening; phase 2 scope | — | Session kit `[DIS]` |
 | 12 | 14 – 19 Dec | Final demo | — | Session kit `[VOT]`; retrospective |
+
+Token sessions come last on purpose: they change the lock, which holds funds, so
+they wait until the design has been reviewed and never ship without an
+adversarial review. If they slip, the session kit's Spark scope is CKB-only.
 
 The demo is redeployed to Vercel every week from Week 3, so the deployed URL always
 shows the current state.
@@ -62,6 +90,9 @@ shows the current state.
 *Fallback:* the lock is written for ckb-js-vm instead, which already works here (the
 counter Script, 23 tests, green CI). The cycle tools then measure exactly that
 trade-off, so the fallback costs the session kit nothing it needs.
+
+**Met on 8 October**, sixteen days early; the fallback was not needed. The cycle
+tools measured the trade-off anyway, with both versions of the lock.
 
 ## Funding, kept honest
 
