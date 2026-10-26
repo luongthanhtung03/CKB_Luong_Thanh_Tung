@@ -59,6 +59,26 @@ people can see and use:
 - **Cycle reports on pull requests** (cycle tools): a GitHub Action that comments
   how each script's cycles changed, as gas reports do for Solidity.
 
+## What changed on 26 October: the second plan is built
+
+Everything the 13 October plan scheduled for Weeks 4 to 12 was built between 14 and
+18 October and is live on testnet: CKB Place, the pay-per-minute player, token
+sessions (with their own design, review and adversarial review), cycles in the
+browser, cycle reports on pull requests, a hardening pass on both projects, and a
+demo walkthrough. So the remaining weeks turn to getting the two projects used and
+funded, and to two new pieces:
+
+- **Subscriptions** (session kit): a creator charges a fixed amount once per period
+  from a cell the subscriber controls, with no app or wallet online, and the
+  subscriber can cancel at any time. Designed and reviewed before any code, as token
+  sessions were.
+- **Flamegraphs** (cycle tools): where inside a script the cycles go, per script
+  group of a real transaction, in the CLI, the browser and the pull-request comment.
+  It builds on ckb-debugger's own profiler rather than replacing it.
+- **Adoption**: both packages at v1.0 on npm, the cycle report Action running on
+  another CKB repository, a wallet compatibility table where every row is a testnet
+  transaction, and issues or pull requests upstream for what the build ran into.
+
 ## The weeks
 
 | Week | Period | Session kit | Cycle tools | Public evidence |
@@ -66,20 +86,21 @@ people can see and use:
 | 1 | 26 Aug – 1 Sep | ✅ | | *[report](reports/week-01-report.md)* |
 | 1.5 | 28 Sep – 3 Oct | ✅ | | *[report](reports/week-01.5-report.md)* |
 | 2 | 5 – 10 Oct | ✅ Scaffold, CI; session lock on testnet; pay-per-read | ✅ Scaffold, per-group CLI, failure-path profiling, harness | *[report](reports/week-02-report.md)* |
-| **3** | **12 – 17 Oct** | Review fixes (errors 16–18), lock redeployed; examples, API reference | Review fixes: VM version by epoch, spoof-proof parsing, Type ID | Redeploy + smoke on testnet; green CI |
-| 4 | 19 – 24 Oct | **CKB Place**: pixels as memo payments, board from the chain | **Cycles in the browser**: ckb-debugger in WebAssembly | Forum post: the cycle comparison |
-| 5 | 26 – 31 Oct | CKB Place live on Vercel | Browser cycles live; **v1.0 on npm** | Cycle tools → **Spark** |
-| 6 | 2 – 7 Nov | **Pay-per-minute** player | **Cycle reports on pull requests** (GitHub Action) | Explorer links; the Action on a public repo |
-| 7 | 9 – 14 Nov | **v1.0 on npm** | Spark deliverables | Session kit → **Spark** |
-| 8 | 16 – 21 Nov | **Token sessions**: threat model and design, reviewed before code | Maintenance | Cycle tools `[DIS]` |
-| 9 | 23 – 28 Nov | Token sessions in the lock, CKB-VM tests | — | Cycle tools `[VOT]` |
-| 10 | 30 Nov – 5 Dec | Token sessions on testnet; adversarial review; Spark deliverables | Phase 2 if funded | |
-| 11 | 7 – 12 Dec | Hardening; phase 2 scope | — | Session kit `[DIS]` |
+| 3 | 12 – 17 Oct | ✅ Review fixes (errors 16–18), lock redeployed; examples, API reference | ✅ Review fixes: VM version by epoch, spoof-proof parsing, Type ID | *[report](reports/week-03-report.md)* |
+| 4 | 19 – 24 Oct | ✅ Built ahead (14 – 18 Oct): CKB Place, pay-per-minute, token sessions, hardening, walkthrough | ✅ Built ahead: cycles in the browser, cycle reports on pull requests, hardening | Report |
+| **5** | **26 – 31 Oct** | v1.0 on npm; **subscriptions**: design and review | v1.0 on npm; the Action on a real pull request | npm pages; forum post: the cycle comparison |
+| 6 | 2 – 7 Nov | Subscriptions in the library, CKB-VM tests | **Flamegraphs** in the CLI | Cycle tools → **Spark** |
+| 7 | 9 – 14 Nov | Subscriptions on testnet; adversarial review; demo page | Flamegraphs in the browser and the PR comment | Explorer links; deployed URL |
+| 8 | 16 – 21 Nov | Wallet compatibility table, each row a testnet transaction | The Action on another CKB repository | Session kit → **Spark**; a PR in someone else's repo |
+| 9 | 23 – 28 Nov | Upstream issues and pull requests (CCC, offckb) | Upstream (ckb-debugger) | Filed issues and PRs |
+| 10 | 30 Nov – 5 Dec | Spark deliverables | Spark deliverables | Cycle tools `[DIS]` |
+| 11 | 7 – 12 Dec | Hardening; phase 2 scope | Phase 2 if funded | Cycle tools `[VOT]`; session kit `[DIS]` |
 | 12 | 14 – 19 Dec | Final demo | — | Session kit `[VOT]`; retrospective |
 
-Token sessions come last on purpose: they change the lock, which holds funds, so
-they wait until the design has been reviewed and never ship without an
-adversarial review. If they slip, the session kit's Spark scope is CKB-only.
+Subscriptions follow the token sessions path: design, review, code, then an
+adversarial review before anything holds funds on testnet. If they need a change to
+the lock, the change gets its own threat model first. The table is the order of
+work, not a deadline; when a piece is done early the next one starts.
 
 The demo is redeployed to Vercel every week from Week 3, so the deployed URL always
 shows the current state.
