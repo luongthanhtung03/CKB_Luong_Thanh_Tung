@@ -88,10 +88,10 @@ funded, and to two new pieces:
 | 2 | 5 – 10 Oct | ✅ Scaffold, CI; session lock on testnet; pay-per-read | ✅ Scaffold, per-group CLI, failure-path profiling, harness | *[report](reports/week-02-report.md)* |
 | 3 | 12 – 17 Oct | ✅ Review fixes (errors 16–18), lock redeployed; examples, API reference | ✅ Review fixes: VM version by epoch, spoof-proof parsing, Type ID | *[report](reports/week-03-report.md)* |
 | 4 | 19 – 24 Oct | ✅ Built ahead (14 – 18 Oct): CKB Place, pay-per-minute, token sessions, hardening, walkthrough | ✅ Built ahead: cycles in the browser, cycle reports on pull requests, hardening | Report |
-| **5** | **26 – 31 Oct** | v1.0 on npm; **subscriptions**: design and review | v1.0 on npm; the Action on a real pull request | npm pages; forum post: the cycle comparison |
+| **5** | **26 – 31 Oct** | v1.0 on npm; **subscriptions**: design and review; related work in the README | v1.0 on npm; the Action on a real pull request; related work in the README | npm pages; forum post: the cycle comparison; review fixes reported back to the reviewers; both projects filed on the CKBuilder-projects tracker |
 | 6 | 2 – 7 Nov | Subscriptions in the library, CKB-VM tests | **Flamegraphs** in the CLI | Cycle tools → **Spark** |
 | 7 | 9 – 14 Nov | Subscriptions on testnet; adversarial review; demo page | Flamegraphs in the browser and the PR comment | Explorer links; deployed URL |
-| 8 | 16 – 21 Nov | Wallet compatibility table, each row a testnet transaction | The Action on another CKB repository | Session kit → **Spark**; a PR in someone else's repo |
+| 8 | 16 – 21 Nov | Wallet compatibility table, each row a testnet transaction; the kit offered to a community app that asked for fewer signature prompts (LockFit, CrowdCell) | The Action on another CKB repository (first ask: CellScript, which measures cost against hand-written Rust) | Session kit → **Spark**; a PR in someone else's repo |
 | 9 | 23 – 28 Nov | Upstream issues and pull requests (CCC, offckb) | Upstream (ckb-debugger) | Filed issues and PRs |
 | 10 | 30 Nov – 5 Dec | Spark deliverables | Spark deliverables | Cycle tools `[DIS]` |
 | 11 | 7 – 12 Dec | Hardening; phase 2 scope | Phase 2 if funded | Cycle tools `[VOT]`; session kit `[DIS]` |
@@ -101,6 +101,11 @@ Subscriptions follow the token sessions path: design, review, code, then an
 adversarial review before anything holds funds on testnet. If they need a change to
 the lock, the change gets its own threat model first. The table is the order of
 work, not a deadline; when a piece is done early the next one starts.
+
+The related-work sections exist because the Spark and DAO reviews do not fund the
+same idea twice: recurring payments (CKAutomata), shared spend limits (QuotaCell) and
+Fiber access control (FiberLatch) sit close to parts of the session kit, so each
+README says plainly what those projects do and where this one differs.
 
 The demo is redeployed to Vercel every week from Week 3, so the deployed URL always
 shows the current state.
