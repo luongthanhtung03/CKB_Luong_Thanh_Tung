@@ -79,6 +79,37 @@ funded, and to two new pieces:
   another CKB repository, a wallet compatibility table where every row is a testnet
   transaction, and issues or pull requests upstream for what the build ran into.
 
+## What changed on 28 October: the third plan
+
+By 27 October the plan's code was built through Week 9: subscriptions in CKB and in
+tokens, the wallet table, flamegraphs in the CLI, the browser and the pull-request
+comment. Both packages are on npm at 1.0.0, the cycle report Action has posted its
+first public comment, and both projects are on the CKBuilder-projects tracker.
+
+I then read recent Spark and Community Fund DAO threads to see what gets funded. What
+I took from them:
+
+- **Outside use counts most.** Committees and voters ask who uses a project before
+  they ask what else it does. Public agreement from another team comes before code.
+- **Spark funds work still ahead.** A project whose MVP is already complete can be
+  sent away from Spark, so new features go in only when they are not part of a grant.
+- **One Spark grant at a time per applicant.** Cycle tools go first; the session kit's
+  application follows when the first one closes.
+- **A first DAO ask stays small and testnet-first.** Audit and mainnet come after usage,
+  not before it.
+
+So the remaining weeks are harder in a different way: less building alone, more
+evidence that someone else uses the work.
+
+- **Mainnet cycle atlas** (cycle tools): what the most-used mainnet scripts cost, measured
+  per script group with the same replay, published once as a reproducible report.
+- **Demo checks** (both): the live demos are clicked through by a browser in CI every
+  day, so a broken page is caught before a reviewer finds it.
+- **Outside users** (both): the session kit offered to a community app that asked for
+  fewer signature prompts; the cycle report Action set up on another CKB repository.
+- **Upstream** (both): the issues found while building, filed with a reproduction and,
+  where small, a fix.
+
 ## The weeks
 
 | Week | Period | Session kit | Cycle tools | Public evidence |
@@ -88,14 +119,14 @@ funded, and to two new pieces:
 | 2 | 5 – 10 Oct | ✅ Scaffold, CI; session lock on testnet; pay-per-read | ✅ Scaffold, per-group CLI, failure-path profiling, harness | *[report](reports/week-02-report.md)* |
 | 3 | 12 – 17 Oct | ✅ Review fixes (errors 16–18), lock redeployed; examples, API reference | ✅ Review fixes: VM version by epoch, spoof-proof parsing, Type ID | *[report](reports/week-03-report.md)* |
 | 4 | 19 – 24 Oct | ✅ Built ahead (14 – 18 Oct): CKB Place, pay-per-minute, token sessions, hardening, walkthrough | ✅ Built ahead: cycles in the browser, cycle reports on pull requests, hardening | Report |
-| **5** | **26 – 31 Oct** | v1.0 on npm; **subscriptions**: design and review; related work in the README | v1.0 on npm; the Action on a real pull request; related work in the README | npm pages; forum post: the cycle comparison; review fixes reported back to the reviewers; both projects filed on the CKBuilder-projects tracker |
-| 6 | 2 – 7 Nov | Subscriptions in the library, CKB-VM tests | **Flamegraphs** in the CLI | Cycle tools → **Spark** |
-| 7 | 9 – 14 Nov | Subscriptions on testnet; adversarial review; demo page | Flamegraphs in the browser and the PR comment | Explorer links; deployed URL |
-| 8 | 16 – 21 Nov | Wallet compatibility table, each row a testnet transaction; the kit offered to a community app that asked for fewer signature prompts (LockFit, CrowdCell) | The Action on another CKB repository (first ask: CellScript, which measures cost against hand-written Rust) | Session kit → **Spark**; a PR in someone else's repo |
-| 9 | 23 – 28 Nov | Upstream issues and pull requests (CCC, offckb) | Upstream (ckb-debugger) | Filed issues and PRs |
-| 10 | 30 Nov – 5 Dec | Spark deliverables | Spark deliverables | Cycle tools `[DIS]` |
-| 11 | 7 – 12 Dec | Hardening; phase 2 scope | Phase 2 if funded | Cycle tools `[VOT]`; session kit `[DIS]` |
-| 12 | 14 – 19 Dec | Final demo | — | Session kit `[VOT]`; retrospective |
+| 5 | 26 – 31 Oct | ✅ v1.0 on npm; subscriptions designed, reviewed, on testnet (built ahead); related work in the README | ✅ v1.0 on npm; the Action's first public comment; flamegraphs (built ahead) | npm pages; [PR #1](https://github.com/luongthanhtung03/ckb-cycle-tools/pull/1); tracker issues #46, #47; review fixes reported back; forum post: the cycle comparison |
+| 6 | 2 – 7 Nov | Demo checks in CI; offer the kit to CrowdCell or LockFit and get a public answer | **Mainnet cycle atlas**; demo checks in CI; ask CellScript or ckb-proxy-locks about the Action | Cycle tools → **Spark**; atlas report on Nervos Talk |
+| 7 | 9 – 14 Nov | Integration plan with the app that said yes; short demo recordings | Spark work if approved: the Action as its own repository, on the GitHub Marketplace | Marketplace listing; recordings |
+| 8 | 16 – 21 Nov | First integration steps on testnet with that app | The Action on another CKB repository (Spark) | A pull request in someone else's repo |
+| 9 | 23 – 28 Nov | Upstream issues and pull requests (CCC, offckb, ckb-testtool) | Upstream (ckb-debugger) | Filed issues and PRs |
+| 10 | 30 Nov – 5 Dec | Session kit → **Spark** when the cycle tools grant is closed | Spark docs, video, completion report | Spark completion report |
+| 11 | 7 – 12 Dec | Spark work on the integration | Cycle tools `[DIS]`: a small first DAO ask (maintenance and adoption) | DAO discussion thread |
+| 12 | 14 – 19 Dec | Final demo | Cycle tools `[VOT]` | Retrospective |
 
 Subscriptions follow the token sessions path: design, review, code, then an
 adversarial review before anything holds funds on testnet. If they need a change to
@@ -127,6 +158,10 @@ tools measured the trade-off anyway, with both versions of the lock.
   sitting so the two scopes stay clearly different.
 - **One campaign live at a time.** If a project slips, its campaign slips with it.
 - **Ask small.** The DAO quorum is 3× the amount asked for.
+- **One Spark grant at a time** (28 October). Cycle tools apply first; the session kit
+  applies when that grant is closed.
+- **Usage before audit** (28 October). A first DAO ask covers maintenance and adoption
+  on testnet; an audit and a mainnet deployment are asked for once someone uses the kit.
 
 ## The standard I hold myself to
 
