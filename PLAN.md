@@ -118,6 +118,23 @@ What fills the weeks instead:
   Action on an outside CKB repository, a guide and a video) wait for the grant. Before
   applying, I only ask maintainers in public whether they would take it.
 
+## What changed on 2 November: the mentor feedback came in faster
+
+Week 5 built what the 28 October plan spread over Weeks 6 to 8: cycles.json from
+ckb-testtool tests (`ckb-cycles scan`), ckb-script-templates end to end in CI, the
+cross-version check across ckb-debugger releases, and the session kit's security
+evidence report, each answered on the tracker. Two security audits of both repos
+followed (30 findings, all fixed) and the cycle tools went to 1.1.0 on npm.
+
+On 2 November gpBlockchain reviewed the session kit on #47 point by point. Week 6 is
+that review: owner locks allowed only in reviewed configurations (Nostr in PoW mode
+and PW-Lock's anyone-can-pay path refused), tests of total outflow across several
+inputs, a warning for `min_interval = 0`, payers competing for the creator's cells,
+and a way past the 16-cell cap, then the same fixes on public testnet and 1.1.0. The
+week also takes the forum posts and the upstream issues, so the weeks after move up:
+the integration with an outside app starts in Week 8, and Week 9 is a second review
+round with both mentors. Weeks 10 to 12 stay as agreed.
+
 ## The weeks
 
 | Week | Period | Session kit | Cycle tools | Public evidence |
@@ -126,12 +143,12 @@ What fills the weeks instead:
 | 1.5 | 28 Sep – 3 Oct | ✅ | | *[report](reports/week-01.5-report.md)* |
 | 2 | 5 – 10 Oct | ✅ Scaffold, CI; session lock on testnet; pay-per-read | ✅ Scaffold, per-group CLI, failure-path profiling, harness | *[report](reports/week-02-report.md)* |
 | 3 | 12 – 17 Oct | ✅ Review fixes (errors 16–18), lock redeployed; examples, API reference | ✅ Review fixes: VM version by epoch, spoof-proof parsing, Type ID | *[report](reports/week-03-report.md)* |
-| 4 | 19 – 24 Oct | ✅ Built ahead (14 – 18 Oct): CKB Place, pay-per-minute, token sessions, hardening, walkthrough | ✅ Built ahead: cycles in the browser, cycle reports on pull requests, hardening | Report |
-| 5 | 26 – 31 Oct | ✅ v1.0 on npm; subscriptions designed, reviewed, on testnet (built ahead); related work in the README | ✅ v1.0 on npm; the Action's first public comment; flamegraphs (built ahead) | npm pages; [PR #1](https://github.com/luongthanhtung03/ckb-cycle-tools/pull/1); tracker issues #46, #47; review fixes reported back; forum post: the cycle comparison |
-| 6 | 2 – 7 Nov | **Security evidence report**: per rule, the accepted tx, the rejected tx with its RPC error, the code hash, the CKB-VM test, a repro command; offer the kit to CrowdCell or LockFit | **cycles.json from ckb-testtool scenarios**: scenarios and binary mappings generated, not written by hand | Replies on #46 and #47; the evidence report linked on #47; forum post: the cycle comparison |
-| 7 | 9 – 14 Nov | Adversarial cases the mentor asks for, added to the report with their testnet transactions; integration plan with the app that said yes | **A cycles workflow for ckb-script-templates projects**, tried on a freshly generated project, in the form the mentor prefers (a template PR or a helper command) | A pull request or issue on ckb-script-templates; forum post: the mainnet cycle atlas |
-| 8 | 16 – 21 Nov | First integration steps on testnet with that app | **Cross-version checks**: the same scenarios under several ckb-debugger and CKB-VM versions, CLI build against browser build | A CI run comparing versions |
-| 9 | 23 – 28 Nov | Upstream issues and pull requests (CCC, offckb, ckb-testtool) | Upstream (ckb-debugger, ckb-script-templates); Spark application prepared: a short recording, a public question to CellScript about running the Action | Filed issues and PRs |
+| 4 | 19 – 24 Oct | ✅ Built ahead (14 – 18 Oct): CKB Place, pay-per-minute, token sessions, hardening, walkthrough | ✅ Built ahead: cycles in the browser, cycle reports on pull requests, hardening | *[report](reports/week-04-report.md)* |
+| 5 | 26 – 31 Oct | ✅ v1.0 on npm; security evidence report; error 13 refused on testnet; 42 adversarial CKB-VM tests and a fuzz suite; two security audits fixed | ✅ v1.0, then 1.1.0 on npm; cycles.json from ckb-testtool tests; ckb-script-templates end to end in CI; cross-version check; mainnet cycle atlas | *[report](reports/week-05-report.md)*; npm pages; tracker issues #46, #47 with replies |
+| 6 | 2 – 7 Nov | **The mentor's review (#47, 2 Nov)**: owner locks only in reviewed configurations; total outflow across inputs tested in CKB-VM; `min_interval = 0` warning; payers competing for the creator's cells; past the 16-cell cap; docs on expiry and block-count periods. Then the fixes on public testnet (several payers at once, refused owner locks), 1.1.0 on npm, and an offer of the kit to CrowdCell or LockFit | Questions to the ckb-script-templates maintainers: dump inside ckb-testtool or in the template, `make cycles` or `cargo bench`. Upstream issues and patches (ckb-debugger flamegraph names, ckb-testtool on Windows and ESM) | Reply on #47 with what was built and its testnet transactions; forum posts: the cycle comparison and the mainnet cycle atlas; an issue on ckb-script-templates; filed upstream issues |
+| 7 | 9 – 14 Nov | Upstream (CCC, offckb); integration plan with the app that said yes | The cycles workflow in the form the template maintainers prefer (a template PR or a helper command) | A pull request on ckb-script-templates or offckb |
+| 8 | 16 – 21 Nov | First integration steps on testnet with that app | Spark application prepared: a short recording, a public question to CellScript about running the Action | Integration transactions; Spark draft ready |
+| 9 | 23 – 28 Nov | Integration continued; a second review round from gpBlockchain on what changed | Answers to the template maintainers' review; a second review round from quake | Integration transactions; review replies on #46 and #47 |
 | 10 | 30 Nov – 5 Dec | Integration continued; short demo recordings | Cycle tools → **Spark** | Spark thread on Nervos Talk; recordings |
 | 11 | 7 – 12 Dec | Docs pass; a walkthrough of the integration | Answers to the Spark review; docs pass | Spark thread replies |
 | 12 | 14 – 19 Dec | Final demo | Final demo; Spark work starts if approved | Retrospective; the session kit's application written, sent when the cycle tools grant is closed |
