@@ -135,6 +135,26 @@ week also takes the forum posts and the upstream issues, so the weeks after move
 the integration with an outside app starts in Week 8, and Week 9 is a second review
 round with both mentors. Weeks 10 to 12 stay as agreed.
 
+## What changed on 7 November: the integration moved up, the Cells workflow waits for Spark
+
+Week 6 went past its row. On top of the mentor's review, a second reviewer attacked
+both projects on #46 and #47, and the answers were built before replying: a reject
+gate, a reproducibility manifest, failure paths labelled as the node runs them and
+replays across the hard forks in the cycle tools; `minConfirmations`, an invariant
+across lock groups and the owner-lock unlocking paths in the session kit. Five
+releases went to npm (session kit 2.0.0, 2.1.0, 2.2.0; cycle tools 1.2.0, 1.3.0).
+The kit side of the CrowdCell integration (`fundInSession`, tested against
+CrowdCell's live scripts and on testnet) shipped in 2.1.0, so the integration pull
+request moves up from Week 8 to Week 7.
+
+Three Week 6 outputs did not happen and move to Week 7: the mainnet cycle atlas
+post, the questions to the ckb-script-templates maintainers, and the upstream issues.
+
+Cells said yes on #39 to a cycle-report workflow. Running the Action on an outside
+CKB repository is one of the cycle tools' Spark deliverables (28 October), so the
+workflow stays ready but unopened, and the Spark application in Week 10 cites
+Cells' public answer as demand.
+
 ## The weeks
 
 | Week | Period | Session kit | Cycle tools | Public evidence |
@@ -145,9 +165,9 @@ round with both mentors. Weeks 10 to 12 stay as agreed.
 | 3 | 12 – 17 Oct | ✅ Review fixes (errors 16–18), lock redeployed; examples, API reference | ✅ Review fixes: VM version by epoch, spoof-proof parsing, Type ID | *[report](reports/week-03-report.md)* |
 | 4 | 19 – 24 Oct | ✅ Built ahead (14 – 18 Oct): CKB Place, pay-per-minute, token sessions, hardening, walkthrough | ✅ Built ahead: cycles in the browser, cycle reports on pull requests, hardening | *[report](reports/week-04-report.md)* |
 | 5 | 26 – 31 Oct | ✅ v1.0 on npm; security evidence report; error 13 refused on testnet; 42 adversarial CKB-VM tests and a fuzz suite; two security audits fixed | ✅ v1.0, then 1.1.0 on npm; cycles.json from ckb-testtool tests; ckb-script-templates end to end in CI; cross-version check; mainnet cycle atlas | *[report](reports/week-05-report.md)*; npm pages; tracker issues #46, #47 with replies |
-| 6 | 2 – 7 Nov | **The mentor's review (#47, 2 Nov)**: owner locks only in reviewed configurations; total outflow across inputs tested in CKB-VM; `min_interval = 0` warning; payers competing for the creator's cells; past the 16-cell cap; docs on expiry and block-count periods. Then the fixes on public testnet (several payers at once, refused owner locks), 1.1.0 on npm, and an offer of the kit to CrowdCell or LockFit | Questions to the ckb-script-templates maintainers: dump inside ckb-testtool or in the template, `make cycles` or `cargo bench`. Upstream issues and patches (ckb-debugger flamegraph names, ckb-testtool on Windows and ESM) | Reply on #47 with what was built and its testnet transactions; forum posts: the cycle comparison and the mainnet cycle atlas; an issue on ckb-script-templates; filed upstream issues |
-| 7 | 9 – 14 Nov | Upstream (CCC, offckb); integration plan with the app that said yes | The cycles workflow in the form the template maintainers prefer (a template PR or a helper command) | A pull request on ckb-script-templates or offckb |
-| 8 | 16 – 21 Nov | First integration steps on testnet with that app | Spark application prepared: a short recording, a public question to CellScript about running the Action | Integration transactions; Spark draft ready |
+| 6 | 2 – 7 Nov | ✅ **The mentor's review (#47)**: owner locks only in reviewed configurations, outflow across inputs in CKB-VM, payers competing for cells, past the 16-cell cap, all shown on public testnet; CrowdCell said yes and the kit side was built (`fundInSession`, a session-funded pledge on testnet); a second review answered (`minConfirmations`, invariant across lock groups, owner-lock paths); 2.0.0, 2.1.0, 2.2.0 on npm | ✅ Spawning scripts; the Action for pull requests from forks; a second review answered (reject gate, manifest, failure paths, per-transaction limit, hard-fork replays); 1.2.0, 1.3.0 on npm; two ckb-debugger `--vm-id` problems reported | *[report](reports/week-06-report.md)*; replies on #45, #46, #47, #51; forum post t/11115 |
+| 7 | 9 – 14 Nov | **The CrowdCell pull request** (moved up from Week 8): opt-in pledge session on testnet, on 2.2.0, tested against CrowdCell's deployment. Upstream issues for CCC and offckb | Questions to the ckb-script-templates maintainers (moved from Week 6). Upstream issues (ckb-debugger flamegraph names, ckb-testtool on Windows and ESM). The mainnet cycle atlas re-run with 1.3.0 | The pull request on CrowdCell; an issue on ckb-script-templates; filed upstream issues; forum post: the mainnet cycle atlas |
+| 8 | 16 – 21 Nov | The CrowdCell review answered; pledges from CrowdCell's own testnet deployment | The cycles workflow in the form the template maintainers prefer (a template PR or a helper command). Spark application prepared: a short recording, Cells' answer on #39 as demand | Integration transactions; Spark draft ready |
 | 9 | 23 – 28 Nov | Integration continued; a second review round from gpBlockchain on what changed | Answers to the template maintainers' review; a second review round from quake | Integration transactions; review replies on #46 and #47 |
 | 10 | 30 Nov – 5 Dec | Integration continued; short demo recordings | Cycle tools → **Spark** | Spark thread on Nervos Talk; recordings |
 | 11 | 7 – 12 Dec | Docs pass; a walkthrough of the integration | Answers to the Spark review; docs pass | Spark thread replies |
